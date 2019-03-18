@@ -33,6 +33,11 @@
 		85379DD3223FC9610049FEC4 /* XIBView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85379DD2223FC9610049FEC4 /* XIBView.swift */; };
 		85379DD7223FC9E80049FEC4 /* ActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85379DD5223FC9E80049FEC4 /* ActivityIndicatorView.swift */; };
 		85379DD8223FC9E80049FEC4 /* ActivityIndicatorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85379DD6223FC9E80049FEC4 /* ActivityIndicatorView.xib */; };
+		85379DDA223FE0540049FEC4 /* MainFlowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85379DD9223FE0540049FEC4 /* MainFlowController.swift */; };
+		85379DDC223FE1A10049FEC4 /* AppDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85379DDB223FE1A10049FEC4 /* AppDependency.swift */; };
+		85379DDE223FE1F60049FEC4 /* AppFlowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85379DDD223FE1F60049FEC4 /* AppFlowController.swift */; };
+		85379DE0223FE2670049FEC4 /* StoryboardScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85379DDF223FE2670049FEC4 /* StoryboardScene.swift */; };
+		85379DE4223FE64A0049FEC4 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85379DE3223FE64A0049FEC4 /* Color.swift */; };
 		85B55B65223F8669007A3D78 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B55B64223F8669007A3D78 /* AppDelegate.swift */; };
 		85B55B67223F866A007A3D78 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B55B66223F866A007A3D78 /* MainViewController.swift */; };
 		85B55B6A223F866A007A3D78 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 85B55B68223F866A007A3D78 /* Main.storyboard */; };
@@ -68,6 +73,11 @@
 		85379DD2223FC9610049FEC4 /* XIBView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XIBView.swift; sourceTree = "<group>"; };
 		85379DD5223FC9E80049FEC4 /* ActivityIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorView.swift; sourceTree = "<group>"; };
 		85379DD6223FC9E80049FEC4 /* ActivityIndicatorView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivityIndicatorView.xib; sourceTree = "<group>"; };
+		85379DD9223FE0540049FEC4 /* MainFlowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFlowController.swift; sourceTree = "<group>"; };
+		85379DDB223FE1A10049FEC4 /* AppDependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDependency.swift; sourceTree = "<group>"; };
+		85379DDD223FE1F60049FEC4 /* AppFlowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlowController.swift; sourceTree = "<group>"; };
+		85379DDF223FE2670049FEC4 /* StoryboardScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardScene.swift; sourceTree = "<group>"; };
+		85379DE3223FE64A0049FEC4 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		85B55B61223F8669007A3D78 /* PayOutDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PayOutDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		85B55B64223F8669007A3D78 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		85B55B66223F866A007A3D78 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -144,6 +154,8 @@
 		85379D95223FBFE40049FEC4 /* Constants */ = {
 			isa = PBXGroup;
 			children = (
+				85379DDF223FE2670049FEC4 /* StoryboardScene.swift */,
+				85379DE3223FE64A0049FEC4 /* Color.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -151,6 +163,7 @@
 		85379D96223FC0360049FEC4 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				85379DD9223FE0540049FEC4 /* MainFlowController.swift */,
 				85B55B66223F866A007A3D78 /* MainViewController.swift */,
 				85B55B68223F866A007A3D78 /* Main.storyboard */,
 			);
@@ -314,6 +327,8 @@
 				85379D92223FBF9C0049FEC4 /* Launch Screen */,
 				85B55B70223F866B007A3D78 /* Info.plist */,
 				85B55B64223F8669007A3D78 /* AppDelegate.swift */,
+				85379DDB223FE1A10049FEC4 /* AppDependency.swift */,
+				85379DDD223FE1F60049FEC4 /* AppFlowController.swift */,
 			);
 			path = PayOutDemo;
 			sourceTree = "<group>";
@@ -422,7 +437,9 @@
 				85379DAD223FC6260049FEC4 /* ServiceError.swift in Sources */,
 				85379DC8223FC7C20049FEC4 /* UIView+Extensions.swift in Sources */,
 				85379DAF223FC6260049FEC4 /* Lce.swift in Sources */,
+				85379DE4223FE64A0049FEC4 /* Color.swift in Sources */,
 				85379DD3223FC9610049FEC4 /* XIBView.swift in Sources */,
+				85379DDC223FE1A10049FEC4 /* AppDependency.swift in Sources */,
 				85379DC2223FC7C20049FEC4 /* Sequence+Extensions.swift in Sources */,
 				85B55B67223F866A007A3D78 /* MainViewController.swift in Sources */,
 				85379DA7223FC5160049FEC4 /* UIAplication+Extension.swift in Sources */,
@@ -437,10 +454,13 @@
 				85379DB6223FC6E80049FEC4 /* AuthenticatedProvider.swift in Sources */,
 				85379DAE223FC6260049FEC4 /* ActivityIndicator.swift in Sources */,
 				85379DB5223FC6E80049FEC4 /* NetworkingUtilities.swift in Sources */,
+				85379DDE223FE1F60049FEC4 /* AppFlowController.swift in Sources */,
 				85379DC5223FC7C20049FEC4 /* NSObject+Extensions.swift in Sources */,
+				85379DDA223FE0540049FEC4 /* MainFlowController.swift in Sources */,
 				85379DA5223FC39C0049FEC4 /* AlertManager.swift in Sources */,
 				85379DC7223FC7C20049FEC4 /* Error+Extensions.swift in Sources */,
 				85379DB0223FC6260049FEC4 /* CodableObject.swift in Sources */,
+				85379DE0223FE2670049FEC4 /* StoryboardScene.swift in Sources */,
 				85379DC6223FC7C20049FEC4 /* Observable+Extensions.swift in Sources */,
 				85379DB1223FC6260049FEC4 /* BaseService.swift in Sources */,
 			);
@@ -592,7 +612,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7Z7ZMFMYVQ;
 				INFOPLIST_FILE = PayOutDemo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -612,7 +632,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7Z7ZMFMYVQ;
 				INFOPLIST_FILE = PayOutDemo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
