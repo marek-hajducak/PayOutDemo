@@ -1,0 +1,19 @@
+platform :ios, '10.0'
+
+use_modular_headers!
+
+target 'PayOutDemo' do
+
+ # Pods for FRP
+  pod 'RxSwift'
+  pod 'RxCocoa'
+
+ # Pods for networking + data serialisation
+  pod 'Moya/RxSwift'
+  pod 'RealmSwift' 
+  pod 'RxRealm'
+
+ # Pods for UI Elements
+  pod 'Whisper'
+
+end
