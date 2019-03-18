@@ -24,7 +24,7 @@ class MainFlowController {
         mainStoryBoard.flowDelegate = self
         navigationController.viewControllers = [mainStoryBoard]
         navigationController.navigationBar.isHidden = false
-        UIApplication.shared.statusBarView?.backgroundColor = UIColor.white
+        UIApplication.shared.statusBarView?.backgroundColor = Color.White
     }
     
 }
