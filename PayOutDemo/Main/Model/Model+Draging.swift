@@ -27,7 +27,7 @@ extension Model {
      by the `tableView(_:itemsForBeginning:at:)` method.
      */
     func dragItems(for indexPath: IndexPath) -> [UIDragItem] {
-        let placeName = placeNames[indexPath.row]
+        let placeName = widgetsNames[indexPath.row]
         
         let data = placeName.data(using: .utf8)
         let itemProvider = NSItemProvider()

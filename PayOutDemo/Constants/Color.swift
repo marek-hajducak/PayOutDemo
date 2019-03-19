@@ -22,6 +22,10 @@ class Color {
         return #colorLiteral(red: 0.9647058824, green: 0.9647058824, blue: 0.9647058824, alpha: 1)
     }
     
+    public class var MainTableViewBackground: UIColor {
+        return #colorLiteral(red: 0.937254902, green: 0.937254902, blue: 0.9568627451, alpha: 1)
+    }
+    
     public class var LighGrey: UIColor {
         return #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
     }

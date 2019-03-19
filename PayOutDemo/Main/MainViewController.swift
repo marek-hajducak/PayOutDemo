@@ -17,7 +17,12 @@ class MainViewController: UIViewController {
     
     var flowDelegate: MainViewControllerFlowDelegate?
     
-    @IBOutlet weak var dragAndDropTableView: UITableView!
+    @IBOutlet weak var dragAndDropTableView: UITableView! {
+        didSet {
+            let cellNib = UINib(nibName: BaseWidgetTableViewCell.nameOfClass, bundle: nil)
+            dragAndDropTableView.register(cellNib, forCellReuseIdentifier: BaseWidgetTableViewCell.nameOfClass)
+        }
+    }
     var model = Model()
     
     @IBOutlet weak var backgroundAccountsView: UIView!
@@ -60,16 +65,23 @@ class MainViewController: UIViewController {
     var pageControl: CHIPageControlPuya?
     
     private func createPageController() {
-        pageControl = CHIPageControlPuya(frame: CGRect(x: backgroundAccountsView.bounds.size.width/2 - 50, y: backgroundAccountsView.bounds.size.height - 40, width: 100, height: 20))
+        pageControl = CHIPageControlPuya(frame: CGRect(x: 0, y: 0, width: 100, height: 20))
         pageControl?.numberOfPages = accounts.count
         pageControl?.radius = 3
         pageControl?.tintColor = Color.MainGrey
         pageControl?.currentPageTintColor = Color.MainRed
         pageControl?.padding = 6
-        if let pagheController = pageControl {
-            backgroundAccountsView.addSubview(pagheController)
+        if let pageController = pageControl {
+            backgroundAccountsView.addSubview(pageController)
+            
+            pageController.translatesAutoresizingMaskIntoConstraints = false
+            let horizontalConstraint = NSLayoutConstraint(item: pageController, attribute: NSLayoutConstraint.Attribute.centerX, relatedBy:  NSLayoutConstraint.Relation.equal, toItem: backgroundAccountsView, attribute: NSLayoutConstraint.Attribute.centerX, multiplier: 1, constant: 0)
+            let verticalConstraint = NSLayoutConstraint(item: pageController, attribute: NSLayoutConstraint.Attribute.bottom, relatedBy: NSLayoutConstraint.Relation.equal, toItem: backgroundAccountsView, attribute: NSLayoutConstraint.Attribute.bottom, multiplier: 1, constant: -15)
+            backgroundAccountsView.addConstraints([horizontalConstraint, verticalConstraint])
         }
         pageControl?.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
+        
+        
         
     }
     
@@ -96,11 +108,22 @@ class MainViewController: UIViewController {
         
         // Left Buttons
         let livechatButton = UIButton.init(type: .custom)
+        
+        let heightConstraintLivechatButton = NSLayoutConstraint(item: livechatButton, attribute: NSLayoutConstraint.Attribute.height, relatedBy:  NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 30)
+        let widthConstraintLivechatButton = NSLayoutConstraint(item: livechatButton, attribute: NSLayoutConstraint.Attribute.width, relatedBy:  NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 30)
+        livechatButton.addConstraints([heightConstraintLivechatButton, widthConstraintLivechatButton])
+        
         livechatButton.setImage(liveChatImage, for: UIControl.State.normal)
         livechatButton.frame = CGRect(x: 0, y: 0, width: 34, height: 34)
         livechatButton.addTarget(self, action: #selector(hitLiveChat), for: .touchUpInside)
         
         let settingsButton = UIButton.init(type: .custom)
+        
+        let heightConstraintSettingsButton = NSLayoutConstraint(item: settingsButton, attribute: NSLayoutConstraint.Attribute.height, relatedBy:  NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 30)
+        let widthConstraintSettingsButton = NSLayoutConstraint(item: settingsButton, attribute: NSLayoutConstraint.Attribute.width, relatedBy:  NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 30)
+        
+        settingsButton.addConstraints([heightConstraintSettingsButton, widthConstraintSettingsButton])
+        
         settingsButton.setImage(settingsImage, for: UIControl.State.normal)
         settingsButton.frame = CGRect(x: 0, y: 0, width: 34, height: 34)
         settingsButton.addTarget(self, action: #selector(hitSettings), for: .touchUpInside)
@@ -115,11 +138,21 @@ class MainViewController: UIViewController {
         
         // Right Buttons
         let mailBoxButton = UIButton.init(type: .custom)
+        
+        let heightConstraintMailBoxButton = NSLayoutConstraint(item: mailBoxButton, attribute: NSLayoutConstraint.Attribute.height, relatedBy:  NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 30)
+        let widthConstraintMailBoxButton = NSLayoutConstraint(item: mailBoxButton, attribute: NSLayoutConstraint.Attribute.width, relatedBy:  NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 35)
+        mailBoxButton.addConstraints([heightConstraintMailBoxButton, widthConstraintMailBoxButton])
+        
         mailBoxButton.setImage(mailBoxImage, for: UIControl.State.normal)
         mailBoxButton.frame = CGRect(x: 0, y: 0, width: 34, height: 34)
         mailBoxButton.addTarget(self, action: #selector(hitMaiilBox), for: .touchUpInside)
         
         let qrCodeButton = UIButton.init(type: .custom)
+        
+        let heightConstraintQrCodeButton = NSLayoutConstraint(item: qrCodeButton, attribute: NSLayoutConstraint.Attribute.height, relatedBy:  NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 30)
+        let widthConstraintQrCodeButton = NSLayoutConstraint(item: qrCodeButton, attribute: NSLayoutConstraint.Attribute.width, relatedBy:  NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 30)
+        qrCodeButton.addConstraints([heightConstraintQrCodeButton, widthConstraintQrCodeButton])
+        
         qrCodeButton.setImage(qRCodeImage, for: UIControl.State.normal)
         qrCodeButton.frame = CGRect(x: 0, y: 0, width: 34, height: 34)
         qrCodeButton.addTarget(self, action: #selector(hitQRCode), for: .touchUpInside)
@@ -164,40 +197,66 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = accountsCollectionView.dequeueReusableCell(withReuseIdentifier: AccountCell.nameOfClass, for: indexPath) as! AccountCell
         cell.dropShadow()
+
+        // Standard
+        var ligtBigestOneAttributedFont = [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 35, weight: .light)] // zostatok pred desatinou ciarkou
+        var lightSmallerOneAttributedFont = [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 20, weight: .light)] // za desatinou čiarkou
+        var currencyAtriibutedFont = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 30, weight: .light)] // mena za zostatkom
+        var baseSizeOfFont: CGFloat = 14.0
+        var baseInfoFont = UIFont.systemFont(ofSize: baseSizeOfFont)
         
-        cell.nameOfAccountLabel.text = accounts[indexPath.item].name
+        // Based on width of device
+        if UIScreen.main.bounds.width == 320 { // SE // 4 , 4s
+            ligtBigestOneAttributedFont = [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 30, weight: .light)]
+            lightSmallerOneAttributedFont = [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 15, weight: .light)]
+            currencyAtriibutedFont = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 25, weight: .light)]
+            baseSizeOfFont = 16
+            baseInfoFont = UIFont.systemFont(ofSize: baseSizeOfFont)
+        } else if UIScreen.main.bounds.width == 375  { // 7 // 6,  6S, 8, X, Xs
+            ligtBigestOneAttributedFont = [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 38, weight: .light)]
+            lightSmallerOneAttributedFont = [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 23, weight: .light)]
+            currencyAtriibutedFont = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 33, weight: .light)]
+            baseSizeOfFont = 19
+            baseInfoFont = UIFont.systemFont(ofSize: baseSizeOfFont)
+        } else if UIScreen.main.bounds.width == 414  { // Xs Max // 7 plus, 8 Plus, Xr,
+            ligtBigestOneAttributedFont = [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 50, weight: .light)]
+            lightSmallerOneAttributedFont = [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 35, weight: .light)]
+            currencyAtriibutedFont = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 45, weight: .light)]
+            baseSizeOfFont = 22
+            baseInfoFont = UIFont.systemFont(ofSize: baseSizeOfFont)
+        }
         
+        // Defined attributedStrings
         let splitString = accounts[indexPath.item].amount.split(separator: ",")
-        let firstAttributedString = NSMutableAttributedString(string: String(splitString[0]), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 35, weight: .light)])
-            
-        let secondAttributedString = NSAttributedString(string: ",\(String(splitString[1]))", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 20, weight: .light)])
-            
-        let cuurencyAttributedString = NSMutableAttributedString(string: " Kč", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 30, weight: .light)])
+        let firstAttributedString = NSMutableAttributedString(string: String(splitString[0]), attributes: ligtBigestOneAttributedFont)
+        let secondAttributedString = NSAttributedString(string: ",\(String(splitString[1]))", attributes: lightSmallerOneAttributedFont)
+        let cuurencyAttributedString = NSMutableAttributedString(string: " Kč", attributes: currencyAtriibutedFont)
+        let splitIban = accounts[indexPath.item].IBAN.split(separator: " ")
+        let baseSizeOfFontForIBAN = baseSizeOfFont - 3
+        let normalAtributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: baseSizeOfFontForIBAN, weight: .regular)]
+        let boldAtributedString = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: baseSizeOfFontForIBAN, weight: .bold)]
+        let attributedString = NSMutableAttributedString(string: String(splitIban[0]), attributes: normalAtributes)
+        let attributedStringNumberOfAccount = NSAttributedString(string: " \(String(splitIban[1]))", attributes: boldAtributedString)
+        let attributedZerous = NSAttributedString(string: " \(String(splitIban[2]))", attributes: normalAtributes)
+        let attributedStringOthers = NSAttributedString(string: " \(String(splitIban[3])) \(String(splitIban[4])) \(String(splitIban[5]))", attributes: boldAtributedString)
+        
+        // Apeend Atributes Strings
         firstAttributedString.append(secondAttributedString)
         firstAttributedString.append(cuurencyAttributedString)
-            
+        attributedString.append(attributedStringNumberOfAccount)
+        attributedString.append(attributedZerous)
+        attributedString.append(attributedStringOthers)
+        
+        // Cell inicialization
         cell.amountLabel.attributedText = firstAttributedString
         cell.nameOfAccountHolderLabel.text = accounts[indexPath.item].holder
         cell.accountNumberLabel.text = accounts[indexPath.item].number
-        
-        
-        let splitIban = accounts[indexPath.item].IBAN.split(separator: " ")
-        let normalAtributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14, weight: .regular)]
-        let boldAtributedString = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14, weight: .bold)]
-        
-        let attributedString = NSMutableAttributedString(string: String(splitIban[0]), attributes: normalAtributes)
-        
-        let attributedStringNumberOfAccount = NSAttributedString(string: " \(String(splitIban[1]))", attributes: boldAtributedString)
-        attributedString.append(attributedStringNumberOfAccount)
-        
-        let attributedZerous = NSAttributedString(string: " \(String(splitIban[2]))", attributes: normalAtributes)
-        attributedString.append(attributedZerous)
-        
-        let attributedStringOthers = NSAttributedString(string: " \(String(splitIban[3])) \(String(splitIban[4])) \(String(splitIban[5]))", attributes: boldAtributedString)
-        attributedString.append(attributedStringOthers)
-        
+        cell.nameOfAccountHolderLabel.font = baseInfoFont
+        cell.accountNumberLabel.font = baseInfoFont
         cell.accountIBANLabel.attributedText = attributedString
+        cell.nameOfAccountLabel.text = accounts[indexPath.item].name
         
+        // Return cell
         return cell
     }
     
@@ -295,12 +354,15 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     // MARK: - UITableViewDataSource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return model.placeNames.count
+        return model.widgetsNames.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        cell.textLabel?.text = model.placeNames[indexPath.row]
+        let cell = dragAndDropTableView.dequeueReusableCell(withIdentifier:  BaseWidgetTableViewCell.nameOfClass, for: indexPath) as! BaseWidgetTableViewCell
+        let nameOfWidget = model.widgetsNames[indexPath.row]
+        cell.nameOfWidgetLabel.text = nameOfWidget
+        cell.iconOfWidgetImageView.image = model.widgetsImages[nameOfWidget]
+        cell.selectionStyle = .none
         return cell
     }
     
@@ -312,5 +374,9 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         model.moveItem(at: sourceIndexPath.row, to: destinationIndexPath.row)
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        dragAndDropTableView.deselectRow(at: indexPath, animated: false)
     }
 }

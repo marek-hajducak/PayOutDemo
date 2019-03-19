@@ -9,6 +9,7 @@
 import UIKit
 
 class AccountCell: UICollectionViewCell {
+    @IBOutlet weak var centerYOfAmountInViewConstraint: NSLayoutConstraint!
     
     // Noncustomize outles
     @IBOutlet weak var backgroundCellView: UIView!
@@ -34,6 +35,16 @@ class AccountCell: UICollectionViewCell {
         nameOfAccountHolderLabel.textColor = Color.White
         accountIBANLabel.textColor = Color.White
         accountNumberLabel.textColor = Color.White
+        
+        if UIScreen.main.bounds.width == 320 { // SE, 4 , 4s
+            centerYOfAmountInViewConstraint.constant = -10
+        } else if UIScreen.main.bounds.width == 375  { // 6,  6S, 7, 8, X, Xs
+            centerYOfAmountInViewConstraint.constant = -15
+        } else if UIScreen.main.bounds.width == 414  { // 7 plus, 8 Plus, Xr, Xs Max
+            centerYOfAmountInViewConstraint.constant = -25
+        } else {
+            centerYOfAmountInViewConstraint.constant = 0
+        }
     }
     
     func dropShadow() {
