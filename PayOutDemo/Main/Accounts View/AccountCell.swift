@@ -12,10 +12,13 @@ class AccountCell: UICollectionViewCell {
     
     // Noncustomize outles
     @IBOutlet weak var backgroundCellView: UIView!
-    @IBOutlet weak var balanceLabel: UILabel!
     
     // Customize outlets
-    @IBOutlet weak var nameOfAccountLabel: UILabel!
+    @IBOutlet weak var nameOfAccountLabel: UILabel! {
+        didSet{
+            nameOfAccountLabel.text = nameOfAccountLabel.text?.uppercased()
+        }
+    }
     @IBOutlet weak var amountLabel: UILabel!
     @IBOutlet weak var nameOfAccountHolderLabel: UILabel!
     @IBOutlet weak var accountIBANLabel: UILabel!
@@ -26,13 +29,11 @@ class AccountCell: UICollectionViewCell {
         super.awakeFromNib()
         backgroundCellView.layer.backgroundColor = Color.MainRed.cgColor
         backgroundCellView.layer.cornerRadius = 10
-        balanceLabel.textColor = Color.White
         nameOfAccountLabel.textColor = Color.White
         amountLabel.textColor = Color.White
         nameOfAccountHolderLabel.textColor = Color.White
         accountIBANLabel.textColor = Color.White
         accountNumberLabel.textColor = Color.White
-        
     }
     
     func dropShadow() {
@@ -43,4 +44,6 @@ class AccountCell: UICollectionViewCell {
         self.layer.shadowRadius = 6.0
         self.layer.cornerRadius = 10.0
     }
+    
+    
 }

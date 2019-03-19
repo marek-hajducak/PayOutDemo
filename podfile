@@ -15,5 +15,6 @@ target 'PayOutDemo' do
 
  # Pods for UI Elements
   pod 'Whisper'
+  pod 'CHIPageControl'
 
 end

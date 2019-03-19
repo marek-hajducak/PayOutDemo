@@ -40,6 +40,9 @@
 		85379DE4223FE64A0049FEC4 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85379DE3223FE64A0049FEC4 /* Color.swift */; };
 		85379DE7223FEBE70049FEC4 /* AccountCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85379DE6223FEBE70049FEC4 /* AccountCell.xib */; };
 		85379DE9223FEC000049FEC4 /* AccountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85379DE8223FEC000049FEC4 /* AccountCell.swift */; };
+		85379DEC2240CF7E0049FEC4 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85379DEB2240CF7E0049FEC4 /* Account.swift */; };
+		85379DEE2240F3740049FEC4 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85379DED2240F3740049FEC4 /* Model.swift */; };
+		85379DF02240F45D0049FEC4 /* Model+Draging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85379DEF2240F45D0049FEC4 /* Model+Draging.swift */; };
 		85B55B65223F8669007A3D78 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B55B64223F8669007A3D78 /* AppDelegate.swift */; };
 		85B55B67223F866A007A3D78 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B55B66223F866A007A3D78 /* MainViewController.swift */; };
 		85B55B6A223F866A007A3D78 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 85B55B68223F866A007A3D78 /* Main.storyboard */; };
@@ -82,6 +85,9 @@
 		85379DE3223FE64A0049FEC4 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		85379DE6223FEBE70049FEC4 /* AccountCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountCell.xib; sourceTree = "<group>"; };
 		85379DE8223FEC000049FEC4 /* AccountCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCell.swift; sourceTree = "<group>"; };
+		85379DEB2240CF7E0049FEC4 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
+		85379DED2240F3740049FEC4 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		85379DEF2240F45D0049FEC4 /* Model+Draging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Model+Draging.swift"; sourceTree = "<group>"; };
 		85B55B61223F8669007A3D78 /* PayOutDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PayOutDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		85B55B64223F8669007A3D78 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		85B55B66223F866A007A3D78 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -168,6 +174,7 @@
 			isa = PBXGroup;
 			children = (
 				85379DD9223FE0540049FEC4 /* MainFlowController.swift */,
+				85379DEA2240CF6D0049FEC4 /* Model */,
 				85379DE5223FEBB90049FEC4 /* Accounts View */,
 				85B55B66223F866A007A3D78 /* MainViewController.swift */,
 				85B55B68223F866A007A3D78 /* Main.storyboard */,
@@ -309,6 +316,16 @@
 				85379DE8223FEC000049FEC4 /* AccountCell.swift */,
 			);
 			path = "Accounts View";
+			sourceTree = "<group>";
+		};
+		85379DEA2240CF6D0049FEC4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				85379DEB2240CF7E0049FEC4 /* Account.swift */,
+				85379DED2240F3740049FEC4 /* Model.swift */,
+				85379DEF2240F45D0049FEC4 /* Model+Draging.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		85B55B58223F8669007A3D78 = {
@@ -470,14 +487,17 @@
 				85379DAE223FC6260049FEC4 /* ActivityIndicator.swift in Sources */,
 				85379DB5223FC6E80049FEC4 /* NetworkingUtilities.swift in Sources */,
 				85379DDE223FE1F60049FEC4 /* AppFlowController.swift in Sources */,
+				85379DEC2240CF7E0049FEC4 /* Account.swift in Sources */,
 				85379DC5223FC7C20049FEC4 /* NSObject+Extensions.swift in Sources */,
 				85379DDA223FE0540049FEC4 /* MainFlowController.swift in Sources */,
 				85379DE9223FEC000049FEC4 /* AccountCell.swift in Sources */,
+				85379DEE2240F3740049FEC4 /* Model.swift in Sources */,
 				85379DA5223FC39C0049FEC4 /* AlertManager.swift in Sources */,
 				85379DC7223FC7C20049FEC4 /* Error+Extensions.swift in Sources */,
 				85379DB0223FC6260049FEC4 /* CodableObject.swift in Sources */,
 				85379DE0223FE2670049FEC4 /* StoryboardScene.swift in Sources */,
 				85379DC6223FC7C20049FEC4 /* Observable+Extensions.swift in Sources */,
+				85379DF02240F45D0049FEC4 /* Model+Draging.swift in Sources */,
 				85379DB1223FC6260049FEC4 /* BaseService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
