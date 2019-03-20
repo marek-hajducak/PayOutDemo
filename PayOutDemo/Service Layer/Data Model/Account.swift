@@ -26,6 +26,12 @@ import RealmSwift
     dynamic var createDate: String = ""
     dynamic var active: Bool = true
     
+    dynamic var cards = List<Card>()
+    dynamic var loans = List<Loan>()
+    dynamic var exchangeRates = List<ExchangeRate>()
+    dynamic var mutalFunds = List<MutalFund>()
+    dynamic var pensions = List<Pension>()
+    
     // MARK: Realm API
     override static func primaryKey() -> String? {
         return "id"
@@ -45,6 +51,11 @@ import RealmSwift
         case currency = "currency"
         case createDate = "create_date"
         case active = "active"
+        case cards = "credit_cards"
+        case loans = "loans"
+        case exchangeRates = "exchange_rates"
+        case mutalFunds = "mutal_funds"
+        case pensions = "pensions"
     }
     
     convenience required init(from decoder: Decoder) throws {
@@ -63,6 +74,17 @@ import RealmSwift
         currency = try container.decodeIfPresent(String.self, forKey: .currency) ?? ""
         createDate = try container.decodeIfPresent(String.self, forKey: .createDate) ?? ""
         active = try container.decodeIfPresent(Bool.self, forKey: .active) ?? true
+        
+        let cardsArray = try container.decodeIfPresent([Card].self, forKey: .cards) ?? [Card]()
+        cards.append(objectsIn: cardsArray)
+        let loansArray = try container.decodeIfPresent([Loan].self, forKey: .loans) ?? [Loan]()
+        loans.append(objectsIn: loansArray)
+        let exchangeRatesArray = try container.decodeIfPresent([ExchangeRate].self, forKey: .exchangeRates) ?? [ExchangeRate]()
+        exchangeRates.append(objectsIn: exchangeRatesArray)
+        let mutalFundsArray = try container.decodeIfPresent([MutalFund].self, forKey: .mutalFunds) ?? [MutalFund]()
+        mutalFunds.append(objectsIn: mutalFundsArray)
+        let pensionsArray = try container.decodeIfPresent([Pension].self, forKey: .pensions) ?? [Pension]()
+        pensions.append(objectsIn: pensionsArray)
     }
     
     // MARK: Encodable
@@ -81,6 +103,12 @@ import RealmSwift
         try container.encodeIfPresent(currency, forKey: .currency)
         try container.encodeIfPresent(createDate, forKey: .createDate)
         try container.encodeIfPresent(active, forKey: .active)
+        
+        try container.encodeIfPresent(Array(cards), forKey: .cards)
+        try container.encodeIfPresent(Array(loans), forKey: .loans)
+        try container.encodeIfPresent(Array(exchangeRates), forKey: .exchangeRates)
+        try container.encodeIfPresent(Array(mutalFunds), forKey: .mutalFunds)
+        try container.encodeIfPresent(Array(pensions), forKey: .pensions)
     }
 }
 

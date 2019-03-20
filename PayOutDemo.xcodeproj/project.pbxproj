@@ -49,6 +49,12 @@
 		85B2DCE52242658900B91B92 /* AccountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B2DCE42242658900B91B92 /* AccountService.swift */; };
 		85B2DCE72242667B00B91B92 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B2DCE62242667B00B91B92 /* MainViewModel.swift */; };
 		85B2DCE92242692800B91B92 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B2DCE82242692800B91B92 /* BaseViewController.swift */; };
+		85B2DCEB2242852600B91B92 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B2DCEA2242852600B91B92 /* Card.swift */; };
+		85B2DCED2242895E00B91B92 /* Loan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B2DCEC2242895E00B91B92 /* Loan.swift */; };
+		85B2DCEF22428BAB00B91B92 /* ExchangeRate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B2DCEE22428BAB00B91B92 /* ExchangeRate.swift */; };
+		85B2DCF122428E0000B91B92 /* MutalFund.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B2DCF022428E0000B91B92 /* MutalFund.swift */; };
+		85B2DCF32242925400B91B92 /* Fund.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B2DCF22242925400B91B92 /* Fund.swift */; };
+		85B2DCF52242939100B91B92 /* Pension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B2DCF42242939100B91B92 /* Pension.swift */; };
 		85B55B65223F8669007A3D78 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B55B64223F8669007A3D78 /* AppDelegate.swift */; };
 		85B55B67223F866A007A3D78 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B55B66223F866A007A3D78 /* MainViewController.swift */; };
 		85B55B6A223F866A007A3D78 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 85B55B68223F866A007A3D78 /* Main.storyboard */; };
@@ -100,6 +106,12 @@
 		85B2DCE42242658900B91B92 /* AccountService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountService.swift; sourceTree = "<group>"; };
 		85B2DCE62242667B00B91B92 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		85B2DCE82242692800B91B92 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		85B2DCEA2242852600B91B92 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		85B2DCEC2242895E00B91B92 /* Loan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loan.swift; sourceTree = "<group>"; };
+		85B2DCEE22428BAB00B91B92 /* ExchangeRate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeRate.swift; sourceTree = "<group>"; };
+		85B2DCF022428E0000B91B92 /* MutalFund.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MutalFund.swift; sourceTree = "<group>"; };
+		85B2DCF22242925400B91B92 /* Fund.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fund.swift; sourceTree = "<group>"; };
+		85B2DCF42242939100B91B92 /* Pension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pension.swift; sourceTree = "<group>"; };
 		85B55B61223F8669007A3D78 /* PayOutDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PayOutDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		85B55B64223F8669007A3D78 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		85B55B66223F866A007A3D78 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -239,6 +251,12 @@
 			isa = PBXGroup;
 			children = (
 				85379E02224251170049FEC4 /* Account.swift */,
+				85B2DCEA2242852600B91B92 /* Card.swift */,
+				85B2DCEC2242895E00B91B92 /* Loan.swift */,
+				85B2DCEE22428BAB00B91B92 /* ExchangeRate.swift */,
+				85B2DCF022428E0000B91B92 /* MutalFund.swift */,
+				85B2DCF22242925400B91B92 /* Fund.swift */,
+				85B2DCF42242939100B91B92 /* Pension.swift */,
 			);
 			path = "Data Model";
 			sourceTree = "<group>";
@@ -505,6 +523,7 @@
 				85379DC8223FC7C20049FEC4 /* UIView+Extensions.swift in Sources */,
 				85379DAF223FC6260049FEC4 /* Lce.swift in Sources */,
 				85B2DCE92242692800B91B92 /* BaseViewController.swift in Sources */,
+				85B2DCEF22428BAB00B91B92 /* ExchangeRate.swift in Sources */,
 				85B2DCE72242667B00B91B92 /* MainViewModel.swift in Sources */,
 				85379DE4223FE64A0049FEC4 /* Color.swift in Sources */,
 				85379DD3223FC9610049FEC4 /* XIBView.swift in Sources */,
@@ -527,17 +546,22 @@
 				85379DAE223FC6260049FEC4 /* ActivityIndicator.swift in Sources */,
 				85379DB5223FC6E80049FEC4 /* NetworkingUtilities.swift in Sources */,
 				85379DDE223FE1F60049FEC4 /* AppFlowController.swift in Sources */,
+				85B2DCEB2242852600B91B92 /* Card.swift in Sources */,
 				85379DC5223FC7C20049FEC4 /* NSObject+Extensions.swift in Sources */,
 				85379DDA223FE0540049FEC4 /* MainFlowController.swift in Sources */,
+				85B2DCF52242939100B91B92 /* Pension.swift in Sources */,
+				85B2DCED2242895E00B91B92 /* Loan.swift in Sources */,
 				85379DE9223FEC000049FEC4 /* AccountCell.swift in Sources */,
 				85B2DCE52242658900B91B92 /* AccountService.swift in Sources */,
 				85379DEE2240F3740049FEC4 /* Model.swift in Sources */,
 				85379DA5223FC39C0049FEC4 /* AlertManager.swift in Sources */,
 				85379DC7223FC7C20049FEC4 /* Error+Extensions.swift in Sources */,
 				85379DB0223FC6260049FEC4 /* CodableObject.swift in Sources */,
+				85B2DCF32242925400B91B92 /* Fund.swift in Sources */,
 				85379DE0223FE2670049FEC4 /* StoryboardScene.swift in Sources */,
 				85379DC6223FC7C20049FEC4 /* Observable+Extensions.swift in Sources */,
 				85379DF02240F45D0049FEC4 /* Model+Draging.swift in Sources */,
+				85B2DCF122428E0000B91B92 /* MutalFund.swift in Sources */,
 				85379DB1223FC6260049FEC4 /* BaseService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

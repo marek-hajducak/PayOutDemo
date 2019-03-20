@@ -74,11 +74,7 @@ class MainViewController: BaseViewController {
             createPageController()
         }
     }
-/*
- [Account(id: 0, name: "Tatra Banka", amount: "46 300,00", holder: "Marek Hajdučák", IBAN: "SK92 1100 0000 0029 8374 2003", number: "29 8374 2003/1100"),
-                               Account(id: 1, name: "Slovenská sporiteľna", amount: "2 300,89", holder: "Marek Hajdučák", IBAN: "SK92 3300 0000 0034 1234 9620", number: "34 1234 9620/3300"),
-                               Account(id: 2, name: "Fio Banka", amount: "125 840,19", holder: "Marek Hajdučák", IBAN: "SK92 9800 0000 0045 1038 3041", number: "45 1038 3041/9800")]
-         */
+
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
