@@ -13,18 +13,47 @@ protocol MainViewControllerFlowDelegate: class {
     
 }
 
-class MainViewController: UIViewController {
+class MainViewController: BaseViewController {
     
     var flowDelegate: MainViewControllerFlowDelegate?
+    
+    var viewModel: MainViewModel?
+    
+    @IBOutlet weak var separatorView: UIView!
+    
+    @IBOutlet weak var accountsSwipeUpButton: UIButton! {
+        didSet {
+            self.accountsSwipeUpButton.addTarget(self, action: #selector(MainViewController.swipeDown), for: .touchUpInside)
+            self.accountsSwipeUpButton.backgroundColor = Color.MainRed
+            self.accountsSwipeUpButton.layer.cornerRadius = 15
+            let imageForButton = #imageLiteral(resourceName: "arrow_down")
+            self.accountsSwipeUpButton.setImage(imageForButton, for: .highlighted)
+            self.accountsSwipeUpButton.setImage(imageForButton, for: .normal)
+            self.accountsSwipeUpButton.imageView?.bounds.size.width = 14
+            self.accountsSwipeUpButton.imageView?.bounds.size.height = 14
+            accountsSwipeUpButton.imageView?.contentMode = .scaleAspectFit
+            //Shadows
+            accountsSwipeUpButton.layer.masksToBounds = false
+            accountsSwipeUpButton.layer.shadowColor = Color.DarkGrey.cgColor
+            accountsSwipeUpButton.layer.shadowOpacity = 0.6
+            accountsSwipeUpButton.layer.shadowOffset = CGSize(width: 2.0, height: 2.0)
+            accountsSwipeUpButton.layer.shadowRadius = 3.0
+            accountsSwipeUpButton.layer.cornerRadius = 15.0
+            
+        }
+    }
     
     @IBOutlet weak var dragAndDropTableView: UITableView! {
         didSet {
             let cellNib = UINib(nibName: BaseWidgetTableViewCell.nameOfClass, bundle: nil)
             dragAndDropTableView.register(cellNib, forCellReuseIdentifier: BaseWidgetTableViewCell.nameOfClass)
+            dragAndDropTableView.contentInset = UIEdgeInsets(top: 0, left: 15, bottom: 20, right: -15)
+            
         }
     }
     var model = Model()
     
+    @IBOutlet weak var heightOfAccountNavigationView: NSLayoutConstraint!
     @IBOutlet weak var backgroundAccountsView: UIView!
     @IBOutlet weak var accountsCollectionView: UICollectionView! {
         didSet {
@@ -38,28 +67,68 @@ class MainViewController: UIViewController {
             updatePageController()
         }
     }
-    let accounts: [Account] = [Account(id: 0, name: "Tatra Banka", amount: "46 300,00", holder: "Marek Hajdučák", IBAN: "SK92 1100 0000 0029 8374 2003", number: "29 8374 2003/1100"),
+    
+    var accounts: [Account] = [] {
+        didSet {
+            accountsCollectionView.reloadData()
+            createPageController()
+        }
+    }
+/*
+ [Account(id: 0, name: "Tatra Banka", amount: "46 300,00", holder: "Marek Hajdučák", IBAN: "SK92 1100 0000 0029 8374 2003", number: "29 8374 2003/1100"),
                                Account(id: 1, name: "Slovenská sporiteľna", amount: "2 300,89", holder: "Marek Hajdučák", IBAN: "SK92 3300 0000 0034 1234 9620", number: "34 1234 9620/3300"),
                                Account(id: 2, name: "Fio Banka", amount: "125 840,19", holder: "Marek Hajdučák", IBAN: "SK92 9800 0000 0045 1038 3041", number: "45 1038 3041/9800")]
+         */
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         setUpNavigationItems()
-        createSeparator()
+        separatorView.layer.backgroundColor = Color.MainGrey.cgColor
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
         self.accountsCollectionView.delegate = self
         self.accountsCollectionView.dataSource = self
-        createPageController()
         
         dragAndDropTableView.dragDelegate = self
         dragAndDropTableView.dropDelegate = self
         dragAndDropTableView.delegate = self
         dragAndDropTableView.dataSource = self
         dragAndDropTableView.dragInteractionEnabled = true
+        
+        let swipeUp = UISwipeGestureRecognizer(target: self, action: #selector(MainViewController.swipeUp))
+        swipeUp.direction = UISwipeGestureRecognizer.Direction.up
+        self.view.addGestureRecognizer(swipeUp)
+        
+        let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(MainViewController.swipeDown))
+        swipeDown.direction = UISwipeGestureRecognizer.Direction.down
+        self.view.addGestureRecognizer(swipeDown)
+        
+        self.accountsSwipeUpButton.isHidden = true
+        self.accountsSwipeUpButton.isEnabled = false
+        
+    }
+    
+    override func setupViewModel() {
+        super.setupViewModel()
+        
+        let input = MainViewModel.Input()
+        
+        let output = self.viewModel?.transform(input: input)
+        
+        output?.accountsEvent.drive(onNext: { (event) in
+            if event.isLoading {
+                self.view.startActivityIndicator()
+            } else if let error = event.error {
+                self.view.stopActivityIndicator()
+                AlertHandler.showWhisper(message: "\(error)", type: .error, shouldHide: true)
+            } else if let accounts = event.data {
+                self.view.stopActivityIndicator()
+                self.accounts = accounts
+            }
+        }).disposed(by: self.disposeBag)
     }
     
     var pageControl: CHIPageControlPuya?
@@ -80,9 +149,7 @@ class MainViewController: UIViewController {
             backgroundAccountsView.addConstraints([horizontalConstraint, verticalConstraint])
         }
         pageControl?.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
-        
-        
-        
+     
     }
     
     private func updatePageController() {
@@ -90,12 +157,6 @@ class MainViewController: UIViewController {
         if let index = selectedAccountIndex {
             pageControl?.set(progress: index, animated: true)
         }
-    }
-    
-    private func createSeparator() {
-        let separator = UIView(frame: CGRect(x: 0, y: backgroundAccountsView.bounds.size.height - 1, width: backgroundAccountsView.bounds.size.width, height: 0.5))
-        separator.layer.backgroundColor = Color.MainGrey.cgColor
-        backgroundAccountsView.addSubview(separator)
     }
     
     private func setUpNavigationItems() {
@@ -179,13 +240,43 @@ class MainViewController: UIViewController {
     }
     
     @objc func hitSettings() {
-        
     }
     
     @objc func hitQRCode() {
         
     }
     
+    @objc func swipeUp() {
+        if backgroundAccountsView.isDescendant(of: self.view) {
+            UIView.animate(withDuration: 0.2, delay: 0.2, animations: {
+                if UIScreen.main.bounds.width == 320 { // SE // 4 , 4s
+                    self.heightOfAccountNavigationView.constant = -135
+                } else if UIScreen.main.bounds.width == 375  { // 7 // 6,  6S, 8, X, Xs
+                    self.heightOfAccountNavigationView.constant = -190
+                } else if UIScreen.main.bounds.width == 414  { // Xs Max // 7 plus, 8 Plus, Xr,
+                   self.heightOfAccountNavigationView.constant = -229
+                }
+                self.pageControl?.isHidden = true
+                self.accountsCollectionView.isHidden = true
+                self.accountsSwipeUpButton.isHidden = false
+                self.accountsSwipeUpButton.isEnabled = true
+            }) { (_) in 
+                // Ukazať nieco na rozkliknutie uctov
+            }
+        } else {
+            self.view.addSubview(backgroundAccountsView)
+        }
+    }
+    
+    @objc func swipeDown() {
+        UIView.animate(withDuration: 0.2) {
+            self.heightOfAccountNavigationView.constant = 20
+            self.pageControl?.isHidden = false
+            self.accountsCollectionView.isHidden = false
+            self.accountsSwipeUpButton.isHidden = true
+            self.accountsSwipeUpButton.isEnabled = false
+        }
+    }
 }
 
 extension MainViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
@@ -227,7 +318,7 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
         }
         
         // Defined attributedStrings
-        let splitString = accounts[indexPath.item].amount.split(separator: ",")
+        let splitString = accounts[indexPath.item].avalibleBalance.split(separator: ",")
         let firstAttributedString = NSMutableAttributedString(string: String(splitString[0]), attributes: ligtBigestOneAttributedFont)
         let secondAttributedString = NSAttributedString(string: ",\(String(splitString[1]))", attributes: lightSmallerOneAttributedFont)
         let cuurencyAttributedString = NSMutableAttributedString(string: " Kč", attributes: currencyAtriibutedFont)
@@ -250,11 +341,11 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
         // Cell inicialization
         cell.amountLabel.attributedText = firstAttributedString
         cell.nameOfAccountHolderLabel.text = accounts[indexPath.item].holder
-        cell.accountNumberLabel.text = accounts[indexPath.item].number
+        cell.accountNumberLabel.text = accounts[indexPath.item].accountNumber
         cell.nameOfAccountHolderLabel.font = baseInfoFont
         cell.accountNumberLabel.font = baseInfoFont
         cell.accountIBANLabel.attributedText = attributedString
-        cell.nameOfAccountLabel.text = accounts[indexPath.item].name
+        cell.nameOfAccountLabel.text = accounts[indexPath.item].banknName
         
         // Return cell
         return cell
@@ -363,6 +454,9 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         cell.nameOfWidgetLabel.text = nameOfWidget
         cell.iconOfWidgetImageView.image = model.widgetsImages[nameOfWidget]
         cell.selectionStyle = .none
+            // Set space between cells but not good sollution
+            //cell.layer.borderWidth = CGFloat(5)
+            //cell.layer.borderColor = tableView.backgroundColor?.cgColor
         return cell
     }
     
@@ -379,4 +473,6 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         dragAndDropTableView.deselectRow(at: indexPath, animated: false)
     }
+    
+    
 }

@@ -22,6 +22,7 @@ class MainFlowController {
     func start() {
         let mainStoryBoard = StoryboardScene.Main.initialScene.instantiate()
         mainStoryBoard.flowDelegate = self
+        mainStoryBoard.viewModel = MainViewModel(dependencies: dependencies)
         navigationController.viewControllers = [mainStoryBoard]
         navigationController.navigationBar.isHidden = false
         UIApplication.shared.statusBarView?.backgroundColor = Color.White

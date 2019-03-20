@@ -40,11 +40,15 @@
 		85379DE4223FE64A0049FEC4 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85379DE3223FE64A0049FEC4 /* Color.swift */; };
 		85379DE7223FEBE70049FEC4 /* AccountCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85379DE6223FEBE70049FEC4 /* AccountCell.xib */; };
 		85379DE9223FEC000049FEC4 /* AccountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85379DE8223FEC000049FEC4 /* AccountCell.swift */; };
-		85379DEC2240CF7E0049FEC4 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85379DEB2240CF7E0049FEC4 /* Account.swift */; };
 		85379DEE2240F3740049FEC4 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85379DED2240F3740049FEC4 /* Model.swift */; };
 		85379DF02240F45D0049FEC4 /* Model+Draging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85379DEF2240F45D0049FEC4 /* Model+Draging.swift */; };
 		85379DFE224123DA0049FEC4 /* BaseWidgetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85379DFC224123DA0049FEC4 /* BaseWidgetTableViewCell.swift */; };
 		85379DFF224123DA0049FEC4 /* BaseWidgetTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85379DFD224123DA0049FEC4 /* BaseWidgetTableViewCell.xib */; };
+		85379E03224251170049FEC4 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85379E02224251170049FEC4 /* Account.swift */; };
+		85379E052242541F0049FEC4 /* DataAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85379E042242541F0049FEC4 /* DataAPI.swift */; };
+		85B2DCE52242658900B91B92 /* AccountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B2DCE42242658900B91B92 /* AccountService.swift */; };
+		85B2DCE72242667B00B91B92 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B2DCE62242667B00B91B92 /* MainViewModel.swift */; };
+		85B2DCE92242692800B91B92 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B2DCE82242692800B91B92 /* BaseViewController.swift */; };
 		85B55B65223F8669007A3D78 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B55B64223F8669007A3D78 /* AppDelegate.swift */; };
 		85B55B67223F866A007A3D78 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B55B66223F866A007A3D78 /* MainViewController.swift */; };
 		85B55B6A223F866A007A3D78 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 85B55B68223F866A007A3D78 /* Main.storyboard */; };
@@ -87,11 +91,15 @@
 		85379DE3223FE64A0049FEC4 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		85379DE6223FEBE70049FEC4 /* AccountCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountCell.xib; sourceTree = "<group>"; };
 		85379DE8223FEC000049FEC4 /* AccountCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCell.swift; sourceTree = "<group>"; };
-		85379DEB2240CF7E0049FEC4 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		85379DED2240F3740049FEC4 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		85379DEF2240F45D0049FEC4 /* Model+Draging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Model+Draging.swift"; sourceTree = "<group>"; };
 		85379DFC224123DA0049FEC4 /* BaseWidgetTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseWidgetTableViewCell.swift; sourceTree = "<group>"; };
 		85379DFD224123DA0049FEC4 /* BaseWidgetTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BaseWidgetTableViewCell.xib; sourceTree = "<group>"; };
+		85379E02224251170049FEC4 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
+		85379E042242541F0049FEC4 /* DataAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataAPI.swift; sourceTree = "<group>"; };
+		85B2DCE42242658900B91B92 /* AccountService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountService.swift; sourceTree = "<group>"; };
+		85B2DCE62242667B00B91B92 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		85B2DCE82242692800B91B92 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		85B55B61223F8669007A3D78 /* PayOutDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PayOutDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		85B55B64223F8669007A3D78 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		85B55B66223F866A007A3D78 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -201,6 +209,7 @@
 		85379D98223FC0AB0049FEC4 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				85B2DCE42242658900B91B92 /* AccountService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -229,6 +238,7 @@
 		85379D9B223FC0C20049FEC4 /* Data Model */ = {
 			isa = PBXGroup;
 			children = (
+				85379E02224251170049FEC4 /* Account.swift */,
 			);
 			path = "Data Model";
 			sourceTree = "<group>";
@@ -243,6 +253,7 @@
 		85379D9D223FC0E50049FEC4 /* Targets */ = {
 			isa = PBXGroup;
 			children = (
+				85379E042242541F0049FEC4 /* DataAPI.swift */,
 			);
 			path = Targets;
 			sourceTree = "<group>";
@@ -265,6 +276,7 @@
 		85379DA0223FC1080049FEC4 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				85B2DCE82242692800B91B92 /* BaseViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -325,9 +337,9 @@
 		85379DEA2240CF6D0049FEC4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				85379DEB2240CF7E0049FEC4 /* Account.swift */,
 				85379DED2240F3740049FEC4 /* Model.swift */,
 				85379DEF2240F45D0049FEC4 /* Model+Draging.swift */,
+				85B2DCE62242667B00B91B92 /* MainViewModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -492,9 +504,12 @@
 				85379DAD223FC6260049FEC4 /* ServiceError.swift in Sources */,
 				85379DC8223FC7C20049FEC4 /* UIView+Extensions.swift in Sources */,
 				85379DAF223FC6260049FEC4 /* Lce.swift in Sources */,
+				85B2DCE92242692800B91B92 /* BaseViewController.swift in Sources */,
+				85B2DCE72242667B00B91B92 /* MainViewModel.swift in Sources */,
 				85379DE4223FE64A0049FEC4 /* Color.swift in Sources */,
 				85379DD3223FC9610049FEC4 /* XIBView.swift in Sources */,
 				85379DDC223FE1A10049FEC4 /* AppDependency.swift in Sources */,
+				85379E03224251170049FEC4 /* Account.swift in Sources */,
 				85379DC2223FC7C20049FEC4 /* Sequence+Extensions.swift in Sources */,
 				85B55B67223F866A007A3D78 /* MainViewController.swift in Sources */,
 				85379DA7223FC5160049FEC4 /* UIAplication+Extension.swift in Sources */,
@@ -502,6 +517,7 @@
 				85B55B65223F8669007A3D78 /* AppDelegate.swift in Sources */,
 				85379DD7223FC9E80049FEC4 /* ActivityIndicatorView.swift in Sources */,
 				85379DFE224123DA0049FEC4 /* BaseWidgetTableViewCell.swift in Sources */,
+				85379E052242541F0049FEC4 /* DataAPI.swift in Sources */,
 				85379DCF223FC8A90049FEC4 /* ConstraintsHelper.swift in Sources */,
 				85379DC1223FC7C20049FEC4 /* Realm+Extensions.swift in Sources */,
 				85379DCE223FC8A90049FEC4 /* ViewModelType.swift in Sources */,
@@ -511,10 +527,10 @@
 				85379DAE223FC6260049FEC4 /* ActivityIndicator.swift in Sources */,
 				85379DB5223FC6E80049FEC4 /* NetworkingUtilities.swift in Sources */,
 				85379DDE223FE1F60049FEC4 /* AppFlowController.swift in Sources */,
-				85379DEC2240CF7E0049FEC4 /* Account.swift in Sources */,
 				85379DC5223FC7C20049FEC4 /* NSObject+Extensions.swift in Sources */,
 				85379DDA223FE0540049FEC4 /* MainFlowController.swift in Sources */,
 				85379DE9223FEC000049FEC4 /* AccountCell.swift in Sources */,
+				85B2DCE52242658900B91B92 /* AccountService.swift in Sources */,
 				85379DEE2240F3740049FEC4 /* Model.swift in Sources */,
 				85379DA5223FC39C0049FEC4 /* AlertManager.swift in Sources */,
 				85379DC7223FC7C20049FEC4 /* Error+Extensions.swift in Sources */,
