@@ -55,6 +55,8 @@
 		85B2DCF122428E0000B91B92 /* MutalFund.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B2DCF022428E0000B91B92 /* MutalFund.swift */; };
 		85B2DCF32242925400B91B92 /* Fund.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B2DCF22242925400B91B92 /* Fund.swift */; };
 		85B2DCF52242939100B91B92 /* Pension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B2DCF42242939100B91B92 /* Pension.swift */; };
+		85B2DCF72242ABDF00B91B92 /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B2DCF62242ABDF00B91B92 /* Goal.swift */; };
+		85B2DCF92242AF5A00B91B92 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B2DCF82242AF5A00B91B92 /* Product.swift */; };
 		85B55B65223F8669007A3D78 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B55B64223F8669007A3D78 /* AppDelegate.swift */; };
 		85B55B67223F866A007A3D78 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B55B66223F866A007A3D78 /* MainViewController.swift */; };
 		85B55B6A223F866A007A3D78 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 85B55B68223F866A007A3D78 /* Main.storyboard */; };
@@ -112,6 +114,8 @@
 		85B2DCF022428E0000B91B92 /* MutalFund.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MutalFund.swift; sourceTree = "<group>"; };
 		85B2DCF22242925400B91B92 /* Fund.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fund.swift; sourceTree = "<group>"; };
 		85B2DCF42242939100B91B92 /* Pension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pension.swift; sourceTree = "<group>"; };
+		85B2DCF62242ABDF00B91B92 /* Goal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goal.swift; sourceTree = "<group>"; };
+		85B2DCF82242AF5A00B91B92 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		85B55B61223F8669007A3D78 /* PayOutDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PayOutDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		85B55B64223F8669007A3D78 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		85B55B66223F866A007A3D78 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -257,6 +261,8 @@
 				85B2DCF022428E0000B91B92 /* MutalFund.swift */,
 				85B2DCF22242925400B91B92 /* Fund.swift */,
 				85B2DCF42242939100B91B92 /* Pension.swift */,
+				85B2DCF62242ABDF00B91B92 /* Goal.swift */,
+				85B2DCF82242AF5A00B91B92 /* Product.swift */,
 			);
 			path = "Data Model";
 			sourceTree = "<group>";
@@ -543,6 +549,7 @@
 				85379DB7223FC6E80049FEC4 /* NetworkingConstants.swift in Sources */,
 				85379DC4223FC7C20049FEC4 /* Date+Extensions.swift in Sources */,
 				85379DB6223FC6E80049FEC4 /* AuthenticatedProvider.swift in Sources */,
+				85B2DCF72242ABDF00B91B92 /* Goal.swift in Sources */,
 				85379DAE223FC6260049FEC4 /* ActivityIndicator.swift in Sources */,
 				85379DB5223FC6E80049FEC4 /* NetworkingUtilities.swift in Sources */,
 				85379DDE223FE1F60049FEC4 /* AppFlowController.swift in Sources */,
@@ -557,6 +564,7 @@
 				85379DA5223FC39C0049FEC4 /* AlertManager.swift in Sources */,
 				85379DC7223FC7C20049FEC4 /* Error+Extensions.swift in Sources */,
 				85379DB0223FC6260049FEC4 /* CodableObject.swift in Sources */,
+				85B2DCF92242AF5A00B91B92 /* Product.swift in Sources */,
 				85B2DCF32242925400B91B92 /* Fund.swift in Sources */,
 				85379DE0223FE2670049FEC4 /* StoryboardScene.swift in Sources */,
 				85379DC6223FC7C20049FEC4 /* Observable+Extensions.swift in Sources */,

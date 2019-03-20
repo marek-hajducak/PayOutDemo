@@ -31,6 +31,7 @@ import RealmSwift
     dynamic var exchangeRates = List<ExchangeRate>()
     dynamic var mutalFunds = List<MutalFund>()
     dynamic var pensions = List<Pension>()
+    dynamic var goals = List<Goal>()
     
     // MARK: Realm API
     override static func primaryKey() -> String? {
@@ -56,6 +57,7 @@ import RealmSwift
         case exchangeRates = "exchange_rates"
         case mutalFunds = "mutal_funds"
         case pensions = "pensions"
+        case goals = "goals"
     }
     
     convenience required init(from decoder: Decoder) throws {
@@ -85,6 +87,8 @@ import RealmSwift
         mutalFunds.append(objectsIn: mutalFundsArray)
         let pensionsArray = try container.decodeIfPresent([Pension].self, forKey: .pensions) ?? [Pension]()
         pensions.append(objectsIn: pensionsArray)
+        let goalsArray = try container.decodeIfPresent([Goal].self, forKey: .goals) ?? [Goal]()
+        goals.append(objectsIn: goalsArray)
     }
     
     // MARK: Encodable
@@ -109,6 +113,7 @@ import RealmSwift
         try container.encodeIfPresent(Array(exchangeRates), forKey: .exchangeRates)
         try container.encodeIfPresent(Array(mutalFunds), forKey: .mutalFunds)
         try container.encodeIfPresent(Array(pensions), forKey: .pensions)
+        try container.encodeIfPresent(Array(goals), forKey: .goals)
     }
 }
 
