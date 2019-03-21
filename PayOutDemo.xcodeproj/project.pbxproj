@@ -57,6 +57,31 @@
 		85B2DCF52242939100B91B92 /* Pension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B2DCF42242939100B91B92 /* Pension.swift */; };
 		85B2DCF72242ABDF00B91B92 /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B2DCF62242ABDF00B91B92 /* Goal.swift */; };
 		85B2DCF92242AF5A00B91B92 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B2DCF82242AF5A00B91B92 /* Product.swift */; };
+		85B2DCFD2243773500B91B92 /* CreditCardsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B2DCFB2243773500B91B92 /* CreditCardsTableViewCell.swift */; };
+		85B2DCFE2243773500B91B92 /* CreditCardsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85B2DCFC2243773500B91B92 /* CreditCardsTableViewCell.xib */; };
+		85B2DD012243776800B91B92 /* LoansTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B2DCFF2243776800B91B92 /* LoansTableViewCell.swift */; };
+		85B2DD022243776800B91B92 /* LoansTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85B2DD002243776800B91B92 /* LoansTableViewCell.xib */; };
+		85B2DD052243777D00B91B92 /* ExchangeRatesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B2DD032243777D00B91B92 /* ExchangeRatesTableViewCell.swift */; };
+		85B2DD062243777D00B91B92 /* ExchangeRatesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85B2DD042243777D00B91B92 /* ExchangeRatesTableViewCell.xib */; };
+		85B2DD092243779000B91B92 /* BranchesAndAtmsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B2DD072243779000B91B92 /* BranchesAndAtmsTableViewCell.swift */; };
+		85B2DD0A2243779000B91B92 /* BranchesAndAtmsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85B2DD082243779000B91B92 /* BranchesAndAtmsTableViewCell.xib */; };
+		85B2DD0D224377C400B91B92 /* SpendingReportTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B2DD0B224377C400B91B92 /* SpendingReportTableViewCell.swift */; };
+		85B2DD0E224377C400B91B92 /* SpendingReportTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85B2DD0C224377C400B91B92 /* SpendingReportTableViewCell.xib */; };
+		85B2DD11224377D800B91B92 /* AssetsAndLiabilitiesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B2DD0F224377D800B91B92 /* AssetsAndLiabilitiesTableViewCell.swift */; };
+		85B2DD12224377D800B91B92 /* AssetsAndLiabilitiesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85B2DD10224377D800B91B92 /* AssetsAndLiabilitiesTableViewCell.xib */; };
+		85B2DD15224377E700B91B92 /* MutalFundsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B2DD13224377E700B91B92 /* MutalFundsTableViewCell.swift */; };
+		85B2DD16224377E700B91B92 /* MutalFundsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85B2DD14224377E700B91B92 /* MutalFundsTableViewCell.xib */; };
+		85B2DD19224377F200B91B92 /* PensionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B2DD17224377F200B91B92 /* PensionsTableViewCell.swift */; };
+		85B2DD1A224377F200B91B92 /* PensionsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85B2DD18224377F200B91B92 /* PensionsTableViewCell.xib */; };
+		85B2DD1D2243780100B91B92 /* GoalsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B2DD1B2243780100B91B92 /* GoalsTableViewCell.swift */; };
+		85B2DD1E2243780100B91B92 /* GoalsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85B2DD1C2243780100B91B92 /* GoalsTableViewCell.xib */; };
+		85B2DD2022438D3C00B91B92 /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B2DD1F22438D3C00B91B92 /* UIImage+Extensions.swift */; };
+		85B2DD222243949300B91B92 /* WidgetsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B2DD212243949300B91B92 /* WidgetsViewController.swift */; };
+		85B2DD242243D6DA00B91B92 /* Asset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B2DD232243D6DA00B91B92 /* Asset.swift */; };
+		85B2DD262243D6EF00B91B92 /* Liability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B2DD252243D6EF00B91B92 /* Liability.swift */; };
+		85B2DD282243D7D600B91B92 /* AssetAndLiability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B2DD272243D7D600B91B92 /* AssetAndLiability.swift */; };
+		85B2DD2A2243E48C00B91B92 /* Branch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B2DD292243E48C00B91B92 /* Branch.swift */; };
+		85B2DD2C2243E4EB00B91B92 /* ATM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B2DD2B2243E4EB00B91B92 /* ATM.swift */; };
 		85B55B65223F8669007A3D78 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B55B64223F8669007A3D78 /* AppDelegate.swift */; };
 		85B55B67223F866A007A3D78 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B55B66223F866A007A3D78 /* MainViewController.swift */; };
 		85B55B6A223F866A007A3D78 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 85B55B68223F866A007A3D78 /* Main.storyboard */; };
@@ -116,6 +141,31 @@
 		85B2DCF42242939100B91B92 /* Pension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pension.swift; sourceTree = "<group>"; };
 		85B2DCF62242ABDF00B91B92 /* Goal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goal.swift; sourceTree = "<group>"; };
 		85B2DCF82242AF5A00B91B92 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
+		85B2DCFB2243773500B91B92 /* CreditCardsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditCardsTableViewCell.swift; sourceTree = "<group>"; };
+		85B2DCFC2243773500B91B92 /* CreditCardsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreditCardsTableViewCell.xib; sourceTree = "<group>"; };
+		85B2DCFF2243776800B91B92 /* LoansTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoansTableViewCell.swift; sourceTree = "<group>"; };
+		85B2DD002243776800B91B92 /* LoansTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoansTableViewCell.xib; sourceTree = "<group>"; };
+		85B2DD032243777D00B91B92 /* ExchangeRatesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeRatesTableViewCell.swift; sourceTree = "<group>"; };
+		85B2DD042243777D00B91B92 /* ExchangeRatesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExchangeRatesTableViewCell.xib; sourceTree = "<group>"; };
+		85B2DD072243779000B91B92 /* BranchesAndAtmsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BranchesAndAtmsTableViewCell.swift; sourceTree = "<group>"; };
+		85B2DD082243779000B91B92 /* BranchesAndAtmsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BranchesAndAtmsTableViewCell.xib; sourceTree = "<group>"; };
+		85B2DD0B224377C400B91B92 /* SpendingReportTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpendingReportTableViewCell.swift; sourceTree = "<group>"; };
+		85B2DD0C224377C400B91B92 /* SpendingReportTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SpendingReportTableViewCell.xib; sourceTree = "<group>"; };
+		85B2DD0F224377D800B91B92 /* AssetsAndLiabilitiesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetsAndLiabilitiesTableViewCell.swift; sourceTree = "<group>"; };
+		85B2DD10224377D800B91B92 /* AssetsAndLiabilitiesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AssetsAndLiabilitiesTableViewCell.xib; sourceTree = "<group>"; };
+		85B2DD13224377E700B91B92 /* MutalFundsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MutalFundsTableViewCell.swift; sourceTree = "<group>"; };
+		85B2DD14224377E700B91B92 /* MutalFundsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MutalFundsTableViewCell.xib; sourceTree = "<group>"; };
+		85B2DD17224377F200B91B92 /* PensionsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PensionsTableViewCell.swift; sourceTree = "<group>"; };
+		85B2DD18224377F200B91B92 /* PensionsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PensionsTableViewCell.xib; sourceTree = "<group>"; };
+		85B2DD1B2243780100B91B92 /* GoalsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsTableViewCell.swift; sourceTree = "<group>"; };
+		85B2DD1C2243780100B91B92 /* GoalsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GoalsTableViewCell.xib; sourceTree = "<group>"; };
+		85B2DD1F22438D3C00B91B92 /* UIImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
+		85B2DD212243949300B91B92 /* WidgetsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetsViewController.swift; sourceTree = "<group>"; };
+		85B2DD232243D6DA00B91B92 /* Asset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Asset.swift; sourceTree = "<group>"; };
+		85B2DD252243D6EF00B91B92 /* Liability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Liability.swift; sourceTree = "<group>"; };
+		85B2DD272243D7D600B91B92 /* AssetAndLiability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetAndLiability.swift; sourceTree = "<group>"; };
+		85B2DD292243E48C00B91B92 /* Branch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Branch.swift; sourceTree = "<group>"; };
+		85B2DD2B2243E4EB00B91B92 /* ATM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATM.swift; sourceTree = "<group>"; };
 		85B55B61223F8669007A3D78 /* PayOutDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PayOutDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		85B55B64223F8669007A3D78 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		85B55B66223F866A007A3D78 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -205,6 +255,7 @@
 				85379DEA2240CF6D0049FEC4 /* Model */,
 				85379DF32241212B0049FEC4 /* View */,
 				85B55B66223F866A007A3D78 /* MainViewController.swift */,
+				85B2DD212243949300B91B92 /* WidgetsViewController.swift */,
 				85B55B68223F866A007A3D78 /* Main.storyboard */,
 			);
 			path = Main;
@@ -263,6 +314,11 @@
 				85B2DCF42242939100B91B92 /* Pension.swift */,
 				85B2DCF62242ABDF00B91B92 /* Goal.swift */,
 				85B2DCF82242AF5A00B91B92 /* Product.swift */,
+				85B2DD272243D7D600B91B92 /* AssetAndLiability.swift */,
+				85B2DD232243D6DA00B91B92 /* Asset.swift */,
+				85B2DD252243D6EF00B91B92 /* Liability.swift */,
+				85B2DD292243E48C00B91B92 /* Branch.swift */,
+				85B2DD2B2243E4EB00B91B92 /* ATM.swift */,
 			);
 			path = "Data Model";
 			sourceTree = "<group>";
@@ -328,6 +384,7 @@
 				85379DC0223FC7C20049FEC4 /* String+Extensions.swift */,
 				85379DBF223FC7C20049FEC4 /* UIView+Extensions.swift */,
 				85379DA6223FC5160049FEC4 /* UIAplication+Extension.swift */,
+				85B2DD1F22438D3C00B91B92 /* UIImage+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -382,8 +439,34 @@
 			children = (
 				85379DFC224123DA0049FEC4 /* BaseWidgetTableViewCell.swift */,
 				85379DFD224123DA0049FEC4 /* BaseWidgetTableViewCell.xib */,
+				85B2DCFA2243770E00B91B92 /* Data View */,
 			);
 			path = "Widgets View";
+			sourceTree = "<group>";
+		};
+		85B2DCFA2243770E00B91B92 /* Data View */ = {
+			isa = PBXGroup;
+			children = (
+				85B2DCFB2243773500B91B92 /* CreditCardsTableViewCell.swift */,
+				85B2DCFC2243773500B91B92 /* CreditCardsTableViewCell.xib */,
+				85B2DCFF2243776800B91B92 /* LoansTableViewCell.swift */,
+				85B2DD002243776800B91B92 /* LoansTableViewCell.xib */,
+				85B2DD032243777D00B91B92 /* ExchangeRatesTableViewCell.swift */,
+				85B2DD042243777D00B91B92 /* ExchangeRatesTableViewCell.xib */,
+				85B2DD072243779000B91B92 /* BranchesAndAtmsTableViewCell.swift */,
+				85B2DD082243779000B91B92 /* BranchesAndAtmsTableViewCell.xib */,
+				85B2DD0B224377C400B91B92 /* SpendingReportTableViewCell.swift */,
+				85B2DD0C224377C400B91B92 /* SpendingReportTableViewCell.xib */,
+				85B2DD0F224377D800B91B92 /* AssetsAndLiabilitiesTableViewCell.swift */,
+				85B2DD10224377D800B91B92 /* AssetsAndLiabilitiesTableViewCell.xib */,
+				85B2DD13224377E700B91B92 /* MutalFundsTableViewCell.swift */,
+				85B2DD14224377E700B91B92 /* MutalFundsTableViewCell.xib */,
+				85B2DD17224377F200B91B92 /* PensionsTableViewCell.swift */,
+				85B2DD18224377F200B91B92 /* PensionsTableViewCell.xib */,
+				85B2DD1B2243780100B91B92 /* GoalsTableViewCell.swift */,
+				85B2DD1C2243780100B91B92 /* GoalsTableViewCell.xib */,
+			);
+			path = "Data View";
 			sourceTree = "<group>";
 		};
 		85B55B58223F8669007A3D78 = {
@@ -481,8 +564,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				85B2DD1E2243780100B91B92 /* GoalsTableViewCell.xib in Resources */,
+				85B2DCFE2243773500B91B92 /* CreditCardsTableViewCell.xib in Resources */,
 				85B55B6F223F866B007A3D78 /* LaunchScreen.storyboard in Resources */,
+				85B2DD062243777D00B91B92 /* ExchangeRatesTableViewCell.xib in Resources */,
+				85B2DD0E224377C400B91B92 /* SpendingReportTableViewCell.xib in Resources */,
+				85B2DD022243776800B91B92 /* LoansTableViewCell.xib in Resources */,
+				85B2DD0A2243779000B91B92 /* BranchesAndAtmsTableViewCell.xib in Resources */,
 				85379DFF224123DA0049FEC4 /* BaseWidgetTableViewCell.xib in Resources */,
+				85B2DD1A224377F200B91B92 /* PensionsTableViewCell.xib in Resources */,
+				85B2DD12224377D800B91B92 /* AssetsAndLiabilitiesTableViewCell.xib in Resources */,
+				85B2DD16224377E700B91B92 /* MutalFundsTableViewCell.xib in Resources */,
 				85B55B6C223F866B007A3D78 /* Assets.xcassets in Resources */,
 				85379DD8223FC9E80049FEC4 /* ActivityIndicatorView.xib in Resources */,
 				85379D91223FA7120049FEC4 /* README.md in Resources */,
@@ -529,11 +621,15 @@
 				85379DC8223FC7C20049FEC4 /* UIView+Extensions.swift in Sources */,
 				85379DAF223FC6260049FEC4 /* Lce.swift in Sources */,
 				85B2DCE92242692800B91B92 /* BaseViewController.swift in Sources */,
+				85B2DD2C2243E4EB00B91B92 /* ATM.swift in Sources */,
 				85B2DCEF22428BAB00B91B92 /* ExchangeRate.swift in Sources */,
 				85B2DCE72242667B00B91B92 /* MainViewModel.swift in Sources */,
 				85379DE4223FE64A0049FEC4 /* Color.swift in Sources */,
+				85B2DCFD2243773500B91B92 /* CreditCardsTableViewCell.swift in Sources */,
 				85379DD3223FC9610049FEC4 /* XIBView.swift in Sources */,
 				85379DDC223FE1A10049FEC4 /* AppDependency.swift in Sources */,
+				85B2DD222243949300B91B92 /* WidgetsViewController.swift in Sources */,
+				85B2DD262243D6EF00B91B92 /* Liability.swift in Sources */,
 				85379E03224251170049FEC4 /* Account.swift in Sources */,
 				85379DC2223FC7C20049FEC4 /* Sequence+Extensions.swift in Sources */,
 				85B55B67223F866A007A3D78 /* MainViewController.swift in Sources */,
@@ -542,6 +638,8 @@
 				85B55B65223F8669007A3D78 /* AppDelegate.swift in Sources */,
 				85379DD7223FC9E80049FEC4 /* ActivityIndicatorView.swift in Sources */,
 				85379DFE224123DA0049FEC4 /* BaseWidgetTableViewCell.swift in Sources */,
+				85B2DD0D224377C400B91B92 /* SpendingReportTableViewCell.swift in Sources */,
+				85B2DD052243777D00B91B92 /* ExchangeRatesTableViewCell.swift in Sources */,
 				85379E052242541F0049FEC4 /* DataAPI.swift in Sources */,
 				85379DCF223FC8A90049FEC4 /* ConstraintsHelper.swift in Sources */,
 				85379DC1223FC7C20049FEC4 /* Realm+Extensions.swift in Sources */,
@@ -551,21 +649,31 @@
 				85379DB6223FC6E80049FEC4 /* AuthenticatedProvider.swift in Sources */,
 				85B2DCF72242ABDF00B91B92 /* Goal.swift in Sources */,
 				85379DAE223FC6260049FEC4 /* ActivityIndicator.swift in Sources */,
+				85B2DD012243776800B91B92 /* LoansTableViewCell.swift in Sources */,
 				85379DB5223FC6E80049FEC4 /* NetworkingUtilities.swift in Sources */,
 				85379DDE223FE1F60049FEC4 /* AppFlowController.swift in Sources */,
 				85B2DCEB2242852600B91B92 /* Card.swift in Sources */,
 				85379DC5223FC7C20049FEC4 /* NSObject+Extensions.swift in Sources */,
 				85379DDA223FE0540049FEC4 /* MainFlowController.swift in Sources */,
+				85B2DD242243D6DA00B91B92 /* Asset.swift in Sources */,
 				85B2DCF52242939100B91B92 /* Pension.swift in Sources */,
 				85B2DCED2242895E00B91B92 /* Loan.swift in Sources */,
 				85379DE9223FEC000049FEC4 /* AccountCell.swift in Sources */,
+				85B2DD2022438D3C00B91B92 /* UIImage+Extensions.swift in Sources */,
+				85B2DD092243779000B91B92 /* BranchesAndAtmsTableViewCell.swift in Sources */,
 				85B2DCE52242658900B91B92 /* AccountService.swift in Sources */,
+				85B2DD1D2243780100B91B92 /* GoalsTableViewCell.swift in Sources */,
 				85379DEE2240F3740049FEC4 /* Model.swift in Sources */,
+				85B2DD15224377E700B91B92 /* MutalFundsTableViewCell.swift in Sources */,
 				85379DA5223FC39C0049FEC4 /* AlertManager.swift in Sources */,
 				85379DC7223FC7C20049FEC4 /* Error+Extensions.swift in Sources */,
 				85379DB0223FC6260049FEC4 /* CodableObject.swift in Sources */,
+				85B2DD282243D7D600B91B92 /* AssetAndLiability.swift in Sources */,
 				85B2DCF92242AF5A00B91B92 /* Product.swift in Sources */,
+				85B2DD19224377F200B91B92 /* PensionsTableViewCell.swift in Sources */,
+				85B2DD2A2243E48C00B91B92 /* Branch.swift in Sources */,
 				85B2DCF32242925400B91B92 /* Fund.swift in Sources */,
+				85B2DD11224377D800B91B92 /* AssetsAndLiabilitiesTableViewCell.swift in Sources */,
 				85379DE0223FE2670049FEC4 /* StoryboardScene.swift in Sources */,
 				85379DC6223FC7C20049FEC4 /* Observable+Extensions.swift in Sources */,
 				85379DF02240F45D0049FEC4 /* Model+Draging.swift in Sources */,

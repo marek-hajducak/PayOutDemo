@@ -25,7 +25,6 @@ class AccountCell: UICollectionViewCell {
     @IBOutlet weak var accountIBANLabel: UILabel!
     @IBOutlet weak var accountNumberLabel: UILabel!
     
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         backgroundCellView.layer.backgroundColor = Color.MainRed.cgColor

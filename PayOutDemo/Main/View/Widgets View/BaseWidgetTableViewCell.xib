@@ -60,11 +60,21 @@
                                                     <constraint firstItem="1ap-Of-bK5" firstAttribute="centerX" secondItem="3y4-l9-cog" secondAttribute="centerX" id="dEY-Dn-561"/>
                                                 </constraints>
                                             </view>
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="EO8-Wi-wd0">
+                                                <rect key="frame" x="15" y="13" width="261" height="127.5"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="127.5" id="HkX-IU-v6W"/>
+                                                </constraints>
+                                            </tableView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
+                                            <constraint firstItem="EO8-Wi-wd0" firstAttribute="top" secondItem="TjY-HD-4s5" secondAttribute="top" constant="13" id="B8M-LM-jeE"/>
+                                            <constraint firstAttribute="trailing" secondItem="EO8-Wi-wd0" secondAttribute="trailing" constant="15" id="ED2-d2-CZE"/>
                                             <constraint firstItem="3y4-l9-cog" firstAttribute="centerX" secondItem="TjY-HD-4s5" secondAttribute="centerX" id="ZBY-rX-feL"/>
-                                            <constraint firstAttribute="bottom" secondItem="3y4-l9-cog" secondAttribute="bottom" constant="142.5" id="w2k-mx-nfh"/>
+                                            <constraint firstAttribute="bottom" secondItem="EO8-Wi-wd0" secondAttribute="bottom" constant="15" id="cbF-Sz-8b3"/>
+                                            <constraint firstItem="EO8-Wi-wd0" firstAttribute="leading" secondItem="TjY-HD-4s5" secondAttribute="leading" constant="15" id="ueN-37-oVe"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -98,6 +108,8 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="backgroundViewOfWidget" destination="rOr-za-xH1" id="G62-xF-IkF"/>
+                <outlet property="dataWidgetTableView" destination="EO8-Wi-wd0" id="p7F-QS-hvv"/>
+                <outlet property="heightOfWidgetTableViewConstraint" destination="HkX-IU-v6W" id="hub-e2-kn5"/>
                 <outlet property="iconOfWidgetImageView" destination="oy7-jQ-uMJ" id="4Td-na-MEU"/>
                 <outlet property="nameOfWidgetLabel" destination="MGL-QG-m1h" id="thy-f6-Nhh"/>
                 <outlet property="separatorView" destination="m4A-OH-J5t" id="gc8-Sa-hf4"/>

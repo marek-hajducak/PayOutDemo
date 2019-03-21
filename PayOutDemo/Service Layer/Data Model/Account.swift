@@ -32,6 +32,9 @@ import RealmSwift
     dynamic var mutalFunds = List<MutalFund>()
     dynamic var pensions = List<Pension>()
     dynamic var goals = List<Goal>()
+    dynamic var assetsAndLiabilities = List<AssetAndLiability>()
+    dynamic var branches = List<Branch>()
+    dynamic var atms = List<ATM>()
     
     // MARK: Realm API
     override static func primaryKey() -> String? {
@@ -58,6 +61,9 @@ import RealmSwift
         case mutalFunds = "mutal_funds"
         case pensions = "pensions"
         case goals = "goals"
+        case assetsAndLiabilities = "assets_liabilities"
+        case branches = "branches"
+        case atms = "atms"
     }
     
     convenience required init(from decoder: Decoder) throws {
@@ -89,6 +95,12 @@ import RealmSwift
         pensions.append(objectsIn: pensionsArray)
         let goalsArray = try container.decodeIfPresent([Goal].self, forKey: .goals) ?? [Goal]()
         goals.append(objectsIn: goalsArray)
+        let assetsAndLiabilitiesArray = try container.decodeIfPresent([AssetAndLiability].self, forKey: .assetsAndLiabilities) ?? [AssetAndLiability]()
+        assetsAndLiabilities.append(objectsIn: assetsAndLiabilitiesArray)
+        let branchesArray = try container.decodeIfPresent([Branch].self, forKey: .branches) ?? [Branch]()
+        branches.append(objectsIn: branchesArray)
+        let atmsArray = try container.decodeIfPresent([ATM].self, forKey: .atms) ?? [ATM]()
+        atms.append(objectsIn: atmsArray)
     }
     
     // MARK: Encodable
@@ -114,6 +126,9 @@ import RealmSwift
         try container.encodeIfPresent(Array(mutalFunds), forKey: .mutalFunds)
         try container.encodeIfPresent(Array(pensions), forKey: .pensions)
         try container.encodeIfPresent(Array(goals), forKey: .goals)
+        try container.encodeIfPresent(Array(assetsAndLiabilities), forKey: .assetsAndLiabilities)
+        try container.encodeIfPresent(Array(branches), forKey: .branches)
+        try container.encodeIfPresent(Array(atms), forKey: .atms)
     }
 }
 

@@ -66,21 +66,22 @@
                                     <constraint firstItem="Gg4-Kv-2bi" firstAttribute="centerX" secondItem="vag-Ul-7Uf" secondAttribute="centerX" id="wcB-T9-KB2"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="Jc2-oo-ckX">
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sWm-kw-S0x">
                                 <rect key="frame" x="0.0" y="321" width="375" height="457"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                <color key="sectionIndexBackgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </tableView>
+                                <connections>
+                                    <segue destination="cYV-gC-MQv" kind="embed" identifier="Widget" id="gtg-eS-hBs"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="Jc2-oo-ckX" firstAttribute="top" secondItem="vag-Ul-7Uf" secondAttribute="bottom" id="4Qx-PV-34c"/>
-                            <constraint firstItem="Jc2-oo-ckX" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="77t-Zq-AV8"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Jc2-oo-ckX" secondAttribute="bottom" id="Eg1-QE-Ms1"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="sWm-kw-S0x" secondAttribute="trailing" id="1Uf-k3-23f"/>
+                            <constraint firstItem="sWm-kw-S0x" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="2bv-6G-ctn"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="sWm-kw-S0x" secondAttribute="bottom" id="ECU-hy-Wef"/>
                             <constraint firstItem="vag-Ul-7Uf" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Flb-jI-YVo"/>
+                            <constraint firstItem="sWm-kw-S0x" firstAttribute="top" secondItem="vag-Ul-7Uf" secondAttribute="bottom" id="NPT-FZ-oo0"/>
                             <constraint firstItem="vag-Ul-7Uf" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Nfz-OO-52c"/>
                             <constraint firstItem="vag-Ul-7Uf" firstAttribute="height" secondItem="6Tk-OE-BBY" secondAttribute="height" multiplier="0.35" constant="20" id="P52-Po-HtY"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Jc2-oo-ckX" secondAttribute="trailing" id="hTX-ac-EWE"/>
                             <constraint firstItem="vag-Ul-7Uf" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="sWF-1h-qAc"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -89,14 +90,44 @@
                         <outlet property="accountsCollectionView" destination="w6V-vl-9vY" id="G1Z-01-AGe"/>
                         <outlet property="accountsSwipeUpButton" destination="Gg4-Kv-2bi" id="taZ-iN-ckR"/>
                         <outlet property="backgroundAccountsView" destination="vag-Ul-7Uf" id="7tv-kc-Xl0"/>
-                        <outlet property="dragAndDropTableView" destination="Jc2-oo-ckX" id="WNe-Xi-oOR"/>
                         <outlet property="heightOfAccountNavigationView" destination="P52-Po-HtY" id="3rG-4h-UMk"/>
                         <outlet property="separatorView" destination="jp8-gs-1dv" id="cPc-Fd-Zyi"/>
+                        <outlet property="widgetContainerView" destination="sWm-kw-S0x" id="lSS-0e-oiZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-716" y="94.581280788177338"/>
+            <point key="canvasLocation" x="-815" y="94"/>
+        </scene>
+        <!--Widgets View Controller-->
+        <scene sceneID="kJF-g5-f6h">
+            <objects>
+                <viewController id="cYV-gC-MQv" customClass="WidgetsViewController" customModule="PayOutDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="XzQ-vf-hkD">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="457"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="Jc2-oo-ckX">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="457"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <color key="sectionIndexBackgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="Jc2-oo-ckX" secondAttribute="bottom" id="Np9-mt-kxD"/>
+                            <constraint firstItem="Jc2-oo-ckX" firstAttribute="leading" secondItem="XzQ-vf-hkD" secondAttribute="leading" id="bjJ-SG-mEr"/>
+                            <constraint firstAttribute="trailing" secondItem="Jc2-oo-ckX" secondAttribute="trailing" id="qxf-l0-Q9e"/>
+                            <constraint firstItem="Jc2-oo-ckX" firstAttribute="top" secondItem="XzQ-vf-hkD" secondAttribute="top" id="zZM-5e-7W6"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="dragAndDropTableView" destination="Jc2-oo-ckX" id="eFU-cR-naO"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="olG-Ae-gOM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="207" y="94"/>
         </scene>
     </scenes>
 </document>

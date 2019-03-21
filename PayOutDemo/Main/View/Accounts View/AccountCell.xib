@@ -41,7 +41,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="fHX-pp-voJ">
-                                <rect key="frame" x="20" y="104" width="263" height="62"/>
+                                <rect key="frame" x="20" y="104" width="273" height="62"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cE3-vf-rKo">
                                         <rect key="frame" x="0.0" y="0.0" width="12.5" height="20.5"/>
@@ -63,7 +63,6 @@
                                     </label>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="cE3-vf-rKo" firstAttribute="height" secondItem="fHX-pp-voJ" secondAttribute="height" multiplier="0.33" id="Hbd-zT-exs"/>
                                     <constraint firstItem="C99-HO-4Qg" firstAttribute="height" secondItem="9fL-xb-1MX" secondAttribute="height" id="XN2-fu-xed"/>
                                     <constraint firstItem="9fL-xb-1MX" firstAttribute="height" secondItem="cE3-vf-rKo" secondAttribute="height" id="ZXf-wX-EZQ"/>
                                 </constraints>
@@ -73,7 +72,7 @@
                         <constraints>
                             <constraint firstItem="ELV-yw-ivz" firstAttribute="centerY" secondItem="5hu-ZP-aho" secondAttribute="centerY" id="00e-gx-dsh"/>
                             <constraint firstAttribute="trailing" secondItem="iPC-AL-0NF" secondAttribute="trailing" constant="20" id="Apw-Ax-lEc"/>
-                            <constraint firstAttribute="trailing" secondItem="fHX-pp-voJ" secondAttribute="trailing" constant="20" id="FSU-R8-uRz"/>
+                            <constraint firstAttribute="trailing" secondItem="fHX-pp-voJ" secondAttribute="trailing" constant="10" id="FSU-R8-uRz"/>
                             <constraint firstItem="iPC-AL-0NF" firstAttribute="leading" secondItem="5hu-ZP-aho" secondAttribute="leading" constant="20" id="QqA-R8-Q5P"/>
                             <constraint firstItem="fHX-pp-voJ" firstAttribute="leading" secondItem="5hu-ZP-aho" secondAttribute="leading" constant="20" id="kd8-y4-Qpc"/>
                             <constraint firstAttribute="bottom" secondItem="fHX-pp-voJ" secondAttribute="bottom" constant="11" id="oV7-yw-VLB"/>
