@@ -17,14 +17,28 @@ enum Currency: String {
     func getImage() -> UIImage {
         switch self {
         case .eur:
-            return #imageLiteral(resourceName: "slovakia")
+            return Image.SVK
         case .czk:
-            return #imageLiteral(resourceName: "czech_republic")
+            return Image.CZE
         case .gbp:
-            return #imageLiteral(resourceName: "united_kingdom")
+            return Image.GBP
         case .usd:
-            return #imageLiteral(resourceName: "united_states")
+            return Image.USD
         }
+    }
+    
+    func getCurrencySymbol() -> String {
+        switch self {
+        case .eur:
+            return "€"
+        case .czk:
+            return "Kč"
+        case .gbp:
+            return "£"
+        case .usd:
+            return "$"
+        }
+
     }
 }
 

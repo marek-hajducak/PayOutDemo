@@ -18,7 +18,7 @@ class BranchesAndAtmsTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        branchImageView.image = #imageLiteral(resourceName: "atm_branches").imageWithColor(color1: Color.MainRed)
+        branchImageView.image = Image.Atm.imageWithColor(color1: Color.MainRed)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="AccountsTransactionCell" customModule="PayOutDemo" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="388" height="112"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="388" height="112"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4SR-8n-gmP">
+                        <rect key="frame" x="0.0" y="0.0" width="388" height="112"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="gx0-WM-zsM">
+                                <rect key="frame" x="99" y="10" width="190" height="92"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tatra Banka" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xh0-P3-eim">
+                                        <rect key="frame" x="41.5" y="0.0" width="107.5" height="24"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Aktualizované 22.3. o 8:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PGy-dN-gcE">
+                                        <rect key="frame" x="20" y="29" width="150.5" height="14.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Amount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JWK-fc-kCT">
+                                        <rect key="frame" x="65" y="48.5" width="60" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="FNe-vk-dWX">
+                                        <rect key="frame" x="0.0" y="74" width="190" height="18"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+123 450 Kč" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vd7-Wy-VDP">
+                                                <rect key="frame" x="0.0" y="0.0" width="92.5" height="18"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                <color key="textColor" red="0.30840110780000002" green="0.5618229508" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-77 110 Kč" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OYx-xK-75C">
+                                                <rect key="frame" x="97.5" y="0.0" width="92.5" height="18"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" name="MainRed"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="gx0-WM-zsM" secondAttribute="bottom" constant="10" id="aze-mp-OvZ"/>
+                            <constraint firstItem="gx0-WM-zsM" firstAttribute="centerX" secondItem="4SR-8n-gmP" secondAttribute="centerX" id="fBy-wN-YYt"/>
+                            <constraint firstItem="gx0-WM-zsM" firstAttribute="top" secondItem="4SR-8n-gmP" secondAttribute="top" constant="10" id="qdz-ka-g6O"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="4SR-8n-gmP" secondAttribute="trailing" id="9O6-yb-Zkg"/>
+                <constraint firstItem="4SR-8n-gmP" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="CLs-20-1Uw"/>
+                <constraint firstAttribute="bottom" secondItem="4SR-8n-gmP" secondAttribute="bottom" id="cPv-9f-BiC"/>
+                <constraint firstItem="4SR-8n-gmP" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="k2b-0v-B8O"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="388" height="112"/>
+            <connections>
+                <outlet property="aktualizationDateLabel" destination="PGy-dN-gcE" id="eUn-gG-V10"/>
+                <outlet property="amountLabel" destination="JWK-fc-kCT" id="5Ib-a0-uZC"/>
+                <outlet property="backgroundOfCelllView" destination="4SR-8n-gmP" id="hCn-DI-miu"/>
+                <outlet property="incomeAmountLabel" destination="Vd7-Wy-VDP" id="ZHC-mZ-m7v"/>
+                <outlet property="nameOfAccountLabel" destination="xh0-P3-eim" id="hag-6i-yje"/>
+                <outlet property="outgoingAmounLabel" destination="OYx-xK-75C" id="4Zs-9A-dp1"/>
+            </connections>
+            <point key="canvasLocation" x="228.80000000000001" y="83.658170914542737"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <namedColor name="MainRed">
+            <color red="0.77600002288818359" green="0.27799999713897705" blue="0.20800000429153442" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

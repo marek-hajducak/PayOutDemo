@@ -137,13 +137,13 @@ extension WidgetsViewController: UITableViewDelegate, UITableViewDataSource {
         let type = TypeOfWidget.init(rawValue: nameOfWidget)
         cell.typeOfWidgetTableViewCell = type
         cell.dataSetForWidget = account
-        // Set space between cells but not good sollution
+        //FIXME: Set space between cells but not good sollution
         //cell.layer.borderWidth = CGFloat(5)
         //cell.layer.borderColor = tableView.backgroundColor?.cgColor
         if let acc = account {
             let heightOfCell = (type?.getHeightForRow() ?? 0) * CGFloat(type?.getNumberOfRows(account: acc) ?? 0)
             guard heightOfCell != 0 else {
-                //TODO: Delet cell if nothing in there!!
+                cell.heightOfWidgetTableViewConstraint.constant = 0
                 return cell
             }
             cell.heightOfWidgetTableViewConstraint.constant = heightOfCell
@@ -165,6 +165,20 @@ extension WidgetsViewController: UITableViewDelegate, UITableViewDataSource {
         dragAndDropTableView.deselectRow(at: indexPath, animated: false)
     }
     
-    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let nameOfWidget = model.widgetsNames[indexPath.row]
+        let type = TypeOfWidget.init(rawValue: nameOfWidget)
+        if let acc = account {
+            let heightOfTableViewInCell = (type?.getHeightForRow() ?? 0) * CGFloat(type?.getNumberOfRows(account: acc) ?? 0)
+            let offsetOfTableViewInCell = 29
+            guard heightOfTableViewInCell != 0 else {
+                return 0
+            }
+            return (heightOfTableViewInCell + CGFloat(offsetOfTableViewInCell*2))
+        } else {
+            return 0
+        }
+        
+    }
 }
 

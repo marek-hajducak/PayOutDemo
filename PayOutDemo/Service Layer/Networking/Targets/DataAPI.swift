@@ -11,6 +11,7 @@ import Moya
 
 enum DataAPI {
     case getAccounts()
+    case getTransactions()
 }
 
 extension DataAPI: TargetType {
@@ -21,12 +22,14 @@ extension DataAPI: TargetType {
         switch self {
         case .getAccounts:
             return "/accounts"
+        case .getTransactions:
+            return "/transactions"
         }
     }
     
     var method: Moya.Method {
         switch self {
-        case .getAccounts:
+        case .getAccounts, .getTransactions:
             return .get
         }
     }
@@ -37,14 +40,14 @@ extension DataAPI: TargetType {
     
     var task: Task {
         switch self {
-        case .getAccounts:
+        case .getAccounts, .getTransactions:
             return .requestPlain
         }
     }
     
     var sampleData: Data {
         switch self {
-        case .getAccounts:
+        case .getAccounts, .getTransactions:
             return NetworkingUtilities.stubbedResponse("Transaction")
         }
     }

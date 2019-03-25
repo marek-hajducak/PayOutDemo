@@ -14,9 +14,11 @@ class AppFlowController {
     
     fileprivate let dependencies: AppDependency
     
+    fileprivate var app: AppTabBarController?
+    
     init(window: UIWindow) {
         self.window = window
-        dependencies = AppDependency(accountService: AccountService())
+        dependencies = AppDependency(transactionService: TransactionService(), accountService: AccountService())
     }
     
     func start() {
@@ -24,7 +26,7 @@ class AppFlowController {
         navController.navigationBar.backgroundColor = Color.White
         window.rootViewController = navController
         window.makeKeyAndVisible()
-        let flowController = MainFlowController(navigationController: navController, dependencies: dependencies)
+        let flowController = MainAppFlowController(navigationController: navController, dependencies: dependencies)
         flowController.start()
     }
 }

@@ -8,6 +8,7 @@
 
 import Foundation
 
-struct AppDependency : HasAccountService {
+struct AppDependency : HasAccountService, HasTransactionService {
+    var transactionService: TransactionService
     let accountService: AccountService
 }

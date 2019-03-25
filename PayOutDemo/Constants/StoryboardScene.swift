@@ -16,6 +16,16 @@ internal enum StoryboardScene {
         internal static let storyboardName = "Main"
         internal static let initialScene = InitialSceneType<MainViewController>(storyboard: Main.self)
     }
+    
+    internal enum AppTabBar: StoryboardType {
+        internal static let storyboardName = "AppTabBar"
+        internal static let initialScene = InitialSceneType<AppTabBarController>(storyboard: AppTabBar.self)
+    }
+    
+    internal enum Transaction: StoryboardType {
+        internal static let storyboardName = "Transaction"
+        internal static let initialScene = InitialSceneType<TransactionViewController>(storyboard: Transaction.self)
+    }
 }
 
 // MARK: - Implementation Details
