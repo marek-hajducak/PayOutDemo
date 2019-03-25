@@ -117,7 +117,7 @@ enum TransactionType: Int {
             case .interestMoney:
                 return Image.InterestMoney
             case .gifts:
-                return Image.Gifts
+                return Image.GiftMoney
             case .others:
                 return Image.Others
             }
@@ -165,7 +165,7 @@ enum TransactionType: Int {
             case .health:
                 return Image.Health
             case .gifts:
-                return Image.Gifts
+                return Image.BuyGift
             case .family:
                 return Image.Family
             case .education:

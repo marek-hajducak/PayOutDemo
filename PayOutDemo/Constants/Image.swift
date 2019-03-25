@@ -58,7 +58,7 @@ class Image {
     public class var Sell: UIImage { return #imageLiteral(resourceName: "united_kingdom") }
     public class var Rewards: UIImage { return #imageLiteral(resourceName: "united_kingdom") }
     public class var InterestMoney: UIImage { return #imageLiteral(resourceName: "united_kingdom") }
-    public class var Gifts: UIImage { return #imageLiteral(resourceName: "united_kingdom") }
+    public class var GiftMoney: UIImage { return #imageLiteral(resourceName: "united_kingdom") }
     public class var Others: UIImage { return #imageLiteral(resourceName: "united_kingdom") }
 
     // Ountcoming
@@ -70,6 +70,7 @@ class Image {
     public class var RentalsAndServices: UIImage { return #imageLiteral(resourceName: "united_kingdom") }
     public class var FriendsAndLove: UIImage { return #imageLiteral(resourceName: "united_kingdom") }
     public class var Health: UIImage { return #imageLiteral(resourceName: "united_kingdom") }
+    public class var BuyGift: UIImage { return #imageLiteral(resourceName: "united_kingdom") }
     public class var Family: UIImage { return #imageLiteral(resourceName: "united_kingdom") }
     public class var Education: UIImage { return #imageLiteral(resourceName: "united_kingdom") }
     public class var Investments: UIImage { return #imageLiteral(resourceName: "united_kingdom") }
