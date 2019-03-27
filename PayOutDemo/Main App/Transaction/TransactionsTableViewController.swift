@@ -53,16 +53,52 @@ class TransactionsTableViewController: UIViewController {
     }
     var filter: Filter? {
         didSet {
-            // TODO: filtrovat tranzakcie podla daných atributov filtra
             if let typeOfTrans = filter?.typeOfTransaction {
                 switch typeOfTrans {
                 case .all:
                     self.transactions = transactions.filter({$0.type == 1 || $0.type == 2})
                 case .incoming:
                     self.transactions = transactions.filter({$0.type == 1})
+                    if let  incomingType = filter?.incomingTypeOfTransactions, incomingType != .empty {
+                        self.transactions = transactions.filter({$0.incomingType == incomingType.getString()})
+                    }
                 case .outgoing:
                     self.transactions = transactions.filter({$0.type == 2})
+                    if let outgoingType = filter?.outgoingTypeOfTransactions, outgoingType != .empty {
+                        self.transactions = transactions.filter({$0.outgoingType == outgoingType.getString()})
+                        if let underTypes = filter?.outgoingUnderTypeOfTransaction, underTypes != .empty {
+                            self.transactions = transactions.filter({$0.outgoingUnderType == underTypes.getString()})
+                        }
+                    }
                 }
+            }
+            if let date = filter?.postingDate, let signForDate = filter?.signForDate {
+                switch signForDate {
+                case .equal:
+                    self.transactions = transactions.filter({$0.postingDate.iso8601() == date.iso8601()})
+                case .less:
+                    self.transactions = transactions.filter({$0.postingDate.iso8601() < date.iso8601()})
+                case .more:
+                    self.transactions = transactions.filter({$0.postingDate.iso8601() > date.iso8601()})
+                }
+            }
+            if let amount = filter?.ammount, let signForAmount = filter?.signForAmount {
+                switch signForAmount {
+                case .equal:
+                    self.transactions = transactions.filter({$0.amount == amount})
+                case .less:
+                    self.transactions = transactions.filter({$0.amount < amount})
+                case .more:
+                    self.transactions = transactions.filter({$0.amount > amount})
+                }
+            }
+            
+            if let name = filter?.name {
+                self.transactions = transactions.filter({$0.name.contains(name)})
+            }
+            
+            if let merchant = filter?.merchant {
+                self.transactions = transactions.filter({$0.merchant.contains(merchant)})
             }
         }
     }

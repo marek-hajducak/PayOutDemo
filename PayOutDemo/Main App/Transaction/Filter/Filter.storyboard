@@ -209,7 +209,7 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Evx-a2-Y97">
                                                         <rect key="frame" x="0.0" y="85" width="394" height="30"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="IBAN:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tnp-BW-HXJ">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Merchant" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tnp-BW-HXJ">
                                                                 <rect key="frame" x="0.0" y="0.0" width="187" height="30"/>
                                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                                 <color key="textColor" name="MainRed"/>
@@ -278,11 +278,11 @@
                         <viewLayoutGuide key="safeArea" id="OI0-J6-Prx"/>
                     </view>
                     <connections>
-                        <outlet property="IBANTextField" destination="Tja-xg-GkL" id="UbU-Js-pne"/>
                         <outlet property="amountTextField" destination="97H-fA-k3h" id="yYt-qH-MMh"/>
                         <outlet property="amoutSignSegmentControl" destination="cgW-d2-E87" id="WGM-jP-r2J"/>
                         <outlet property="dateSignSegmentControl" destination="gBC-ax-fZU" id="n6Q-bq-Vhv"/>
                         <outlet property="filterButton" destination="WqL-N5-L3N" id="ZvZ-mB-D8I"/>
+                        <outlet property="merchantTextField" destination="Tja-xg-GkL" id="UbU-Js-pne"/>
                         <outlet property="nameOfTransactionTextField" destination="TRd-Aa-mdU" id="61R-wC-sMX"/>
                         <outlet property="postingDatePickerView" destination="SdJ-s6-sv8" id="ocI-bT-RxR"/>
                         <outlet property="scrollView" destination="tcw-yc-tvo" id="cto-ec-Zf7"/>

@@ -23,10 +23,10 @@ class Filter {
     var signForDate: Sign?
     var ammount: Double?
     var signForAmount: Sign?
-    var IBAN: String?
+    var merchant: String?
     var name: String?
     
-    init(typeOfTransaction: TransactionType?, incomingType: TransactionType.IncomingtransactionTypes?, outgoingType: TransactionType.OutgoingtransactionTypes?, outgoingUnderType: TransactionType.OutgoingtransactionTypes.OutgoingUnderTypes?, postingDate: String?, ammount: Double, signForAmount: Sign?, signForDate: Sign?, iban: String?, name: String?) {
+    init(typeOfTransaction: TransactionType?, incomingType: TransactionType.IncomingtransactionTypes?, outgoingType: TransactionType.OutgoingtransactionTypes?, outgoingUnderType: TransactionType.OutgoingtransactionTypes.OutgoingUnderTypes?, postingDate: String?, ammount: Double?, signForAmount: Sign?, signForDate: Sign?, merchant: String?, name: String?) {
         self.typeOfTransaction = typeOfTransaction
         self.incomingTypeOfTransactions = incomingType
         self.outgoingTypeOfTransactions = outgoingType
@@ -35,7 +35,7 @@ class Filter {
         self.ammount = ammount
         self.signForAmount = signForAmount
         self.signForDate = signForDate
-        self.IBAN = iban
+        self.merchant = merchant
         self.name = name
     }
 }

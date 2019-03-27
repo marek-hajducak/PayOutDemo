@@ -19,7 +19,7 @@ class FilterViewController: InputViewController {
     
     // TEXT
     @IBOutlet weak var nameOfTransactionTextField: UITextField!
-    @IBOutlet weak var IBANTextField: UITextField!
+    @IBOutlet weak var merchantTextField: UITextField!
     
     // TEXT //
     
@@ -161,35 +161,50 @@ class FilterViewController: InputViewController {
     }
     
     @IBAction func filterTransactions() {
+        
         let typeOdTransactionIndex = typeOfTransactionPickerView.pickerView.selectedRow(inComponent: 0)
         let typeOfTransaction = TransactionType(rawValue: typeOdTransactionIndex)
         let incomingString = typeOfIncomingTransactionPickerView.text
         let outgoingString = typeOfOutgoingTransactionPickerView.text
         let underOutgoingString = underTypeOfOutgoingTransactionPickerView.text
-        let date = postingDatePickerView.text
+        
+        var date: String? = nil
+        if let dateText = postingDatePickerView.text, dateText != "" {
+            let array = dateText.split(separator: " ")
+            if let month = FilterViewController.months.index(of: String(array[1])) {
+                date = "\(array[0]) \(month + 1). \(array[2])"
+            }
+        }
         var signForDate: Sign?
         if let titleForSign = dateSignSegmentControl.titleForSegment(at: dateSignSegmentControl.selectedSegmentIndex) {
              signForDate = Sign(rawValue: titleForSign)
         }
-        var amout: Double? = 0.0
-        let amountString = amountTextField.text ?? "0"
-        let splitArray = amountString.split(separator: ",")
-        if splitArray.count == 2 {
-            amout = Double("\(splitArray[0]).\(splitArray[1])")
-        } else if splitArray.count == 1 {
-            amout = Double("\(splitArray)")
-        } else {
-           // FIXME: Zadal viac ako 1 desatinu ciarku
+        
+        var amout: Double? = nil
+        if let amountString = amountTextField.text, amountString != "" {
+            let splitArray = amountString.split(separator: ",")
+            if splitArray.count == 2 {
+                amout = Double("\(splitArray[0]).\(splitArray[1])")
+            } else if splitArray.count == 1 {
+                amout = Double("\(splitArray[0])")
+            }
         }
-       
+        
         var signForAmout: Sign?
         if let titleForSign = amoutSignSegmentControl.titleForSegment(at: amoutSignSegmentControl.selectedSegmentIndex) {
             signForAmout = Sign(rawValue: titleForSign)
         }
-        let iban = IBANTextField.text
-        let name = nameOfTransactionTextField.text
         
-        filter = Filter(typeOfTransaction: typeOfTransaction, incomingType: TransactionType.IncomingtransactionTypes(rawValue: incomingString ?? "Empty"), outgoingType: TransactionType.OutgoingtransactionTypes(rawValue: outgoingString ?? "Empty"), outgoingUnderType: TransactionType.OutgoingtransactionTypes.OutgoingUnderTypes(rawValue: underOutgoingString ?? "Empty"), postingDate: date, ammount: amout ?? 0, signForAmount: signForAmout, signForDate: signForDate, iban: iban, name: name)
+        var merchant: String? = nil
+        if merchantTextField.text != "" {
+            merchant = merchantTextField.text
+        }
+        
+        var name:String? = nil
+        if nameOfTransactionTextField.text != "" {
+            name = nameOfTransactionTextField.text
+        }
+        filter = Filter(typeOfTransaction: typeOfTransaction, incomingType: TransactionType.IncomingtransactionTypes(rawValue: incomingString ?? "Empty"), outgoingType: TransactionType.OutgoingtransactionTypes(rawValue: outgoingString ?? "Empty"), outgoingUnderType: TransactionType.OutgoingtransactionTypes.OutgoingUnderTypes(rawValue: underOutgoingString ?? "Empty"), postingDate: date, ammount: amout, signForAmount: signForAmout, signForDate: signForDate, merchant: merchant, name: name)
 
         if let filter = self.filter {
             flowDelegate?.filter(with: filter)
@@ -265,6 +280,9 @@ extension FilterViewController: UIPickerViewDelegate, UIPickerViewDataSource {
         } else if pickerView.tag == 4 {
             if let dictionary = transactionTypes.underTypesDictionary[outgoingType] {
                 let keys = Array(dictionary.keys)
+                guard keys[row] != "Empty" else {
+                    return "-"
+                }
                 return keys[row]
             } else {
                 return "-"
@@ -336,16 +354,17 @@ extension FilterViewController: UIPickerViewDelegate, UIPickerViewDataSource {
             }
             indexOfUnderOutgoingType = pickerView.selectedRow(inComponent: 0)
         } else if pickerView.tag == 5 {
+            var yearToShow: Int = 0
             switch component {
                 case 0:
                     day = row + 1
                 case 1:
                     month = FilterViewController.months[row]
                 case 2:
-                    year = row + year
+                    yearToShow = row + self.year
                 default:()
             }
-            postingDatePickerView.text = "\(day). \(month) \(year)"
+            postingDatePickerView.text = "\(day). \(month) \(yearToShow)"
         }
     }
     

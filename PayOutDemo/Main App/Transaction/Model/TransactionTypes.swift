@@ -28,6 +28,7 @@ class TransactionTypes {
     
     let underTypesDictionary: [TransactionType.OutgoingtransactionTypes: [String : TransactionType.OutgoingtransactionTypes.OutgoingUnderTypes]] = [
         .transport : [
+            "Empty" : .empty,
             "Petrol" : .petrol,
             "Taxi" : .taxi,
             "Parking Fees" : .parkingFees,
@@ -36,20 +37,24 @@ class TransactionTypes {
             "Bus" : .bus
         ],
         .buying: [
+            "Empty" : .empty,
             "Clothes": .clothes ,
             "Shoes": .shoes ,
             "Accessories": .accessories ,
             "Electronics": .electronics ,
         ],
         .funn: [
+            "Empty" : .empty,
             "Movies": .movies ,
             "Games": .games ,
         ],
         .eatAndDrink: [
+            "Empty" : .empty,
             "Restaurant": .restaurant ,
             "Coffe": .coffe ,
         ],
         .rentalsAndServices: [
+            "Empty" : .empty,
             "Rent": .rent ,
             "Services": .services ,
             "Phone": .phone ,
@@ -60,22 +65,26 @@ class TransactionTypes {
             "Internet": .internet ,
         ],
         .health: [
+            "Empty" : .empty,
             "Sport": .sport ,
             "Doctor": .doctor ,
             "Others": .other ,
         ],
         .gifts: [
+            "Empty" : .empty,
             "Marriage": .marriage ,
             "Funeral": .funeral ,
             "Charity": .charity ,
         ],
         .family: [
+            "Empty" : .empty,
             "Kids": .kids ,
             "Home": .home ,
             "Pets": .pets ,
             "House Holds": .houseHolds ,
         ],
         .education: [
+            "Empty" : .empty,
             "Books": .books ,
             "Courses": .courses ,
         ]

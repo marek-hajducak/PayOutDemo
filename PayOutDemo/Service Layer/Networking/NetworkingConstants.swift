@@ -10,7 +10,7 @@ import Foundation
 
 struct NetworkingConstants {
     
-    static let iso8601DefaultFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSXXXXX"
+    static let iso8601DefaultFormat = "dd. MM. yyyy"
     
     static let baseURL = "https://my-json-server.typicode.com/marek-hajducak/payoutJSON"
 
