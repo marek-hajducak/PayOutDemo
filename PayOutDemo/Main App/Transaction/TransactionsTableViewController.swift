@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class TransactionsTableViewController: UIViewController {
 
     @IBOutlet weak var transactionsTableView: UITableView! {
@@ -51,6 +52,7 @@ class TransactionsTableViewController: UIViewController {
             transactionsTableView?.reloadData()
         }
     }
+    
     var filter: Filter? {
         didSet {
             if let typeOfTrans = filter?.typeOfTransaction {

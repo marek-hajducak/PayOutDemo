@@ -25,9 +25,10 @@ class FilterFlowController {
         self.dependencies = dependencies
     }
     
-    func start() {
+    func start(with filter: Filter?) {
         let filterStoryBoard = StoryboardScene.Filter.initialScene.instantiate()
         filterStoryBoard.flowDelegate = self
+        filterStoryBoard.filter = filter
         navigationController.viewControllers = [filterStoryBoard]
         navigationController.navigationBar.isHidden = false
         UIApplication.shared.statusBarView?.backgroundColor = Color.White

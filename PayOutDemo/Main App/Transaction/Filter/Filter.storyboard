@@ -141,7 +141,7 @@
                                                                             <segment title="Second"/>
                                                                             <segment title=""/>
                                                                         </segments>
-                                                                        <color key="tintColor" name="MainRed"/>
+                                                                        <color key="tintColor" red="0.77647058823529413" green="0.27843137254901962" blue="0.20784313725490194" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     </segmentedControl>
                                                                 </subviews>
                                                             </stackView>
@@ -209,7 +209,7 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Evx-a2-Y97">
                                                         <rect key="frame" x="0.0" y="85" width="394" height="30"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Merchant" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tnp-BW-HXJ">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Merchant:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tnp-BW-HXJ">
                                                                 <rect key="frame" x="0.0" y="0.0" width="187" height="30"/>
                                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                                 <color key="textColor" name="MainRed"/>

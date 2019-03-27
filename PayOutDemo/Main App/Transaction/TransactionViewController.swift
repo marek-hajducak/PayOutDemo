@@ -9,7 +9,7 @@ import UIKit
 import CHIPageControl
 
 protocol TransactionFlowDelegate {
-    func showFilter()
+    func showFilter(with filter: Filter?)
 }
 
 class TransactionViewController: BaseViewController {
@@ -175,7 +175,7 @@ class TransactionViewController: BaseViewController {
     }
     
     @objc func hitFilter() {
-        flowDelegate?.showFilter()
+        flowDelegate?.showFilter(with: self.filter)
     }
     
     

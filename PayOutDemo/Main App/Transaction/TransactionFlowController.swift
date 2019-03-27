@@ -31,12 +31,12 @@ class TransactionFlowController {
 }
 
 extension TransactionFlowController: TransactionFlowDelegate {
-    func showFilter() {
+    func showFilter(with filter: Filter?) {
         let navController = UINavigationController()
         let filterFlowController = FilterFlowController(navigationController: navController, dependencies: dependencies)
         navigationController.present(navController, animated: true, completion: nil)
         filterFlowController.filterDelegate = self
-        filterFlowController.start()
+        filterFlowController.start(with: filter)
     }
 }
 

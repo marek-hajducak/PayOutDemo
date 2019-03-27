@@ -24,6 +24,7 @@ class Image {
     public class var QrCode: UIImage { return #imageLiteral(resourceName: "qr_code") }
     public class var Message: UIImage { return #imageLiteral(resourceName: "mail_box") }
     public class var Filter: UIImage { return #imageLiteral(resourceName: "filter") }
+    public class var ResetFilter: UIImage { return #imageLiteral(resourceName: "reset_filter") }
     
     // Tab Bar
     public class var HomeTabBar: UIImage { return #imageLiteral(resourceName: "home") }

@@ -19,7 +19,7 @@ class TransactionTableViewCell: ExpandableTableViewCell {
     
     @IBOutlet weak var expandableView: UIView! {
         didSet {
-            expandableView.backgroundColor = Color.MainTableViewBackground
+            expandableView.backgroundColor = Color.MainBackground
         }
     }
     @IBOutlet weak var postingDateLabel: UILabel!

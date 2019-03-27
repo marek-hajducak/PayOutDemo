@@ -20,7 +20,6 @@ class FilterViewController: InputViewController {
     // TEXT
     @IBOutlet weak var nameOfTransactionTextField: UITextField!
     @IBOutlet weak var merchantTextField: UITextField!
-    
     // TEXT //
     
     // DATE AND AMOUNT
@@ -32,11 +31,11 @@ class FilterViewController: InputViewController {
         }
     }
     @IBOutlet weak var amountTextField: UITextField!
-    
     private static let months = ["Január", "Február", "Marec", "Apríl", "Máj", "Jún", "Júl", "August", "September", "Október", "November", "December"]
     var day: Int = 1
     var month: String = "Január"
     var year: Int = 1950
+    var yearToShow: Int = 1950
     // DATE AND AMOUNT //
     
     // TYPES
@@ -83,7 +82,12 @@ class FilterViewController: InputViewController {
             underTypeOfOutgoingTransactionPickerView.pickerView.reloadAllComponents()
         }
     }
-    // TYPES //
+    
+    var filter: Filter? {
+        didSet {
+            
+        }
+    }
     
     var flowDelegate: FilterFlowDelegate?
 
@@ -133,10 +137,117 @@ class FilterViewController: InputViewController {
         filterButton.layer.shadowRadius = 6.0
         filterButton.layer.cornerRadius = 15.0
         
+        setFilterScreen()
+        
         title = "Filter"
     }
     
-    var filter: Filter?
+    private func setFilterScreen() {
+        if let filter = filter  {
+            //TODO: Nastaviť typy podla filtra
+            if let type = filter.typeOfTransaction {
+                switch type {
+                case .all:
+                    typeOfTransactionPickerView.pickerView.selectRow(0, inComponent: 0, animated: true)
+                    typeOfIncomingTransactionStackView.isHidden = true
+                    typeOutgoingTreansactionStackView.isHidden = true
+                    typeOfUnderOutgoingTransactionStackView.isHidden = true
+                case .incoming:
+                    typeOfTransactionPickerView.pickerView.selectRow(1, inComponent: 0, animated: true)
+                    typeOfIncomingTransactionStackView.isHidden = false
+                    typeOutgoingTreansactionStackView.isHidden = true
+                    typeOfUnderOutgoingTransactionStackView.isHidden = true
+                    if let incomingType = filter.incomingTypeOfTransactions {
+                        if let casesOfIncomingTypes = TransactionType.IncomingtransactionTypes.allCases.index(of: incomingType) {
+                            typeOfIncomingTransactionPickerView.pickerView.selectRow(casesOfIncomingTypes, inComponent: 0, animated: true)
+                        }
+                        typeOfIncomingTransactionPickerView.text = incomingType.getString()
+                    }
+                case .outgoing:
+                    typeOfTransactionPickerView.pickerView.selectRow(2, inComponent: 0, animated: true)
+                    typeOfIncomingTransactionStackView.isHidden = true
+                    typeOutgoingTreansactionStackView.isHidden = false
+                    typeOfUnderOutgoingTransactionStackView.isHidden = false
+                    if let outgoingType = filter.outgoingTypeOfTransactions {
+                        self.outgoingType = outgoingType
+                        if let casesOfOutgoingTypes = TransactionType.OutgoingtransactionTypes.allCases.index(of: outgoingType) {
+                            typeOfOutgoingTransactionPickerView.pickerView.selectRow(casesOfOutgoingTypes, inComponent: 0, animated: true)
+                        }
+                        typeOfOutgoingTransactionPickerView.text = outgoingType.getString()
+                        typeOfUnderOutgoingTransactionStackView.isHidden = outgoingType == .empty
+                        if let outgoingUnderType = filter.outgoingUnderTypeOfTransaction {
+                            if let dictionaryOfIUnderTypes = transactionTypes.underTypesDictionary[outgoingType],
+                                let index = dictionaryOfIUnderTypes.index(forKey: outgoingUnderType.getString()) {
+                                let distance = dictionaryOfIUnderTypes.distance(from: dictionaryOfIUnderTypes.startIndex, to: index)
+                                underTypeOfOutgoingTransactionPickerView.pickerView.selectRow(distance, inComponent: 0, animated: true)
+                                underTypeOfOutgoingTransactionPickerView.text = outgoingUnderType.getString()
+                            }
+                        }
+                    }
+                }
+                typeOfTransactionPickerView.text = type.getString()
+                
+            }
+            // Set date and dateSign
+            if let date = filter.postingDate {
+                let arrayDates = date.split(separator: " ")
+                let mounth = arrayDates[1].split(separator: ".")
+                let indexOfMount = (Int(String(mounth[0])) ?? 1) - 1
+                let monthString = FilterViewController.months[indexOfMount]
+                postingDatePickerView.text = "\(arrayDates[0]) \(monthString) \(arrayDates[2])"
+                
+                // Select day
+                if let day = Int(String(arrayDates[0].split(separator: ".")[0])) {
+                    let dayIndex = day - 1
+                    postingDatePickerView.pickerView.selectRow(dayIndex, inComponent: 0, animated: true)
+                }
+                // Select month
+                postingDatePickerView.pickerView.selectRow(indexOfMount, inComponent: 1, animated: true)
+                // Select Year
+                if let year = Int(String(arrayDates[2])) {
+                    let yearIndex = year - self.year
+                    postingDatePickerView.pickerView.selectRow(yearIndex, inComponent: 2, animated: true)
+                }
+                
+                if let sign = filter.signForDate {
+                    switch sign {
+                    case .equal:
+                        dateSignSegmentControl.selectedSegmentIndex = 2
+                    case .less:
+                        dateSignSegmentControl.selectedSegmentIndex = 0
+                    case .more:
+                        dateSignSegmentControl.selectedSegmentIndex = 1
+                    }
+                }
+            } else {
+                postingDatePickerView.text = ""
+                postingDatePickerView.pickerView.selectRow(0, inComponent: 0, animated: true)
+                postingDatePickerView.pickerView.selectRow(0, inComponent: 1, animated: true)
+                postingDatePickerView.pickerView.selectRow(0, inComponent: 2, animated: true)
+                dateSignSegmentControl.selectedSegmentIndex = 0
+            }
+            // Set amount and amountSign
+            if let amount = filter.ammount {
+                amountTextField.text = "\(amount)"
+                if let sign = filter.signForAmount {
+                    switch sign {
+                    case .equal:
+                        amoutSignSegmentControl.selectedSegmentIndex = 2
+                    case .less:
+                        amoutSignSegmentControl.selectedSegmentIndex = 0
+                    case .more:
+                        amoutSignSegmentControl.selectedSegmentIndex = 1
+                    }
+                }
+            } else {
+                amountTextField.text = ""
+                amoutSignSegmentControl.selectedSegmentIndex = 0
+            }
+            // Set Name and Merchant based on Filter
+            nameOfTransactionTextField.text = filter.name
+            merchantTextField.text = filter.merchant
+        }
+    }
     
     private func setUpNavigationBar() {
         // Right Button
@@ -149,6 +260,16 @@ class FilterViewController: InputViewController {
         cancelbutton.addTarget(self, action: #selector(cancel), for: .touchUpInside)
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: cancelbutton)
         
+        // Left Button
+        let resetButton = UIButton.init(type: .custom)
+        let heightConstraintResetButton = NSLayoutConstraint(item: resetButton, attribute: NSLayoutConstraint.Attribute.height, relatedBy:  NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 30)
+        let widthConstraintResetButton = NSLayoutConstraint(item: resetButton, attribute: NSLayoutConstraint.Attribute.width, relatedBy:  NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 30)
+        resetButton.addConstraints([heightConstraintResetButton, widthConstraintResetButton])
+        resetButton.setImage(Image.ResetFilter, for: UIControl.State.normal)
+        resetButton.frame = CGRect(x: 0, y: 0, width: 34, height: 34)
+        resetButton.addTarget(self, action: #selector(resetFilter), for: .touchUpInside)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: resetButton)
+        
         
         if let navigationBar = self.navigationController?.navigationBar {
             navigationBar.barTintColor = Color.White
@@ -156,12 +277,16 @@ class FilterViewController: InputViewController {
         }
     }
     
+    @objc func resetFilter() {
+        self.filter = Filter(typeOfTransaction: .all, incomingType: nil, outgoingType: nil, outgoingUnderType: nil, postingDate: nil, ammount: nil, signForAmount: nil, signForDate: nil, merchant: nil, name: nil)
+        setFilterScreen()
+    }
+    
     @objc func cancel() {
         flowDelegate?.backToTransaction()
     }
     
     @IBAction func filterTransactions() {
-        
         let typeOdTransactionIndex = typeOfTransactionPickerView.pickerView.selectedRow(inComponent: 0)
         let typeOfTransaction = TransactionType(rawValue: typeOdTransactionIndex)
         let incomingString = typeOfIncomingTransactionPickerView.text
@@ -214,11 +339,7 @@ class FilterViewController: InputViewController {
     
 }
 
-extension FilterViewController: UpdatePickerViewDelegate {
-    func didTouchDone() {
-        
-    }
-}
+
 
 extension FilterViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -242,10 +363,10 @@ extension FilterViewController: UIPickerViewDelegate, UIPickerViewDataSource {
         } else if pickerView.tag == 4 {
             if let dictionary = transactionTypes.underTypesDictionary[outgoingType] {
                 let keys = Array(dictionary.keys)
-                typeOfUnderOutgoingTransactionStackView.isHidden = false
+                //typeOfUnderOutgoingTransactionStackView.isHidden = false
                 return keys.count
             } else {
-                typeOfUnderOutgoingTransactionStackView.isHidden = true
+                //typeOfUnderOutgoingTransactionStackView.isHidden = true
                 return 0
             }
         } else if pickerView.tag == 5 {
@@ -354,7 +475,6 @@ extension FilterViewController: UIPickerViewDelegate, UIPickerViewDataSource {
             }
             indexOfUnderOutgoingType = pickerView.selectedRow(inComponent: 0)
         } else if pickerView.tag == 5 {
-            var yearToShow: Int = 0
             switch component {
                 case 0:
                     day = row + 1
