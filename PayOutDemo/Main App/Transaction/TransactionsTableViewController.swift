@@ -42,7 +42,7 @@ class TransactionsTableViewController: UIViewController {
         }
     }
 
-    @IBOutlet weak var statisticView: UIView!
+    @IBOutlet weak var statisticView: SpendingReportView!
     
     fileprivate var indexPaths: Set<IndexPath> = []
     
@@ -130,21 +130,38 @@ class TransactionsTableViewController: UIViewController {
         transactionsTableView.estimatedRowHeight = 200
     }
     
+    var swipeDowmCan: Bool = true
+    var swipeUpCan: Bool = false
+    
     @objc func swipeUp() {
-        if statisticView.isDescendant(of: self.view) {
-            UIView.animate(withDuration: 0.2, delay: 0.2, animations: {
-                self.setStatisticView()
-            })
-        } else {
-            self.view.addSubview(statisticView)
+        if swipeUpCan {
+            statisticView.swipeUp()
+            
+            if statisticView.isDescendant(of: self.view) {
+                UIView.animate(withDuration: 0.2, delay: 0.2, animations: {
+                    self.setStatisticView()
+                })
+            } else {
+                self.view.addSubview(statisticView)
+            }
+            swipeUpCan = false
+            swipeDowmCan = true
         }
     }
     
     @objc func swipeDown() {
-        UIView.animate(withDuration: 0.2) {
-            self.statisticButton.isHidden = true
-            self.statisticButton.isEnabled = false
-            self.heightOfStatisticViewConstraint.constant = 20
+        if swipeDowmCan {
+            UIView.animate(withDuration: 0.2) {
+                self.statisticButton.isHidden = true
+                self.statisticButton.isEnabled = false
+                self.heightOfStatisticViewConstraint.constant = 20
+            }
+            if let currrencyString = account?.currency {
+                statisticView?.currency = Currency(rawValue: currrencyString)
+            }
+            statisticView?.transactions = transactions
+            swipeDowmCan = false
+            swipeUpCan = true
         }
     }
 
@@ -169,7 +186,7 @@ extension TransactionsTableViewController: UITableViewDataSource, UITableViewDel
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = transactionsTableView.dequeueReusableCell(withIdentifier: TransactionTableViewCell.nameOfClass, for: indexPath) as! TransactionTableViewCell
-        if let currency = account?.currency{
+        if let currency = account?.currency {
             if self.transactions[indexPath.item].transactionTypes?.transactionType == .incoming {
                 cell.amountLabel.text = "+ \(self.transactions[indexPath.item].amount) \(currency)"
                 cell.transactionTypeLabel.text = self.transactions[indexPath.item].transactionTypes?.incomingType?.rawValue.uppercased()

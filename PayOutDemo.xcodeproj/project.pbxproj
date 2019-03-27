@@ -110,6 +110,8 @@
 		85D7202C224A4718005F0795 /* InputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D7202B224A4718005F0795 /* InputViewController.swift */; };
 		85D72034224A48C1005F0795 /* PickerViewTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D72032224A48C1005F0795 /* PickerViewTextField.swift */; };
 		85D72035224A48C1005F0795 /* DesignableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D72033224A48C1005F0795 /* DesignableTextField.swift */; };
+		85D72038224BAB65005F0795 /* SpendingReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D72037224BAB65005F0795 /* SpendingReportView.swift */; };
+		85D7203B224BBDE5005F0795 /* Double+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D7203A224BBDE5005F0795 /* Double+Extensions.swift */; };
 		E9190566C5330B70CBDEA43C /* libPods-PayOutDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BA4698F36BAC0907A078821 /* libPods-PayOutDemo.a */; };
 /* End PBXBuildFile section */
 
@@ -219,6 +221,8 @@
 		85D7202B224A4718005F0795 /* InputViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputViewController.swift; sourceTree = "<group>"; };
 		85D72032224A48C1005F0795 /* PickerViewTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerViewTextField.swift; sourceTree = "<group>"; };
 		85D72033224A48C1005F0795 /* DesignableTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignableTextField.swift; sourceTree = "<group>"; };
+		85D72037224BAB65005F0795 /* SpendingReportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpendingReportView.swift; sourceTree = "<group>"; };
+		85D7203A224BBDE5005F0795 /* Double+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extensions.swift"; sourceTree = "<group>"; };
 		8BA4698F36BAC0907A078821 /* libPods-PayOutDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PayOutDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3D013F26FA66DBF8BAAB0F3 /* Pods-PayOutDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PayOutDemo.release.xcconfig"; path = "Target Support Files/Pods-PayOutDemo/Pods-PayOutDemo.release.xcconfig"; sourceTree = "<group>"; };
 		DC65D934CB79DB5477ADCCE1 /* Pods-PayOutDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PayOutDemo.debug.xcconfig"; path = "Target Support Files/Pods-PayOutDemo/Pods-PayOutDemo.debug.xcconfig"; sourceTree = "<group>"; };
@@ -436,6 +440,7 @@
 				85379DBF223FC7C20049FEC4 /* UIView+Extensions.swift */,
 				85379DA6223FC5160049FEC4 /* UIAplication+Extension.swift */,
 				85B2DD1F22438D3C00B91B92 /* UIImage+Extensions.swift */,
+				85D7203A224BBDE5005F0795 /* Double+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -528,6 +533,7 @@
 				85B2DD322244C8DC00B91B92 /* AppTabBar.storyboard */,
 				85379D96223FC0360049FEC4 /* Home */,
 				85B2DD372244E3D300B91B92 /* Transaction */,
+				85D72037224BAB65005F0795 /* SpendingReportView.swift */,
 			);
 			path = "Main App";
 			sourceTree = "<group>";
@@ -799,6 +805,7 @@
 				85379DB7223FC6E80049FEC4 /* NetworkingConstants.swift in Sources */,
 				85379DC4223FC7C20049FEC4 /* Date+Extensions.swift in Sources */,
 				85D3D7802248D6B90006C711 /* TransactionTableViewCell.swift in Sources */,
+				85D7203B224BBDE5005F0795 /* Double+Extensions.swift in Sources */,
 				85379DB6223FC6E80049FEC4 /* AuthenticatedProvider.swift in Sources */,
 				85D72035224A48C1005F0795 /* DesignableTextField.swift in Sources */,
 				85B2DCF72242ABDF00B91B92 /* Goal.swift in Sources */,
@@ -822,6 +829,7 @@
 				85B2DCE52242658900B91B92 /* AccountService.swift in Sources */,
 				85B2DD1D2243780100B91B92 /* GoalsTableViewCell.swift in Sources */,
 				85379DEE2240F3740049FEC4 /* Model.swift in Sources */,
+				85D72038224BAB65005F0795 /* SpendingReportView.swift in Sources */,
 				85B2DD462248BB6000B91B92 /* AccountsTransactionCell.swift in Sources */,
 				85B2DD15224377E700B91B92 /* MutalFundsTableViewCell.swift in Sources */,
 				85379DA5223FC39C0049FEC4 /* AlertManager.swift in Sources */,
