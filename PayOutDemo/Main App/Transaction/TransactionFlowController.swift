@@ -14,7 +14,6 @@ class TransactionFlowController {
     
     fileprivate let dependencies: AppDependency
     
-    
     init(navigationController: UINavigationController, dependencies: AppDependency) {
         self.navigationController = navigationController
         self.dependencies = dependencies
@@ -32,6 +31,22 @@ class TransactionFlowController {
 }
 
 extension TransactionFlowController: TransactionFlowDelegate {
-    
-    
+    func showFilter() {
+        let navController = UINavigationController()
+        let filterFlowController = FilterFlowController(navigationController: navController, dependencies: dependencies)
+        navigationController.present(navController, animated: true, completion: nil)
+        filterFlowController.filterDelegate = self
+        filterFlowController.start()
+    }
 }
+
+extension TransactionFlowController: FilterDelegate {
+    func filter(with filter: Filter) {
+        if let navigationController = navigationController.viewControllers[0] as? TransactionViewController {
+            navigationController.filter = filter
+        }
+    }
+
+}
+
+

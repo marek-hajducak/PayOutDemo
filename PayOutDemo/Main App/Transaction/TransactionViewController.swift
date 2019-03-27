@@ -9,7 +9,7 @@ import UIKit
 import CHIPageControl
 
 protocol TransactionFlowDelegate {
-    
+    func showFilter()
 }
 
 class TransactionViewController: BaseViewController {
@@ -27,7 +27,6 @@ class TransactionViewController: BaseViewController {
         }
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpNavigationItems()
@@ -35,6 +34,12 @@ class TransactionViewController: BaseViewController {
         accountsCollectionView.delegate = self
         accountsCollectionView.dataSource = self
 
+    }
+    
+    var filter: Filter? {
+        didSet {
+            createNewTransactionViewController()
+        }
     }
     
     var selectedAccountIndex: Int? {
@@ -170,16 +175,17 @@ class TransactionViewController: BaseViewController {
     }
     
     @objc func hitFilter() {
-
+        flowDelegate?.showFilter()
     }
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "Transaction" {
-            if let vc = segue.destination as? TransactionsTableViewController, !accounts.isEmpty, !transactions.isEmpty  {
+            if let vc = segue.destination as? TransactionsTableViewController, !accounts.isEmpty, !transactions.isEmpty {
                 let accountId = self.accounts[self.selectedAccountIndex ?? 0].id
                 vc.account = self.accounts[self.selectedAccountIndex ?? 0]
                 vc.transactions = self.transactions.filter({$0.accountId == accountId})
+                vc.filter = self.filter
             }
         }
     }

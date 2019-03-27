@@ -51,6 +51,21 @@ class TransactionsTableViewController: UIViewController {
             transactionsTableView?.reloadData()
         }
     }
+    var filter: Filter? {
+        didSet {
+            // TODO: filtrovat tranzakcie podla daných atributov filtra
+            if let typeOfTrans = filter?.typeOfTransaction {
+                switch typeOfTrans {
+                case .all:
+                    self.transactions = transactions.filter({$0.type == 1 || $0.type == 2})
+                case .incoming:
+                    self.transactions = transactions.filter({$0.type == 1})
+                case .outgoing:
+                    self.transactions = transactions.filter({$0.type == 2})
+                }
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

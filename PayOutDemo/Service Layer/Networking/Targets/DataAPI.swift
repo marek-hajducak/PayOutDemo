@@ -10,8 +10,8 @@ import Foundation
 import Moya
 
 enum DataAPI {
-    case getAccounts()
-    case getTransactions()
+    case getAccounts
+    case getTransactions
 }
 
 extension DataAPI: TargetType {

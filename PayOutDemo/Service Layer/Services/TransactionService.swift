@@ -19,7 +19,7 @@ protocol HasTransactionService {
 class TransactionService: BaseService {
     
     func getTransactions() -> Observable<Lce<[Transaction]>> {
-        let endpoint = DataAPI.getTransactions()
+        let endpoint = DataAPI.getTransactions
         
         return self.provider.request(MultiTarget(endpoint)).asObservable().filterSuccess().map([Transaction].self).flatMap({ (transactions) ->  Observable<Lce<[Transaction]>> in
             return Observable.just(Lce.init(data: transactions))

@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VeV-GQ-AsF">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Filter View Controller-->
+        <scene sceneID="r3n-WE-9fK">
+            <objects>
+                <viewController id="VeV-GQ-AsF" customClass="FilterViewController" customModule="PayOutDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rTC-mB-Mta">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tcw-yc-tvo">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="af3-ny-9yc">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="649"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Jvt-hS-OIE">
+                                                <rect key="frame" x="10" y="20" width="394" height="257"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="lry-Mk-9IJ">
+                                                        <rect key="frame" x="0.0" y="0.0" width="394" height="53"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type of transaction:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Atc-vW-wud">
+                                                                <rect key="frame" x="0.0" y="0.0" width="394" height="18"/>
+                                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                                <color key="textColor" name="MainRed"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kLm-j3-QCD" customClass="PickerViewTextField" customModule="PayOutDemo" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="23" width="394" height="30"/>
+                                                                <nil key="textColor"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                <textInputTraits key="textInputTraits"/>
+                                                                <connections>
+                                                                    <outlet property="delegate" destination="VeV-GQ-AsF" id="7M0-f9-vlp"/>
+                                                                </connections>
+                                                            </textField>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="mof-4X-HoR">
+                                                        <rect key="frame" x="0.0" y="68" width="394" height="53"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type of incoming transaction:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L5y-Hh-9ud">
+                                                                <rect key="frame" x="0.0" y="0.0" width="394" height="18"/>
+                                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                                <color key="textColor" name="MainRed"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <textField opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zA4-OB-OHi" customClass="PickerViewTextField" customModule="PayOutDemo" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="23" width="394" height="30"/>
+                                                                <nil key="textColor"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                <textInputTraits key="textInputTraits"/>
+                                                                <connections>
+                                                                    <outlet property="delegate" destination="VeV-GQ-AsF" id="gcn-zO-Aae"/>
+                                                                </connections>
+                                                            </textField>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="FPB-p2-JDw">
+                                                        <rect key="frame" x="0.0" y="136" width="394" height="53"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type of outgoing transaction: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mg8-ML-X1q">
+                                                                <rect key="frame" x="0.0" y="0.0" width="394" height="18"/>
+                                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                                <color key="textColor" name="MainRed"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <textField opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bEY-Fg-SHq" customClass="PickerViewTextField" customModule="PayOutDemo" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="23" width="394" height="30"/>
+                                                                <nil key="textColor"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                <textInputTraits key="textInputTraits"/>
+                                                                <connections>
+                                                                    <outlet property="delegate" destination="VeV-GQ-AsF" id="Rmr-hr-R9q"/>
+                                                                </connections>
+                                                            </textField>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="hqm-pg-Ppm">
+                                                        <rect key="frame" x="0.0" y="204" width="394" height="53"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Undertype of outgoing transaction: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Udz-HN-Dtv">
+                                                                <rect key="frame" x="0.0" y="0.0" width="394" height="18"/>
+                                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                                <color key="textColor" name="MainRed"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <textField opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uAG-n2-4Q3" customClass="PickerViewTextField" customModule="PayOutDemo" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="23" width="394" height="30"/>
+                                                                <nil key="textColor"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                <textInputTraits key="textInputTraits"/>
+                                                                <connections>
+                                                                    <outlet property="delegate" destination="VeV-GQ-AsF" id="Iig-xZ-0fx"/>
+                                                                </connections>
+                                                            </textField>
+                                                        </subviews>
+                                                    </stackView>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="ykQ-l9-HHw">
+                                                <rect key="frame" x="10" y="292" width="394" height="127"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="359-so-Gyk">
+                                                        <rect key="frame" x="0.0" y="0.0" width="394" height="56"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Posting date of transaction:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jAb-A9-e12">
+                                                                <rect key="frame" x="0.0" y="0.0" width="394" height="18"/>
+                                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                                <color key="textColor" name="MainRed"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="iqD-53-VYc">
+                                                                <rect key="frame" x="0.0" y="26" width="394" height="30"/>
+                                                                <subviews>
+                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SdJ-s6-sv8" customClass="PickerViewTextField" customModule="PayOutDemo" customModuleProvider="target">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="187" height="30"/>
+                                                                        <nil key="textColor"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                        <textInputTraits key="textInputTraits"/>
+                                                                        <connections>
+                                                                            <outlet property="delegate" destination="VeV-GQ-AsF" id="8KC-N0-sxR"/>
+                                                                        </connections>
+                                                                    </textField>
+                                                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="gBC-ax-fZU">
+                                                                        <rect key="frame" x="207" y="0.0" width="187" height="31"/>
+                                                                        <segments>
+                                                                            <segment title="First"/>
+                                                                            <segment title="Second"/>
+                                                                            <segment title=""/>
+                                                                        </segments>
+                                                                        <color key="tintColor" name="MainRed"/>
+                                                                    </segmentedControl>
+                                                                </subviews>
+                                                            </stackView>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="NwF-mx-kO6">
+                                                        <rect key="frame" x="0.0" y="71" width="394" height="56"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Amount of transaction:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ctm-b5-qqd">
+                                                                <rect key="frame" x="0.0" y="0.0" width="394" height="18"/>
+                                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                                <color key="textColor" name="MainRed"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="m7L-Ox-HR1">
+                                                                <rect key="frame" x="0.0" y="26" width="394" height="30"/>
+                                                                <subviews>
+                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="97H-fA-k3h">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="187" height="30"/>
+                                                                        <nil key="textColor"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                        <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                                                        <connections>
+                                                                            <outlet property="delegate" destination="VeV-GQ-AsF" id="iBk-EJ-m4Q"/>
+                                                                        </connections>
+                                                                    </textField>
+                                                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="cgW-d2-E87">
+                                                                        <rect key="frame" x="207" y="0.0" width="187" height="31"/>
+                                                                        <segments>
+                                                                            <segment title="First"/>
+                                                                            <segment title="Second"/>
+                                                                            <segment title=""/>
+                                                                        </segments>
+                                                                        <color key="tintColor" name="MainRed"/>
+                                                                    </segmentedControl>
+                                                                </subviews>
+                                                            </stackView>
+                                                        </subviews>
+                                                    </stackView>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="EmC-4D-Kyy">
+                                                <rect key="frame" x="10" y="434" width="394" height="115"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="9vg-Vx-HQI">
+                                                        <rect key="frame" x="0.0" y="0.0" width="394" height="70"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name of transaction:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5QC-5n-Nl3">
+                                                                <rect key="frame" x="0.0" y="0.0" width="394" height="30"/>
+                                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                                <color key="textColor" name="MainRed"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TRd-Aa-mdU">
+                                                                <rect key="frame" x="0.0" y="40" width="394" height="30"/>
+                                                                <nil key="textColor"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                <textInputTraits key="textInputTraits"/>
+                                                                <connections>
+                                                                    <outlet property="delegate" destination="VeV-GQ-AsF" id="Ixy-dE-736"/>
+                                                                </connections>
+                                                            </textField>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Evx-a2-Y97">
+                                                        <rect key="frame" x="0.0" y="85" width="394" height="30"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="IBAN:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tnp-BW-HXJ">
+                                                                <rect key="frame" x="0.0" y="0.0" width="187" height="30"/>
+                                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                                <color key="textColor" name="MainRed"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Tja-xg-GkL">
+                                                                <rect key="frame" x="207" y="0.0" width="187" height="30"/>
+                                                                <nil key="textColor"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                <textInputTraits key="textInputTraits"/>
+                                                                <connections>
+                                                                    <outlet property="delegate" destination="VeV-GQ-AsF" id="ytS-gC-lCl"/>
+                                                                </connections>
+                                                            </textField>
+                                                        </subviews>
+                                                    </stackView>
+                                                </subviews>
+                                            </stackView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WqL-N5-L3N">
+                                                <rect key="frame" x="132" y="579" width="150" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="150" id="1a0-xh-jbD"/>
+                                                    <constraint firstAttribute="height" constant="50" id="aVA-oT-S5A"/>
+                                                </constraints>
+                                                <state key="normal" title="Filter">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="filterTransactions" destination="VeV-GQ-AsF" eventType="touchUpInside" id="vSi-Zb-Pti"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="EmC-4D-Kyy" secondAttribute="trailing" constant="10" id="07X-dH-1t6"/>
+                                            <constraint firstItem="ykQ-l9-HHw" firstAttribute="leading" secondItem="af3-ny-9yc" secondAttribute="leading" constant="10" id="4yK-6s-m1F"/>
+                                            <constraint firstItem="Jvt-hS-OIE" firstAttribute="top" secondItem="af3-ny-9yc" secondAttribute="top" constant="20" id="8Pm-RL-L4B"/>
+                                            <constraint firstItem="Jvt-hS-OIE" firstAttribute="leading" secondItem="af3-ny-9yc" secondAttribute="leading" constant="10" id="AwA-pf-Q63"/>
+                                            <constraint firstItem="ykQ-l9-HHw" firstAttribute="top" secondItem="Jvt-hS-OIE" secondAttribute="bottom" constant="15" id="HNH-Fr-PvN"/>
+                                            <constraint firstItem="WqL-N5-L3N" firstAttribute="top" secondItem="EmC-4D-Kyy" secondAttribute="bottom" constant="30" id="KkA-Lx-Arx"/>
+                                            <constraint firstAttribute="trailing" secondItem="Jvt-hS-OIE" secondAttribute="trailing" constant="10" id="UZo-ZI-Eql"/>
+                                            <constraint firstItem="EmC-4D-Kyy" firstAttribute="leading" secondItem="af3-ny-9yc" secondAttribute="leading" constant="10" id="UkI-QE-R0d"/>
+                                            <constraint firstItem="EmC-4D-Kyy" firstAttribute="top" secondItem="ykQ-l9-HHw" secondAttribute="bottom" constant="15" id="ae5-pp-x4c"/>
+                                            <constraint firstItem="WqL-N5-L3N" firstAttribute="centerX" secondItem="af3-ny-9yc" secondAttribute="centerX" id="fvH-vn-kf6"/>
+                                            <constraint firstAttribute="bottom" secondItem="WqL-N5-L3N" secondAttribute="bottom" constant="20" id="hf9-Ox-Trj"/>
+                                            <constraint firstAttribute="trailing" secondItem="ykQ-l9-HHw" secondAttribute="trailing" constant="10" id="x3h-qL-N25"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="af3-ny-9yc" secondAttribute="trailing" id="6kK-ac-RzL"/>
+                                    <constraint firstAttribute="bottom" secondItem="af3-ny-9yc" secondAttribute="bottom" id="MEY-m6-7Vl"/>
+                                    <constraint firstItem="af3-ny-9yc" firstAttribute="top" secondItem="tcw-yc-tvo" secondAttribute="top" id="PKn-pc-vVu"/>
+                                    <constraint firstItem="af3-ny-9yc" firstAttribute="width" secondItem="tcw-yc-tvo" secondAttribute="width" id="Zzk-Qp-vxi"/>
+                                    <constraint firstItem="af3-ny-9yc" firstAttribute="leading" secondItem="tcw-yc-tvo" secondAttribute="leading" id="aI9-Qe-AF9"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="OI0-J6-Prx" firstAttribute="bottom" secondItem="tcw-yc-tvo" secondAttribute="bottom" id="1ME-QI-5NK"/>
+                            <constraint firstItem="OI0-J6-Prx" firstAttribute="trailing" secondItem="tcw-yc-tvo" secondAttribute="trailing" id="M4Y-7c-xdF"/>
+                            <constraint firstItem="tcw-yc-tvo" firstAttribute="leading" secondItem="OI0-J6-Prx" secondAttribute="leading" id="dAX-8K-bhW"/>
+                            <constraint firstItem="tcw-yc-tvo" firstAttribute="top" secondItem="OI0-J6-Prx" secondAttribute="top" id="kmP-yd-Yd4"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="OI0-J6-Prx"/>
+                    </view>
+                    <connections>
+                        <outlet property="IBANTextField" destination="Tja-xg-GkL" id="UbU-Js-pne"/>
+                        <outlet property="amountTextField" destination="97H-fA-k3h" id="yYt-qH-MMh"/>
+                        <outlet property="amoutSignSegmentControl" destination="cgW-d2-E87" id="WGM-jP-r2J"/>
+                        <outlet property="dateSignSegmentControl" destination="gBC-ax-fZU" id="n6Q-bq-Vhv"/>
+                        <outlet property="filterButton" destination="WqL-N5-L3N" id="ZvZ-mB-D8I"/>
+                        <outlet property="nameOfTransactionTextField" destination="TRd-Aa-mdU" id="61R-wC-sMX"/>
+                        <outlet property="postingDatePickerView" destination="SdJ-s6-sv8" id="ocI-bT-RxR"/>
+                        <outlet property="scrollView" destination="tcw-yc-tvo" id="cto-ec-Zf7"/>
+                        <outlet property="typeOfIncomingTransactionPickerView" destination="zA4-OB-OHi" id="xOz-yC-F7d"/>
+                        <outlet property="typeOfIncomingTransactionStackView" destination="mof-4X-HoR" id="pBj-tx-fge"/>
+                        <outlet property="typeOfOutgoingTransactionPickerView" destination="bEY-Fg-SHq" id="jxo-Q1-96A"/>
+                        <outlet property="typeOfTransactionPickerView" destination="kLm-j3-QCD" id="6FE-iR-HIH"/>
+                        <outlet property="typeOfUnderOutgoingTransactionStackView" destination="hqm-pg-Ppm" id="TNS-5v-ZVb"/>
+                        <outlet property="typeOutgoingTreansactionStackView" destination="FPB-p2-JDw" id="ekb-tD-NNO"/>
+                        <outlet property="underTypeOfOutgoingTransactionPickerView" destination="uAG-n2-4Q3" id="j08-6j-x4o"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kjY-2C-BFD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-359.4202898550725" y="69.642857142857139"/>
+        </scene>
+    </scenes>
+    <resources>
+        <namedColor name="MainRed">
+            <color red="0.77600002288818359" green="0.27799999713897705" blue="0.20800000429153442" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

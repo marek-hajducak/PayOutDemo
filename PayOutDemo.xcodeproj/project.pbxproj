@@ -103,6 +103,13 @@
 		85D3D78B224919BE0006C711 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D3D78A224919BE0006C711 /* Image.swift */; };
 		85D3D78D224929440006C711 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D3D78C224929440006C711 /* Transaction.swift */; };
 		85D3D78F22492CDB0006C711 /* TransactionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D3D78E22492CDB0006C711 /* TransactionService.swift */; };
+		85D72022224A26D8005F0795 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D72021224A26D8005F0795 /* FilterViewController.swift */; };
+		85D72024224A26E0005F0795 /* Filter.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 85D72023224A26E0005F0795 /* Filter.storyboard */; };
+		85D72027224A272E005F0795 /* FilterFlowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D72026224A272E005F0795 /* FilterFlowController.swift */; };
+		85D7202A224A30BB005F0795 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D72029224A30BB005F0795 /* Filter.swift */; };
+		85D7202C224A4718005F0795 /* InputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D7202B224A4718005F0795 /* InputViewController.swift */; };
+		85D72034224A48C1005F0795 /* PickerViewTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D72032224A48C1005F0795 /* PickerViewTextField.swift */; };
+		85D72035224A48C1005F0795 /* DesignableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D72033224A48C1005F0795 /* DesignableTextField.swift */; };
 		E9190566C5330B70CBDEA43C /* libPods-PayOutDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BA4698F36BAC0907A078821 /* libPods-PayOutDemo.a */; };
 /* End PBXBuildFile section */
 
@@ -205,6 +212,13 @@
 		85D3D78A224919BE0006C711 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		85D3D78C224929440006C711 /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
 		85D3D78E22492CDB0006C711 /* TransactionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionService.swift; sourceTree = "<group>"; };
+		85D72021224A26D8005F0795 /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
+		85D72023224A26E0005F0795 /* Filter.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Filter.storyboard; sourceTree = "<group>"; };
+		85D72026224A272E005F0795 /* FilterFlowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterFlowController.swift; sourceTree = "<group>"; };
+		85D72029224A30BB005F0795 /* Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
+		85D7202B224A4718005F0795 /* InputViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputViewController.swift; sourceTree = "<group>"; };
+		85D72032224A48C1005F0795 /* PickerViewTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerViewTextField.swift; sourceTree = "<group>"; };
+		85D72033224A48C1005F0795 /* DesignableTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignableTextField.swift; sourceTree = "<group>"; };
 		8BA4698F36BAC0907A078821 /* libPods-PayOutDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PayOutDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3D013F26FA66DBF8BAAB0F3 /* Pods-PayOutDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PayOutDemo.release.xcconfig"; path = "Target Support Files/Pods-PayOutDemo/Pods-PayOutDemo.release.xcconfig"; sourceTree = "<group>"; };
 		DC65D934CB79DB5477ADCCE1 /* Pods-PayOutDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PayOutDemo.debug.xcconfig"; path = "Target Support Files/Pods-PayOutDemo/Pods-PayOutDemo.debug.xcconfig"; sourceTree = "<group>"; };
@@ -383,6 +397,7 @@
 		85379D9F223FC1020049FEC4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				85D72031224A48A2005F0795 /* UITextFiled */,
 				85379DD2223FC9610049FEC4 /* XIBView.swift */,
 			);
 			path = Views;
@@ -391,6 +406,7 @@
 		85379DA0223FC1080049FEC4 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				85D7202B224A4718005F0795 /* InputViewController.swift */,
 				85B2DCE82242692800B91B92 /* BaseViewController.swift */,
 			);
 			path = "View Controllers";
@@ -525,6 +541,7 @@
 				85B2DD3A2244E41200B91B92 /* TransactionViewController.swift */,
 				85B2DD402244F4DC00B91B92 /* TransactionsTableViewController.swift */,
 				85B2DD382244E3F900B91B92 /* Transaction.storyboard */,
+				85D72025224A26F0005F0795 /* Filter */,
 			);
 			path = Transaction;
 			sourceTree = "<group>";
@@ -601,6 +618,34 @@
 			path = "Account Views";
 			sourceTree = "<group>";
 		};
+		85D72025224A26F0005F0795 /* Filter */ = {
+			isa = PBXGroup;
+			children = (
+				85D72028224A30B3005F0795 /* Model */,
+				85D72026224A272E005F0795 /* FilterFlowController.swift */,
+				85D72021224A26D8005F0795 /* FilterViewController.swift */,
+				85D72023224A26E0005F0795 /* Filter.storyboard */,
+			);
+			path = Filter;
+			sourceTree = "<group>";
+		};
+		85D72028224A30B3005F0795 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				85D72029224A30BB005F0795 /* Filter.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		85D72031224A48A2005F0795 /* UITextFiled */ = {
+			isa = PBXGroup;
+			children = (
+				85D72033224A48C1005F0795 /* DesignableTextField.swift */,
+				85D72032224A48C1005F0795 /* PickerViewTextField.swift */,
+			);
+			path = UITextFiled;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -662,6 +707,7 @@
 			files = (
 				85B2DD1E2243780100B91B92 /* GoalsTableViewCell.xib in Resources */,
 				85B2DCFE2243773500B91B92 /* CreditCardsTableViewCell.xib in Resources */,
+				85D72024224A26E0005F0795 /* Filter.storyboard in Resources */,
 				85B55B6F223F866B007A3D78 /* LaunchScreen.storyboard in Resources */,
 				85B2DD062243777D00B91B92 /* ExchangeRatesTableViewCell.xib in Resources */,
 				85B2DD0E224377C400B91B92 /* SpendingReportTableViewCell.xib in Resources */,
@@ -717,6 +763,7 @@
 				85379DC3223FC7C20049FEC4 /* Moya+Extensions.swift in Sources */,
 				85379DC9223FC7C20049FEC4 /* String+Extensions.swift in Sources */,
 				85379DAD223FC6260049FEC4 /* ServiceError.swift in Sources */,
+				85D7202A224A30BB005F0795 /* Filter.swift in Sources */,
 				85379DC8223FC7C20049FEC4 /* UIView+Extensions.swift in Sources */,
 				85379DAF223FC6260049FEC4 /* Lce.swift in Sources */,
 				85B2DCE92242692800B91B92 /* BaseViewController.swift in Sources */,
@@ -731,6 +778,7 @@
 				85B2DD222243949300B91B92 /* WidgetsViewController.swift in Sources */,
 				85B2DD262243D6EF00B91B92 /* Liability.swift in Sources */,
 				85379E03224251170049FEC4 /* Account.swift in Sources */,
+				85D7202C224A4718005F0795 /* InputViewController.swift in Sources */,
 				85379DC2223FC7C20049FEC4 /* Sequence+Extensions.swift in Sources */,
 				85B55B67223F866A007A3D78 /* MainViewController.swift in Sources */,
 				85B2DD302244C88A00B91B92 /* AppTabBarController.swift in Sources */,
@@ -752,12 +800,14 @@
 				85379DC4223FC7C20049FEC4 /* Date+Extensions.swift in Sources */,
 				85D3D7802248D6B90006C711 /* TransactionTableViewCell.swift in Sources */,
 				85379DB6223FC6E80049FEC4 /* AuthenticatedProvider.swift in Sources */,
+				85D72035224A48C1005F0795 /* DesignableTextField.swift in Sources */,
 				85B2DCF72242ABDF00B91B92 /* Goal.swift in Sources */,
 				85379DAE223FC6260049FEC4 /* ActivityIndicator.swift in Sources */,
 				85B2DD012243776800B91B92 /* LoansTableViewCell.swift in Sources */,
 				85379DB5223FC6E80049FEC4 /* NetworkingUtilities.swift in Sources */,
 				85379DDE223FE1F60049FEC4 /* AppFlowController.swift in Sources */,
 				85B2DCEB2242852600B91B92 /* Card.swift in Sources */,
+				85D72027224A272E005F0795 /* FilterFlowController.swift in Sources */,
 				85379DC5223FC7C20049FEC4 /* NSObject+Extensions.swift in Sources */,
 				85379DDA223FE0540049FEC4 /* MainFlowController.swift in Sources */,
 				85B2DD242243D6DA00B91B92 /* Asset.swift in Sources */,
@@ -785,7 +835,9 @@
 				85B2DCF32242925400B91B92 /* Fund.swift in Sources */,
 				85B2DD11224377D800B91B92 /* AssetsAndLiabilitiesTableViewCell.swift in Sources */,
 				85D3D7892248F9D20006C711 /* TransactionTypes.swift in Sources */,
+				85D72034224A48C1005F0795 /* PickerViewTextField.swift in Sources */,
 				85379DE0223FE2670049FEC4 /* StoryboardScene.swift in Sources */,
+				85D72022224A26D8005F0795 /* FilterViewController.swift in Sources */,
 				85D3D78F22492CDB0006C711 /* TransactionService.swift in Sources */,
 				85379DC6223FC7C20049FEC4 /* Observable+Extensions.swift in Sources */,
 				85379DF02240F45D0049FEC4 /* Model+Draging.swift in Sources */,

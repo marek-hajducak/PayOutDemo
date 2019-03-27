@@ -26,15 +26,15 @@ import RealmSwift
     dynamic var createDate: String = ""
     dynamic var active: Bool = true
     
-    dynamic var cards = List<Card>()
-    dynamic var loans = List<Loan>()
-    dynamic var exchangeRates = List<ExchangeRate>()
-    dynamic var mutalFunds = List<MutalFund>()
-    dynamic var pensions = List<Pension>()
-    dynamic var goals = List<Goal>()
-    dynamic var assetsAndLiabilities = List<AssetAndLiability>()
-    dynamic var branches = List<Branch>()
-    dynamic var atms = List<ATM>()
+    var cards = List<Card>()
+    var loans = List<Loan>()
+    var exchangeRates = List<ExchangeRate>()
+    var mutalFunds = List<MutalFund>()
+    var pensions = List<Pension>()
+    var goals = List<Goal>()
+    var assetsAndLiabilities = List<AssetAndLiability>()
+    var branches = List<Branch>()
+    var atms = List<ATM>()
     
     // MARK: Realm API
     override static func primaryKey() -> String? {

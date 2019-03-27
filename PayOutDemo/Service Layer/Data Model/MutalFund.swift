@@ -17,7 +17,7 @@ import RealmSwift
     dynamic var accountNumber: String = ""
     dynamic var actualBalance: String = ""
     
-    dynamic var funds = List<Fund>()
+    var funds = List<Fund>()
     
     // MARK: Realm API
     override static func primaryKey() -> String? {

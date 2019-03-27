@@ -16,17 +16,17 @@ class TransactionTypes {
     var underOutgoingType: TransactionType.OutgoingtransactionTypes.OutgoingUnderTypes?
     
     init(transactionTypeString: Int = 0, incomingTypeString: String?, outgoingTypeString: String?, underOutgoingType: String?) {
-        self.transactionType = TransactionType.init(rawValue: transactionTypeString) ?? .empty
+        self.transactionType = TransactionType.init(rawValue: transactionTypeString) ?? .all
         self.incomingType = TransactionType.IncomingtransactionTypes.init(rawValue: incomingTypeString ?? "Empty") ?? .empty
         self.outgoingType = TransactionType.OutgoingtransactionTypes.init(rawValue: outgoingTypeString ?? "Empty") ?? .empty
         setUnderOutgoingType(underOutgoingType: underOutgoingType ?? "Empty")
     }
     
-    func setUnderOutgoingType(underOutgoingType: String) {
+    private func setUnderOutgoingType(underOutgoingType: String) {
         self.underOutgoingType = getUnderType(from: self.outgoingType ?? .empty, under: underOutgoingType)
     }
     
-    private let underTypesDictionary: [TransactionType.OutgoingtransactionTypes: [String : TransactionType.OutgoingtransactionTypes.OutgoingUnderTypes]] = [
+    let underTypesDictionary: [TransactionType.OutgoingtransactionTypes: [String : TransactionType.OutgoingtransactionTypes.OutgoingUnderTypes]] = [
         .transport : [
             "Petrol" : .petrol,
             "Taxi" : .taxi,
@@ -90,12 +90,12 @@ class TransactionTypes {
     }
 }
 
-enum TransactionType: Int {
-    case empty = 0
+enum TransactionType: Int, CaseIterable {
+    case all = 0
     case incoming = 1
     case outgoing = 2
     
-    enum IncomingtransactionTypes: String {
+    enum IncomingtransactionTypes: String, CaseIterable {
         case empty = "Empty"
         case pay = "Pay"
         case sell = "Sell"
@@ -123,9 +123,13 @@ enum TransactionType: Int {
             }
         }
         
+        func getString() -> String {
+            return self.rawValue
+        }
+        
     }
     
-    enum OutgoingtransactionTypes: String {
+    enum OutgoingtransactionTypes: String, CaseIterable {
         case empty = "Empty"
         case transport = "Transport"
         case buying = "Buing"
@@ -149,7 +153,7 @@ enum TransactionType: Int {
             case .empty:
                 return Image.Empty
             case .transport:
-                return Image.Rransport
+                return Image.Transport
             case .buying:
                 return Image.Buying
             case .funn:
@@ -183,7 +187,11 @@ enum TransactionType: Int {
             }
         }
         
-        enum OutgoingUnderTypes: String {
+        func getString() -> String {
+            return self.rawValue
+        }
+        
+        enum OutgoingUnderTypes: String, CaseIterable {
             case empty = "Empty"
             // Transport
             case petrol = "Patrol"
@@ -303,6 +311,21 @@ enum TransactionType: Int {
                     return Image.Empty
                 }
             }
+            
+            func getString() -> String {
+                return self.rawValue
+            }
+        }
+    }
+    
+    func getString() -> String {
+        switch self {
+        case .all:
+            return "All"
+        case .incoming:
+            return "Incoming"
+        case .outgoing:
+            return "Outgoing"
         }
     }
 }

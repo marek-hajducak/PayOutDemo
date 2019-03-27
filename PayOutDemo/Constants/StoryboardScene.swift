@@ -26,6 +26,11 @@ internal enum StoryboardScene {
         internal static let storyboardName = "Transaction"
         internal static let initialScene = InitialSceneType<TransactionViewController>(storyboard: Transaction.self)
     }
+    
+    internal enum Filter: StoryboardType {
+        internal static let storyboardName = "Filter"
+        internal static let initialScene = InitialSceneType<FilterViewController>(storyboard: Filter.self)
+    }
 }
 
 // MARK: - Implementation Details

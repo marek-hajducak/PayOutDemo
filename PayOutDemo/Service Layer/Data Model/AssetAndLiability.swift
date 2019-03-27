@@ -16,8 +16,8 @@ import RealmSwift
     dynamic var id: Int = 0
     dynamic var assetsBalance: String = ""
     dynamic var liabilitiesBalance: String = ""
-    dynamic var assets = List<Asset>()
-    dynamic var liabilities = List<Liability>()
+    var assets = List<Asset>()
+    var liabilities = List<Liability>()
     
     // MARK: Realm API
     override static func primaryKey() -> String? {

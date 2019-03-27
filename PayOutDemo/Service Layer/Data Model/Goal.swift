@@ -21,7 +21,7 @@ import RealmSwift
     dynamic var currentSaving: String = ""
     dynamic var remains: String = ""
     dynamic var monthly: String = ""
-    dynamic var products = List<Product>()
+    var products = List<Product>()
     
     // MARK: Realm API
     override static func primaryKey() -> String? {
