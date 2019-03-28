@@ -37,14 +37,14 @@ extension AcountAPI: TargetType {
     
     var task: Task {
         switch self {
-        case .getAccounts, .getTransactions:
+        case .getAccounts:
             return .requestPlain
         }
     }
     
     var sampleData: Data {
         switch self {
-        case .getAccounts, .getTransactions:
+        case .getAccounts:
             return NetworkingUtilities.stubbedResponse("Transaction")
         }
     }

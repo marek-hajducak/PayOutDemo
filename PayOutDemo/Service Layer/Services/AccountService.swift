@@ -19,7 +19,7 @@ protocol HasAccountService {
 class AccountService: BaseService {
     
     func getAccounts() -> Observable<Lce<[Account]>> {
-        let endpoint = DataAPI.getAccounts
+        let endpoint = AcountAPI.getAccounts
         
         return self.provider.request(MultiTarget(endpoint)).asObservable().filterSuccess().map([Account].self).flatMap({ (transactions) ->  Observable<Lce<[Account]>> in
             return Observable.just(Lce.init(data: transactions))

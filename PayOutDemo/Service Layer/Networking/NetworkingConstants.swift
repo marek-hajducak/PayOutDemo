@@ -13,5 +13,6 @@ struct NetworkingConstants {
     static let iso8601DefaultFormat = "dd. MM. yyyy"
     
     static let baseURL = "https://my-json-server.typicode.com/marek-hajducak/payoutJSON"
+    static let transactionsBaseURL = "https://my-json-server.typicode.com/marek-hajducak/payOutJSONTransaction"
 
 }

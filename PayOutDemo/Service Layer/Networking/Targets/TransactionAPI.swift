@@ -1,32 +1,32 @@
 //
-//  DataAPI.swift
+//  TransactionAPI.swift
 //  PayOutDemo
 //
-//  Created by Marek Hajdučák on 20/03/2019.
+//  Created by Marek Hajdučák on 28/03/2019.
 //  Copyright © 2019 Marek Hajdučák. All rights reserved.
 //
 
 import Foundation
 import Moya
 
-enum AcountAPI {
-    case getAccounts
+enum TransactionAPI {
+    case getTransactions
 }
 
-extension AcountAPI: TargetType {
+extension TransactionAPI: TargetType {
     
-    var baseURL: URL { return URL(string: "\(NetworkingConstants.baseURL)")! }
+    var baseURL: URL { return URL(string: "\(NetworkingConstants.transactionsBaseURL)")! }
     
     var path: String {
         switch self {
-        case .getAccounts:
-            return "/accounts"
+        case .getTransactions:
+            return "/transactions"
         }
     }
     
     var method: Moya.Method {
         switch self {
-        case .getAccounts :
+        case .getTransactions:
             return .get
         }
     }
@@ -37,16 +37,15 @@ extension AcountAPI: TargetType {
     
     var task: Task {
         switch self {
-        case .getAccounts, .getTransactions:
+        case .getTransactions:
             return .requestPlain
         }
     }
     
     var sampleData: Data {
         switch self {
-        case .getAccounts, .getTransactions:
+        case .getTransactions:
             return NetworkingUtilities.stubbedResponse("Transaction")
         }
     }
 }
-

@@ -114,6 +114,11 @@ class Image {
     public class var HouseHolds: UIImage { return #imageLiteral(resourceName: "house_holds") }
     public class var Books: UIImage { return #imageLiteral(resourceName: "books") }
     public class var Courses: UIImage { return #imageLiteral(resourceName: "courses") }
+    
+    // Statistics
+     public class var IncomingImage: UIImage { return #imageLiteral(resourceName: "incoming_image") }
+     public class var OutgoingImage: UIImage { return #imageLiteral(resourceName: "outgoing_image") }
+    
 }
 
 
