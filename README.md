@@ -4,7 +4,8 @@
 - Project using cocoapods manager.
 
 ## Documentation
-- **Data from** : [GITHUB](https://github.com/marek-hajducak/payoutJSON/blob/master/db.json)
+- **Data from** : [GITHUB_accounts](https://github.com/marek-hajducak/payoutJSON/blob/master/db.json) 
+- **Data from** : [GITHUB_transactions](https://github.com/marek-hajducak/payOutJSONTransaction/blob/master/db.json) 
 - **Dociumentation** : [DOC](https://my-json-server.typicode.com/marek-hajducak/payoutJSON)
 
 ## CocoaPods

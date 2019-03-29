@@ -11,7 +11,7 @@ import UIKit
 class Color {
     
     public class var MainRed: UIColor {
-        return #colorLiteral(red: 0.7760000229, green: 0.2779999971, blue: 0.2080000043, alpha: 1)
+        return #colorLiteral(red: 0.3882352941, green: 0.2470588235, blue: 0.6823529412, alpha: 1)
     }
     
     public class var White: UIColor {
