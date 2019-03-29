@@ -11,7 +11,6 @@ import UIKit
 
 extension UIView {
     
-    // MARK: Activity Indicator on view
     func startActivityIndicator(style: UIActivityIndicatorView.Style = .whiteLarge, color: UIColor = Color.MainRed, backgroundColor: UIColor = UIColor.clear) {
         endEditing(true)
         stopActivityIndicator()
@@ -29,6 +28,14 @@ extension UIView {
                 view.removeFromSuperview()
             }
         }
+    }
+    
+    @objc func dropViewShadow(color: CGColor, radius: CGFloat, opacity: Float, offsetWidth: Int, offsetHeigt: Int, maskToBounds: Bool) {
+        layer.shadowColor = color
+        layer.shadowRadius = radius
+        layer.shadowOpacity = opacity
+        layer.shadowOffset = CGSize(width: offsetWidth, height: offsetHeigt)
+        layer.masksToBounds = maskToBounds
     }
     
 }

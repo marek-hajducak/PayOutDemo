@@ -214,19 +214,23 @@ class SpendingReportView: BasicReportView {
     
     var transactions: [Transaction] = [] {
         didSet {
-            self.outgoingTransactions = transactions.filter({$0.type == 2})
-            self.incomingTransactions = transactions.filter({$0.type == 1})
-            createBasicGraph()
-            addAnimationForBasicGraph()
-            showBasicPercentageLabel()
-            showBasicLegend()
+            startReportView(back: false)
         }
+    }
+    
+    private func startReportView(back: Bool) {
+        self.outgoingTransactions = transactions.filter({$0.type == 2})
+        self.incomingTransactions = transactions.filter({$0.type == 1})
+        createBasicGraph(back: back)
+        addAnimationForBasicGraph()
+        showBasicPercentageLabel(back: back)
+        showBasicLegend()
     }
     
     let percentageLabelForIncomingTypesGraph: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
-        label.font = UIFont.boldSystemFont(ofSize: 12)
+        label.font = Font.BasicPercentageLabelTitle
         label.frame = CGRect(x: 0, y: 0, width: 150, height: 150)
         return label
     }()
@@ -234,7 +238,7 @@ class SpendingReportView: BasicReportView {
     let percentageLabelForOutgoingTypesGraph: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
-        label.font = UIFont.boldSystemFont(ofSize: 12)
+        label.font = Font.BasicPercentageLabelTitle
         label.frame = CGRect(x: 0, y: 0, width: 150, height: 150)
         return label
     }()
@@ -260,12 +264,13 @@ class SpendingReportView: BasicReportView {
             layer.isHidden = true
         }
         self.outgoingTypeButons = [transportButton, buyingButton, funnButton, travelingButton, eatAndDrinkButton, rentalsAndServicesButton, friendsAndLoveButton, healthButton, giftsOutgoingButton, familyButton, educationButton, investmentsButton, bussinesButton, insuranceButton, feesButton, othersButton]
+        
         for button in outgoingTypeButons {
             button.backgroundColor = UIColor.clear
             button.widthAnchor.constraint(equalToConstant: frame.width/3).isActive = true
             button.heightAnchor.constraint(equalToConstant: 30.0).isActive = true
             button.titleLabel?.textAlignment = .center
-            button.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .bold)
+            button.titleLabel?.font = Font.BasicUnderTypeOfTransactionButon
             button.imageView?.contentMode = .scaleAspectFit
             button.imageEdgeInsets = UIEdgeInsets(top: 5, left: 0, bottom: 5, right: 0)
             button.titleEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
@@ -276,7 +281,7 @@ class SpendingReportView: BasicReportView {
             button.widthAnchor.constraint(equalToConstant: frame.width/3).isActive = true
             button.heightAnchor.constraint(equalToConstant: 30.0).isActive = true
             button.titleLabel?.textAlignment = .center
-            button.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .bold)
+            button.titleLabel?.font = Font.BasicUnderTypeOfTransactionButon
             button.imageView?.contentMode = .scaleAspectFit
             button.imageEdgeInsets = UIEdgeInsets(top: 5, left: 0, bottom: 5, right: 0)
             button.titleEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
@@ -286,7 +291,7 @@ class SpendingReportView: BasicReportView {
             button.backgroundColor = UIColor.clear
             button.widthAnchor.constraint(equalToConstant: frame.width/3).isActive = true
             button.heightAnchor.constraint(equalToConstant: 30.0).isActive = true
-            button.titleLabel?.font = UIFont.systemFont(ofSize: 17, weight: .bold)
+            button.titleLabel?.font = Font.BasicTypeOfTransactionButon
             button.titleLabel?.textAlignment = .center
             button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 5)
             button.titleEdgeInsets = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 0)
@@ -308,6 +313,7 @@ class SpendingReportView: BasicReportView {
         for item in legendStackView.subviews {
             legendStackView.removeArrangedSubview(item)
         }
+        backButton.isHidden = true
     }
     
     @objc func hitIncoming () {
@@ -320,12 +326,20 @@ class SpendingReportView: BasicReportView {
         addAnimationForOutgoingTypes()
     }
     
+    @objc override func hitBack() {
+        super.hitBack()
+        swipeUp()
+        backButton.isHidden = true
+        startReportView(back: true)
+    }
+    
     /// Basic Graph:
-    override func createBasicGraph() {
-        super.createBasicGraph()
+    override func createBasicGraph(back : Bool) {
+        super.createBasicGraph(back: back)
+        incomingButton.isEnabled = !transactions.isEmpty
+        outgoingButton.isEnabled = !transactions.isEmpty
         incomingTransactionsShapeLayer.isHidden = false
         outgoingTransactionsShapeLayer.isHidden = false
-        
         var fullamount: Double = 0
         var outgoingAmount: Double = 0
         var incomingAmount: Double = 0
@@ -342,8 +356,9 @@ class SpendingReportView: BasicReportView {
         let percentageOfIncoming = (incomingAmount/fullamount).rounded(toPlaces: 2)
         let degreesOutgoing = percentageOfOugoing * 360
         let degreesIncoming = percentageOfIncoming * 360
-        
-        let centerPoint = CGPoint(x: center.x - grafXOffset, y: center.y + grafYOffset)
+        var backOffset: CGFloat = 0
+        back ? (backOffset = 85) : (backOffset = 0)
+        let centerPoint = CGPoint(x: center.x - grafXOffset, y: center.y - backOffset + grafYOffset)
         let startOfOutgoing = -CGFloat.pi / 2
         let endOfOutgoing = CGFloat(degreesOutgoing) * CGFloat.pi/180 + startOfOutgoing
         let circularPathForOutgoing = UIBezierPath(arcCenter: centerPoint, radius: 75, startAngle: startOfOutgoing, endAngle: endOfOutgoing, clockwise: true)
@@ -363,11 +378,13 @@ class SpendingReportView: BasicReportView {
         }
     }
     
-    override func showBasicPercentageLabel() {
-        super.showBasicPercentageLabel()
+    override func showBasicPercentageLabel(back: Bool) {
+        super.showBasicPercentageLabel(back: back)
         percentageLabelForIncomingTypesGraph.isHidden = true
         percentageLabelForOutgoingTypesGraph.isHidden = true
-        percentageLabelOfBasedGraph.center = CGPoint(x: center.x - grafXOffset , y: center.y + 75)
+        var backOffset: CGFloat = 0
+        back ? (backOffset = 85) : (backOffset = 0)
+        percentageLabelOfBasedGraph.center = CGPoint(x: center.x - grafXOffset , y: center.y - backOffset + grafYOffset)
     }
     
     override func showBasicLegend() {
@@ -393,9 +410,9 @@ class SpendingReportView: BasicReportView {
     private func setPercentageLabel(outgoingAmount: Double, incomingAmount: Double) {
         if let currency = currency {
             let attributetIncomingString = NSMutableAttributedString(string: "- \(outgoingAmount.rounded(toPlaces: 2)) \(currency.getCurrencySymbol())", attributes: [NSAttributedString.Key.foregroundColor: Color.MainRed,
-                                                                                                                                                                      NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17, weight: .bold)])
+                                                                                                                                                                      NSAttributedString.Key.font: Font.BasicTypeOfTransactionButon])
             let attributeOutgoingString = NSAttributedString(string: "\n+ \(incomingAmount.rounded(toPlaces: 2) )\(currency.getCurrencySymbol())", attributes: [NSAttributedString.Key.foregroundColor : Color.IncomingLightGreen,
-                                                                                                                                                                NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17, weight: .bold)])
+                                                                                                                                                                NSAttributedString.Key.font: Font.BasicTypeOfTransactionButon])
             attributetIncomingString.append(attributeOutgoingString)
             percentageLabelOfBasedGraph.attributedText = attributetIncomingString
             percentageLabelOfBasedGraph.numberOfLines = 2
@@ -413,83 +430,83 @@ class SpendingReportView: BasicReportView {
         // All strings percentages :
         // .transport
         if transportPercentage != 0.0 {
-            let attributetString = NSMutableAttributedString(string: "\(transportPercentage.rounded(toPlaces: 4)) %", attributes: [NSAttributedString.Key.foregroundColor: Color.Transport, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 13, weight: .bold)])
+            let attributetString = NSMutableAttributedString(string: "\(transportPercentage.rounded(toPlaces: 4)) %", attributes: [NSAttributedString.Key.foregroundColor: Color.Transport, NSAttributedString.Key.font: Font.BasicUnderTypeOfOutgoingTransactionButon])
             attributetAllString.append(attributetString)
         }
         // .buyins
         if buyingPercentage != 0.0 {
-            let attributetString = NSMutableAttributedString(string: "\n\(buyingPercentage.rounded(toPlaces: 4)) %", attributes: [NSAttributedString.Key.foregroundColor: Color.Buying, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 13, weight: .bold)])
+            let attributetString = NSMutableAttributedString(string: "\n\(buyingPercentage.rounded(toPlaces: 4)) %", attributes: [NSAttributedString.Key.foregroundColor: Color.Buying, NSAttributedString.Key.font: Font.BasicUnderTypeOfOutgoingTransactionButon])
             attributetAllString.append(attributetString)
         }
         // .funn
         if funnPercentage != 0.0 {
-            let attributetString = NSMutableAttributedString(string: "\n\(funnPercentage.rounded(toPlaces: 4)) %", attributes: [NSAttributedString.Key.foregroundColor: Color.Funn, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 13, weight: .bold)])
+            let attributetString = NSMutableAttributedString(string: "\n\(funnPercentage.rounded(toPlaces: 4)) %", attributes: [NSAttributedString.Key.foregroundColor: Color.Funn, NSAttributedString.Key.font: Font.BasicUnderTypeOfOutgoingTransactionButon])
             attributetAllString.append(attributetString)
         }
         // .traveling
         if travelingPercentage != 0.0 {
-            let attributetString = NSMutableAttributedString(string: "\n\(travelingPercentage.rounded(toPlaces: 4)) %", attributes: [NSAttributedString.Key.foregroundColor: Color.Traveling, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 13, weight: .bold)])
+            let attributetString = NSMutableAttributedString(string: "\n\(travelingPercentage.rounded(toPlaces: 4)) %", attributes: [NSAttributedString.Key.foregroundColor: Color.Traveling, NSAttributedString.Key.font: Font.BasicUnderTypeOfOutgoingTransactionButon])
             attributetAllString.append(attributetString)
         }
         // .eatAndDrink
         if eatanddrinkPercentage != 0.0 {
-            let attributetString = NSMutableAttributedString(string: "\n\(eatanddrinkPercentage.rounded(toPlaces: 4)) %", attributes: [NSAttributedString.Key.foregroundColor: Color.EatAndDrink, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 13, weight: .bold)])
+            let attributetString = NSMutableAttributedString(string: "\n\(eatanddrinkPercentage.rounded(toPlaces: 4)) %", attributes: [NSAttributedString.Key.foregroundColor: Color.EatAndDrink, NSAttributedString.Key.font: Font.BasicUnderTypeOfOutgoingTransactionButon])
             attributetAllString.append(attributetString)
         }
         // .rentalsAndServices
         if rentalAndServicePercentage != 0.0 {
-            let attributetString = NSMutableAttributedString(string: "\n\(rentalAndServicePercentage.rounded(toPlaces: 4)) %", attributes: [NSAttributedString.Key.foregroundColor: Color.RentalsAndServices, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 13, weight: .bold)])
+            let attributetString = NSMutableAttributedString(string: "\n\(rentalAndServicePercentage.rounded(toPlaces: 4)) %", attributes: [NSAttributedString.Key.foregroundColor: Color.RentalsAndServices, NSAttributedString.Key.font: Font.BasicUnderTypeOfOutgoingTransactionButon])
             attributetAllString.append(attributetString)
         }
         // .friendsAndLove
         if friendandlovePercentage != 0.0 {
-            let attributetString = NSMutableAttributedString(string: "\n\(friendandlovePercentage.rounded(toPlaces: 4)) %", attributes: [NSAttributedString.Key.foregroundColor: Color.RentalsAndServices, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 13, weight: .bold)])
+            let attributetString = NSMutableAttributedString(string: "\n\(friendandlovePercentage.rounded(toPlaces: 4)) %", attributes: [NSAttributedString.Key.foregroundColor: Color.RentalsAndServices, NSAttributedString.Key.font: Font.BasicUnderTypeOfOutgoingTransactionButon])
             attributetAllString.append(attributetString)
         }
         // .healt
         if healthPercentage != 0.0 {
-            let attributetString = NSMutableAttributedString(string: "\n\(healthPercentage.rounded(toPlaces: 4)) %", attributes: [NSAttributedString.Key.foregroundColor: Color.Health, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 13, weight: .bold)])
+            let attributetString = NSMutableAttributedString(string: "\n\(healthPercentage.rounded(toPlaces: 4)) %", attributes: [NSAttributedString.Key.foregroundColor: Color.Health, NSAttributedString.Key.font: Font.BasicUnderTypeOfOutgoingTransactionButon])
             attributetAllString.append(attributetString)
         }
         // .gifts
         if giftsPercentage != 0.0 {
-            let attributetString = NSMutableAttributedString(string: "\n\(giftsPercentage.rounded(toPlaces: 4)) %", attributes: [NSAttributedString.Key.foregroundColor: Color.BuyGift, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 13, weight: .bold)])
+            let attributetString = NSMutableAttributedString(string: "\n\(giftsPercentage.rounded(toPlaces: 4)) %", attributes: [NSAttributedString.Key.foregroundColor: Color.BuyGift, NSAttributedString.Key.font: Font.BasicUnderTypeOfOutgoingTransactionButon])
             attributetAllString.append(attributetString)
         }
         // .family
         if familyPercentage != 0.0 {
-            let attributetString = NSMutableAttributedString(string: "\n\(familyPercentage.rounded(toPlaces: 4)) %", attributes: [NSAttributedString.Key.foregroundColor: Color.Family, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 13, weight: .bold)])
+            let attributetString = NSMutableAttributedString(string: "\n\(familyPercentage.rounded(toPlaces: 4)) %", attributes: [NSAttributedString.Key.foregroundColor: Color.Family, NSAttributedString.Key.font: Font.BasicUnderTypeOfOutgoingTransactionButon])
             attributetAllString.append(attributetString)
         }
         // .education
         if educationPercentage != 0.0 {
-            let attributetString = NSMutableAttributedString(string: "\n\(educationPercentage.rounded(toPlaces: 4)) %", attributes: [NSAttributedString.Key.foregroundColor: Color.Education, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 13, weight: .bold)])
+            let attributetString = NSMutableAttributedString(string: "\n\(educationPercentage.rounded(toPlaces: 4)) %", attributes: [NSAttributedString.Key.foregroundColor: Color.Education, NSAttributedString.Key.font: Font.BasicUnderTypeOfOutgoingTransactionButon])
             attributetAllString.append(attributetString)
         }
         // .investments
         if investmentsPercentage != 0.0 {
-            let attributetString = NSMutableAttributedString(string: "\n\(investmentsPercentage.rounded(toPlaces: 4)) %", attributes: [NSAttributedString.Key.foregroundColor: Color.Investments, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 13, weight: .bold)])
+            let attributetString = NSMutableAttributedString(string: "\n\(investmentsPercentage.rounded(toPlaces: 4)) %", attributes: [NSAttributedString.Key.foregroundColor: Color.Investments, NSAttributedString.Key.font: Font.BasicUnderTypeOfOutgoingTransactionButon])
             attributetAllString.append(attributetString)
         }
         // .bussines
         if bussinesPercentage != 0.0 {
-            let attributetString = NSMutableAttributedString(string: "\n\(bussinesPercentage.rounded(toPlaces: 4)) %", attributes: [NSAttributedString.Key.foregroundColor: Color.Bussines, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 13, weight: .bold)])
+            let attributetString = NSMutableAttributedString(string: "\n\(bussinesPercentage.rounded(toPlaces: 4)) %", attributes: [NSAttributedString.Key.foregroundColor: Color.Bussines, NSAttributedString.Key.font: Font.BasicUnderTypeOfOutgoingTransactionButon])
             attributetAllString.append(attributetString)
         }
         
         // .insurance
         if insurancePercentage != 0.0 {
-            let attributetString = NSMutableAttributedString(string: "\n\(insurancePercentage.rounded(toPlaces: 4)) %", attributes: [NSAttributedString.Key.foregroundColor: Color.Insurance, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 13, weight: .bold)])
+            let attributetString = NSMutableAttributedString(string: "\n\(insurancePercentage.rounded(toPlaces: 4)) %", attributes: [NSAttributedString.Key.foregroundColor: Color.Insurance, NSAttributedString.Key.font: Font.BasicUnderTypeOfOutgoingTransactionButon])
             attributetAllString.append(attributetString)
         }
         // .fees
         if feesPercentage != 0.0 {
-            let attributetString = NSMutableAttributedString(string: "\n\(feesPercentage.rounded(toPlaces: 4)) %", attributes: [NSAttributedString.Key.foregroundColor: Color.Fees, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 13, weight: .bold)])
+            let attributetString = NSMutableAttributedString(string: "\n\(feesPercentage.rounded(toPlaces: 4)) %", attributes: [NSAttributedString.Key.foregroundColor: Color.Fees, NSAttributedString.Key.font: Font.BasicUnderTypeOfOutgoingTransactionButon])
             attributetAllString.append(attributetString)
         }
         // .others
         if othersPercentage != 0.0 {
-            let attributetString = NSMutableAttributedString(string: "\n\(othersPercentage.rounded(toPlaces: 4)) %", attributes: [NSAttributedString.Key.foregroundColor: Color.Others, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 13, weight: .bold)])
+            let attributetString = NSMutableAttributedString(string: "\n\(othersPercentage.rounded(toPlaces: 4)) %", attributes: [NSAttributedString.Key.foregroundColor: Color.Others, NSAttributedString.Key.font: Font.BasicUnderTypeOfOutgoingTransactionButon])
             attributetAllString.append(attributetString)
         }
         percentageLabelForOutgoingTypesGraph.attributedText = attributetAllString
@@ -799,16 +816,16 @@ class SpendingReportView: BasicReportView {
         percentageLabelForIncomingTypesGraph.isHidden = false
         percentageLabelForIncomingTypesGraph.numberOfLines = 6
         percentageLabelForIncomingTypesGraph.center = CGPoint(x: center.x - grafXOffset , y: center.y - 10)
-        let attributetAllString = NSMutableAttributedString(string: "\(payPercentage.rounded(toPlaces: 4)) %", attributes: [NSAttributedString.Key.foregroundColor: Color.Pay, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 13, weight: .bold)])
-        let attributeSellString = NSAttributedString(string: "\n\(sellPercentage.rounded(toPlaces: 4)) %", attributes: [NSAttributedString.Key.foregroundColor : Color.Sell, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 13, weight: .bold)])
+        let attributetAllString = NSMutableAttributedString(string: "\(payPercentage.rounded(toPlaces: 4)) %", attributes: [NSAttributedString.Key.foregroundColor: Color.Pay, NSAttributedString.Key.font: Font.BasicUnderTypeOfOutgoingTransactionButon])
+        let attributeSellString = NSAttributedString(string: "\n\(sellPercentage.rounded(toPlaces: 4)) %", attributes: [NSAttributedString.Key.foregroundColor : Color.Sell, NSAttributedString.Key.font: Font.BasicUnderTypeOfOutgoingTransactionButon])
         attributetAllString.append(attributeSellString)
-        let attributeRewardsString = NSAttributedString(string: "\n\(rewardsPercentage.rounded(toPlaces: 4)) %", attributes: [NSAttributedString.Key.foregroundColor : Color.Rewards, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 13, weight: .bold)])
+        let attributeRewardsString = NSAttributedString(string: "\n\(rewardsPercentage.rounded(toPlaces: 4)) %", attributes: [NSAttributedString.Key.foregroundColor : Color.Rewards, NSAttributedString.Key.font: Font.BasicUnderTypeOfOutgoingTransactionButon])
         attributetAllString.append(attributeRewardsString)
-        let attributeintMoneyString = NSAttributedString(string: "\n\(intMoneyPercentage.rounded(toPlaces: 4)) %", attributes: [NSAttributedString.Key.foregroundColor : Color.InterestMoney, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 13, weight: .bold)])
+        let attributeintMoneyString = NSAttributedString(string: "\n\(intMoneyPercentage.rounded(toPlaces: 4)) %", attributes: [NSAttributedString.Key.foregroundColor : Color.InterestMoney, NSAttributedString.Key.font: Font.BasicUnderTypeOfOutgoingTransactionButon])
         attributetAllString.append(attributeintMoneyString)
-        let attributeGiftsString = NSAttributedString(string: "\n\(giftsPercentage.rounded(toPlaces: 4)) %", attributes: [NSAttributedString.Key.foregroundColor : Color.GiftMoney, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 13, weight: .bold)])
+        let attributeGiftsString = NSAttributedString(string: "\n\(giftsPercentage.rounded(toPlaces: 4)) %", attributes: [NSAttributedString.Key.foregroundColor : Color.GiftMoney, NSAttributedString.Key.font: Font.BasicUnderTypeOfOutgoingTransactionButon])
         attributetAllString.append(attributeGiftsString)
-        let attributeOthersString = NSAttributedString(string: "\n\(othersPercentage.rounded(toPlaces: 4)) %", attributes: [NSAttributedString.Key.foregroundColor : Color.Others, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 13, weight: .bold)])
+        let attributeOthersString = NSAttributedString(string: "\n\(othersPercentage.rounded(toPlaces: 4)) %", attributes: [NSAttributedString.Key.foregroundColor : Color.Others, NSAttributedString.Key.font: Font.BasicUnderTypeOfOutgoingTransactionButon])
         attributetAllString.append(attributeOthersString)
         percentageLabelForIncomingTypesGraph.attributedText = attributetAllString
         addSubview(percentageLabelForIncomingTypesGraph)
@@ -820,6 +837,8 @@ class SpendingReportView: BasicReportView {
         for subview in legendStackView.subviews {
             legendStackView.removeArrangedSubview(subview)
         }
+        backButton.isHidden = false
+        legendStackView.addArrangedSubview(backButton)
         legendStackView.isHidden = false
         for button in incomingTypeButons {
             button.isHidden = false

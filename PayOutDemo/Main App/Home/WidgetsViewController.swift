@@ -24,6 +24,11 @@ class WidgetsViewController: UIViewController {
         }
     }
     var model = Model()
+    var transactions: [Transaction] = [] {
+        didSet {
+            dragAndDropTableView?.reloadData()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,8 +45,6 @@ class WidgetsViewController: UIViewController {
         }
         view.isHidden = false
     }
-
-
 }
 
 extension WidgetsViewController: UITableViewDragDelegate {
@@ -136,6 +139,9 @@ extension WidgetsViewController: UITableViewDelegate, UITableViewDataSource {
         cell.selectionStyle = .none
         let type = TypeOfWidget.init(rawValue: nameOfWidget)
         cell.typeOfWidgetTableViewCell = type
+        if let account = account {
+            cell.transactions = transactions.filter({$0.accountId == account.id})
+        }
         cell.dataSetForWidget = account
         //FIXME: Set space between cells but not good sollution
         //cell.layer.borderWidth = CGFloat(5)

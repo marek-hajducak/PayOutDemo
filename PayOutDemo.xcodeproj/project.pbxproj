@@ -114,6 +114,9 @@
 		85D7203B224BBDE5005F0795 /* Double+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D7203A224BBDE5005F0795 /* Double+Extensions.swift */; };
 		85D7203D224CBAC2005F0795 /* TransactionAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D7203C224CBAC2005F0795 /* TransactionAPI.swift */; };
 		85F2C162224DF6020057C88E /* BasicReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F2C161224DF6020057C88E /* BasicReportView.swift */; };
+		85F2C164224E007A0057C88E /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F2C163224E007A0057C88E /* Font.swift */; };
+		85F2C166224E437A0057C88E /* UILabel+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F2C165224E43790057C88E /* UILabel+Extensions.swift */; };
+		85F2C16A224E4AEE0057C88E /* UIButton+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F2C169224E4AEE0057C88E /* UIButton+Extensions.swift */; };
 		E9190566C5330B70CBDEA43C /* libPods-PayOutDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BA4698F36BAC0907A078821 /* libPods-PayOutDemo.a */; };
 /* End PBXBuildFile section */
 
@@ -227,6 +230,9 @@
 		85D7203A224BBDE5005F0795 /* Double+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extensions.swift"; sourceTree = "<group>"; };
 		85D7203C224CBAC2005F0795 /* TransactionAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionAPI.swift; sourceTree = "<group>"; };
 		85F2C161224DF6020057C88E /* BasicReportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicReportView.swift; sourceTree = "<group>"; };
+		85F2C163224E007A0057C88E /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
+		85F2C165224E43790057C88E /* UILabel+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extensions.swift"; sourceTree = "<group>"; };
+		85F2C169224E4AEE0057C88E /* UIButton+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extensions.swift"; sourceTree = "<group>"; };
 		8BA4698F36BAC0907A078821 /* libPods-PayOutDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PayOutDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3D013F26FA66DBF8BAAB0F3 /* Pods-PayOutDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PayOutDemo.release.xcconfig"; path = "Target Support Files/Pods-PayOutDemo/Pods-PayOutDemo.release.xcconfig"; sourceTree = "<group>"; };
 		DC65D934CB79DB5477ADCCE1 /* Pods-PayOutDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PayOutDemo.debug.xcconfig"; path = "Target Support Files/Pods-PayOutDemo/Pods-PayOutDemo.debug.xcconfig"; sourceTree = "<group>"; };
@@ -299,6 +305,7 @@
 				85379DDF223FE2670049FEC4 /* StoryboardScene.swift */,
 				85379DE3223FE64A0049FEC4 /* Color.swift */,
 				85D3D78A224919BE0006C711 /* Image.swift */,
+				85F2C163224E007A0057C88E /* Font.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -446,6 +453,8 @@
 				85379DA6223FC5160049FEC4 /* UIAplication+Extension.swift */,
 				85B2DD1F22438D3C00B91B92 /* UIImage+Extensions.swift */,
 				85D7203A224BBDE5005F0795 /* Double+Extensions.swift */,
+				85F2C165224E43790057C88E /* UILabel+Extensions.swift */,
+				85F2C169224E4AEE0057C88E /* UIButton+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -784,6 +793,8 @@
 				85B2DCEF22428BAB00B91B92 /* ExchangeRate.swift in Sources */,
 				85F2C162224DF6020057C88E /* BasicReportView.swift in Sources */,
 				85B2DCE72242667B00B91B92 /* MainViewModel.swift in Sources */,
+				85F2C164224E007A0057C88E /* Font.swift in Sources */,
+				85F2C16A224E4AEE0057C88E /* UIButton+Extensions.swift in Sources */,
 				85379DE4223FE64A0049FEC4 /* Color.swift in Sources */,
 				85B2DCFD2243773500B91B92 /* CreditCardsTableViewCell.swift in Sources */,
 				85379DD3223FC9610049FEC4 /* XIBView.swift in Sources */,
@@ -849,6 +860,7 @@
 				85B2DD19224377F200B91B92 /* PensionsTableViewCell.swift in Sources */,
 				85B2DD2A2243E48C00B91B92 /* Branch.swift in Sources */,
 				85B2DCF32242925400B91B92 /* Fund.swift in Sources */,
+				85F2C166224E437A0057C88E /* UILabel+Extensions.swift in Sources */,
 				85B2DD11224377D800B91B92 /* AssetsAndLiabilitiesTableViewCell.swift in Sources */,
 				85D3D7892248F9D20006C711 /* TransactionTypes.swift in Sources */,
 				85D72034224A48C1005F0795 /* PickerViewTextField.swift in Sources */,

@@ -54,6 +54,11 @@ class BaseWidgetTableViewCell: UITableViewCell {
     }
     @IBOutlet weak var heightOfWidgetTableViewConstraint: NSLayoutConstraint!
     
+    var transactions: [Transaction] = [] {
+        didSet {
+            dataWidgetTableView.reloadData()
+        }
+    }
     /// Informations from Cell //
     var heightForRow: CGFloat = 0
     var typeOfWidgetTableViewCell: TypeOfWidget?
@@ -73,29 +78,16 @@ class BaseWidgetTableViewCell: UITableViewCell {
         super.awakeFromNib()
         nameOfWidgetLabel.textColor = Color.MainRed
         // All atributes to one atributes and set on layers
-        nameOfWidgetLabel.layer.shadowColor = Color.DarkGrey.cgColor
-        nameOfWidgetLabel.layer.shadowRadius = 2.5
-        nameOfWidgetLabel.layer.shadowOpacity = 0.6
-        nameOfWidgetLabel.layer.shadowOffset = CGSize(width: 2, height: 2)
-        nameOfWidgetLabel.layer.masksToBounds = false
-        
+        nameOfWidgetLabel.dropLabelShadow(color: Color.DarkGrey.cgColor, radius: 2.5, opacity: 0.6, offsetWidth: 2, offsetHeigt: 2, maskToBounds: false)
         separatorView.layer.cornerRadius = 10
-        
         backgroundViewOfWidget.layer.backgroundColor = Color.White.cgColor
         backgroundViewOfWidget.layer.cornerRadius = 10
-        backgroundViewOfWidget.layer.masksToBounds = false
-        backgroundViewOfWidget.layer.shadowColor = Color.DarkGrey.cgColor
-        backgroundViewOfWidget.layer.shadowOpacity = 0.4
-        backgroundViewOfWidget.layer.shadowOffset = CGSize(width: 8.0, height: 8.0)
-        backgroundViewOfWidget.layer.shadowRadius = 6.0
-        backgroundViewOfWidget.layer.cornerRadius = 10.0
-        
+        backgroundViewOfWidget.dropViewShadow(color: Color.DarkGrey.cgColor, radius: 6.0, opacity: 0.4, offsetWidth: 8, offsetHeigt: 8, maskToBounds: false)
         widgetView.layer.cornerRadius = 9
         layer.cornerRadius = 10
         
         dataWidgetTableView.delegate = self
         dataWidgetTableView.dataSource = self
-        
         dataWidgetTableView.reloadData()
     }
     
@@ -141,7 +133,7 @@ extension BaseWidgetTableViewCell: UITableViewDelegate, UITableViewDataSource {
             cell.nameOfLoanLabel.text = account.loans[indexPath.item].name
             //FIXME: Count me!
             cell.loanProgresView.progress = 0.0134
-            cell.leanAmountLabel.text = "Loan amount:  \(account.loans[indexPath.item].amount) \(currency)"
+            cell.loanAmountLabel.text = "Loan amount:  \(account.loans[indexPath.item].amount) \(currency)"
             cell.currentAmountLeanLabel.text =  "\(account.loans[indexPath.item].amoutOfPayment) \(currency)"
             cell.typeOfLoanLabel.text = account.loans[indexPath.item].type
             return cell
@@ -166,6 +158,7 @@ extension BaseWidgetTableViewCell: UITableViewDelegate, UITableViewDataSource {
             return cell
         case .spendingreport:
             let cell = dataWidgetTableView.dequeueReusableCell(withIdentifier: SpendingReportTableViewCell.nameOfClass, for: indexPath) as! SpendingReportTableViewCell
+            cell.spendingReportView.transactions = transactions
             return cell
         case .assets:
             let cell = dataWidgetTableView.dequeueReusableCell(withIdentifier: AssetsAndLiabilitiesTableViewCell.nameOfClass, for: indexPath) as! AssetsAndLiabilitiesTableViewCell
@@ -216,12 +209,11 @@ extension TypeOfWidget {
         case .exangeRates:
             return 34
         case .spendingreport:
-            // TODO
-            return 0
+            return 365
         case .assets:
             return 120
         case .funds:
-            return 48
+            return 65
         case .pension:
             return 24
         case .goals:
@@ -248,7 +240,7 @@ extension TypeOfWidget {
             {return 0}
             return account.exchangeRates.count
         case .spendingreport:
-            // TODO
+            //TODO: Chnage 1 to show spending report
             return 0
         case .assets:
             if (account.assetsAndLiabilities.count == 1) && (account.assetsAndLiabilities[0].id == 0)

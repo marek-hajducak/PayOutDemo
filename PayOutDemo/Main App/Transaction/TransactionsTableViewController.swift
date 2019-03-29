@@ -32,12 +32,7 @@ class TransactionsTableViewController: UIViewController {
             self.statisticButton.imageView?.bounds.size.height = 14
             statisticButton.imageView?.contentMode = .scaleAspectFit
             statisticButton.titleLabel?.textColor = Color.White
-            //Shadows
-            statisticButton.layer.masksToBounds = false
-            statisticButton.layer.shadowColor = Color.DarkGrey.cgColor
-            statisticButton.layer.shadowOpacity = 0.6
-            statisticButton.layer.shadowOffset = CGSize(width: 2.0, height: 2.0)
-            statisticButton.layer.shadowRadius = 3.0
+            statisticButton.dropButtonShadow(color: Color.DarkGrey.cgColor, radius: 3.0, opacity: 0.6, offsetWidth: 2, offsetHeigt: 2, maskToBounds: false)
             statisticButton.layer.cornerRadius = 15.0
         }
     }
@@ -154,7 +149,13 @@ class TransactionsTableViewController: UIViewController {
             UIView.animate(withDuration: 0.2) {
                 self.statisticButton.isHidden = true
                 self.statisticButton.isEnabled = false
-                self.heightOfStatisticViewConstraint.constant = 20
+                if UIScreen.main.bounds.width == 320 { // SE // 4 , 4s
+                    self.heightOfStatisticViewConstraint.constant = 25 // Tested
+                } else if UIScreen.main.bounds.width == 375  { // 7 // 6,  6S, 8, X, Xs
+                    self.heightOfStatisticViewConstraint.constant = -94 // Tested
+                } else if UIScreen.main.bounds.width == 414  { // Xs Max // 7 plus, 8 Plus, Xr,
+                    self.heightOfStatisticViewConstraint.constant = -135
+                }
             }
             if let currrencyString = account?.currency {
                 statisticView?.currency = Currency(rawValue: currrencyString)
@@ -167,11 +168,11 @@ class TransactionsTableViewController: UIViewController {
 
     private func setStatisticView() {
         if UIScreen.main.bounds.width == 320 { // SE // 4 , 4s
-            self.heightOfStatisticViewConstraint.constant = -150
+            self.heightOfStatisticViewConstraint.constant = -145 // Tested
         } else if UIScreen.main.bounds.width == 375  { // 7 // 6,  6S, 8, X, Xs
-            self.heightOfStatisticViewConstraint.constant = -260
+            self.heightOfStatisticViewConstraint.constant = -268 // Tested
         } else if UIScreen.main.bounds.width == 414  { // Xs Max // 7 plus, 8 Plus, Xr,
-            self.heightOfStatisticViewConstraint.constant = -299
+            self.heightOfStatisticViewConstraint.constant = -310 // Tested
         }
         self.statisticButton.isHidden = false
         self.statisticButton.isEnabled = true

@@ -15,6 +15,7 @@ protocol FilterFlowDelegate: class {
 
 class FilterViewController: InputViewController {
     
+    @IBOutlet var filterTitles: [UILabel]!
     @IBOutlet weak var filterButton: UIButton!
     
     // TEXT
@@ -129,15 +130,12 @@ class FilterViewController: InputViewController {
         
         filterButton.layer.cornerRadius = 15
         filterButton.layer.backgroundColor = Color.MainRed.cgColor
-        
-        filterButton.layer.masksToBounds = false
-        filterButton.layer.shadowColor = Color.DarkGrey.cgColor
-        filterButton.layer.shadowOpacity = 0.6
-        filterButton.layer.shadowOffset = CGSize(width: 4.0, height: 4.0)
-        filterButton.layer.shadowRadius = 6.0
-        filterButton.layer.cornerRadius = 15.0
-        
+        filterButton.dropButtonShadow(color: Color.DarkGrey.cgColor, radius: 6.0, opacity: 0.6, offsetWidth: 4, offsetHeigt: 4, maskToBounds: false)
         setFilterScreen()
+        
+        for label in filterTitles {
+            label.font = Font.BasicFilterTitle
+        }
         
         title = "Filter"
     }
@@ -273,7 +271,7 @@ class FilterViewController: InputViewController {
         
         if let navigationBar = self.navigationController?.navigationBar {
             navigationBar.barTintColor = Color.White
-            navigationBar.titleTextAttributes = [.foregroundColor: Color.MainRed, .font : UIFont.systemFont(ofSize: 25, weight: .semibold)]
+            navigationBar.titleTextAttributes = [.foregroundColor: Color.MainRed, .font : Font.BasicNavigationTitle]
         }
     }
     

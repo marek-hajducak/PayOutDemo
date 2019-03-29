@@ -293,6 +293,14 @@
                         <outlet property="typeOfUnderOutgoingTransactionStackView" destination="hqm-pg-Ppm" id="TNS-5v-ZVb"/>
                         <outlet property="typeOutgoingTreansactionStackView" destination="FPB-p2-JDw" id="ekb-tD-NNO"/>
                         <outlet property="underTypeOfOutgoingTransactionPickerView" destination="uAG-n2-4Q3" id="j08-6j-x4o"/>
+                        <outletCollection property="filterTitles" destination="Atc-vW-wud" collectionClass="NSMutableArray" id="2fD-M8-6wX"/>
+                        <outletCollection property="filterTitles" destination="L5y-Hh-9ud" collectionClass="NSMutableArray" id="FH3-fP-wg3"/>
+                        <outletCollection property="filterTitles" destination="mg8-ML-X1q" collectionClass="NSMutableArray" id="4Of-A0-0ic"/>
+                        <outletCollection property="filterTitles" destination="Udz-HN-Dtv" collectionClass="NSMutableArray" id="Idw-bk-JpI"/>
+                        <outletCollection property="filterTitles" destination="jAb-A9-e12" collectionClass="NSMutableArray" id="kv9-nb-1BY"/>
+                        <outletCollection property="filterTitles" destination="ctm-b5-qqd" collectionClass="NSMutableArray" id="rcw-HW-ZUx"/>
+                        <outletCollection property="filterTitles" destination="5QC-5n-Nl3" collectionClass="NSMutableArray" id="yse-Hi-y1l"/>
+                        <outletCollection property="filterTitles" destination="Tnp-BW-HXJ" collectionClass="NSMutableArray" id="Gbx-gV-zCa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kjY-2C-BFD" userLabel="First Responder" sceneMemberID="firstResponder"/>

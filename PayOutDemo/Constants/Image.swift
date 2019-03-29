@@ -13,6 +13,7 @@ class Image {
     // System Images
     public class var Empty: UIImage { return UIImage() }
     public class var ArrowDown: UIImage { return #imageLiteral(resourceName: "arrow_down") }
+    public class var ArrowLeft: UIImage { return #imageLiteral(resourceName: "left_arrow") }
     public class var Cancel: UIImage { return #imageLiteral(resourceName: "cancel") }
     
     // Logos

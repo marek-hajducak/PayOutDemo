@@ -36,12 +36,7 @@ class MainViewController: BaseViewController {
             self.accountsSwipeUpButton.imageView?.bounds.size.width = 14
             self.accountsSwipeUpButton.imageView?.bounds.size.height = 14
             accountsSwipeUpButton.imageView?.contentMode = .scaleAspectFit
-            //Shadows
-            accountsSwipeUpButton.layer.masksToBounds = false
-            accountsSwipeUpButton.layer.shadowColor = Color.DarkGrey.cgColor
-            accountsSwipeUpButton.layer.shadowOpacity = 0.6
-            accountsSwipeUpButton.layer.shadowOffset = CGSize(width: 2.0, height: 2.0)
-            accountsSwipeUpButton.layer.shadowRadius = 3.0
+            accountsSwipeUpButton.dropButtonShadow(color: Color.DarkGrey.cgColor, radius: 3.0, opacity: 0.6, offsetWidth: 2, offsetHeigt: 2, maskToBounds: false)
             accountsSwipeUpButton.layer.cornerRadius = 15.0
             
         }
@@ -61,7 +56,7 @@ class MainViewController: BaseViewController {
             updatePageController()
         }
     }
-    
+    var transactions: [Transaction] = []
     var accounts: [Account] = [] {
         didSet {
             accountsCollectionView.reloadData()
@@ -120,6 +115,18 @@ class MainViewController: BaseViewController {
             } else if let accounts = event.data {
                 self.view.stopActivityIndicator()
                 self.accounts = accounts
+            }
+        }).disposed(by: self.disposeBag)
+        
+        output?.transactionsEvent.drive(onNext: { (event) in
+            if event.isLoading {
+                self.view.startActivityIndicator()
+            } else if let error = event.error {
+                self.view.stopActivityIndicator()
+                AlertHandler.showWhisper(message: "\(error)", type: .error, shouldHide: true)
+            } else if let transactions = event.data {
+                self.view.stopActivityIndicator()
+                self.transactions = transactions
             }
         }).disposed(by: self.disposeBag)
     }
@@ -216,7 +223,6 @@ class MainViewController: BaseViewController {
         
     }
     
-    
     @objc func hitLiveChat() {
         
     }
@@ -268,6 +274,7 @@ class MainViewController: BaseViewController {
         if segue.identifier == "Widget" {
             if let vc = segue.destination as? WidgetsViewController, !accounts.isEmpty  {
                 vc.account = self.accounts[self.selectedAccountIndex ?? 0]
+                vc.transactions = self.transactions
             }
         }
     }
@@ -284,55 +291,29 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
         let cell = accountsCollectionView.dequeueReusableCell(withReuseIdentifier: AccountCell.nameOfClass, for: indexPath) as! AccountCell
         cell.dropShadow()
         if let currency = Currency(rawValue: accounts[indexPath.item].currency) {
-            // Standard
-            var ligtBigestOneAttributedFont = [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 35, weight: .light)] // zostatok pred desatinou ciarkou
-            var lightSmallerOneAttributedFont = [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 20, weight: .light)] // za desatinou čiarkou
-            var currencyAtriibutedFont = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 30, weight: .light)] // mena za zostatkom
-            var baseSizeOfFont: CGFloat = 14.0
-            var baseInfoFont = UIFont.systemFont(ofSize: baseSizeOfFont)
-            
-            // Based on width of device
-            if UIScreen.main.bounds.width == 320 { // SE // 4 , 4s
-                ligtBigestOneAttributedFont = [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 30, weight: .light)]
-                lightSmallerOneAttributedFont = [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 15, weight: .light)]
-                currencyAtriibutedFont = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 25, weight: .light)]
-                baseSizeOfFont = 16
-                baseInfoFont = UIFont.systemFont(ofSize: baseSizeOfFont)
-            } else if UIScreen.main.bounds.width == 375  { // 7 // 6,  6S, 8, X, Xs
-                ligtBigestOneAttributedFont = [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 38, weight: .light)]
-                lightSmallerOneAttributedFont = [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 23, weight: .light)]
-                currencyAtriibutedFont = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 33, weight: .light)]
-                baseSizeOfFont = 19
-                baseInfoFont = UIFont.systemFont(ofSize: baseSizeOfFont)
-            } else if UIScreen.main.bounds.width == 414  { // Xs Max // 7 plus, 8 Plus, Xr,
-                ligtBigestOneAttributedFont = [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 50, weight: .light)]
-                lightSmallerOneAttributedFont = [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 35, weight: .light)]
-                currencyAtriibutedFont = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 45, weight: .light)]
-                baseSizeOfFont = 22
-                baseInfoFont = UIFont.systemFont(ofSize: baseSizeOfFont)
-            }
-            
+            // Defined Fonts
+            let baseInfoFont = Font.BaseInfoFont
+            let ligtBigestOneAttributedFont = [NSAttributedString.Key.font : Font.BaseLightestBigFont] // zostatok pred desatinou ciarkou
+            let lightSmallerOneAttributedFont = [NSAttributedString.Key.font : Font.BaseLightestSmallFont] // Za desatinou ciarkou
+            let currencyAtriibutedFont = [NSAttributedString.Key.font: Font.CurrencyLighestFont] // mena za zostatkom
             // Defined attributedStrings
             let splitString = accounts[indexPath.item].avalibleBalance.split(separator: ",")
             let firstAttributedString = NSMutableAttributedString(string: String(splitString[0]), attributes: ligtBigestOneAttributedFont)
             let secondAttributedString = NSAttributedString(string: ",\(String(splitString[1]))", attributes: lightSmallerOneAttributedFont)
             let cuurencyAttributedString = NSMutableAttributedString(string: " \(currency.getCurrencySymbol())", attributes: currencyAtriibutedFont)
             let splitIban = accounts[indexPath.item].IBAN.split(separator: " ")
-            let baseSizeOfFontForIBAN = baseSizeOfFont - 3
-            let normalAtributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: baseSizeOfFontForIBAN, weight: .regular)]
-            let boldAtributedString = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: baseSizeOfFontForIBAN, weight: .bold)]
+            let normalAtributes = [NSAttributedString.Key.font: Font.BasicIBANBoldFont]
+            let boldAtributedString = [NSAttributedString.Key.font: Font.BasicIBANRegularFont]
             let attributedString = NSMutableAttributedString(string: String(splitIban[0]), attributes: normalAtributes)
             let attributedStringNumberOfAccount = NSAttributedString(string: " \(String(splitIban[1]))", attributes: boldAtributedString)
             let attributedZerous = NSAttributedString(string: " \(String(splitIban[2]))", attributes: normalAtributes)
             let attributedStringOthers = NSAttributedString(string: " \(String(splitIban[3])) \(String(splitIban[4])) \(String(splitIban[5]))", attributes: boldAtributedString)
-            
             // Apeend Atributes Strings
             firstAttributedString.append(secondAttributedString)
             firstAttributedString.append(cuurencyAttributedString)
             attributedString.append(attributedStringNumberOfAccount)
             attributedString.append(attributedZerous)
             attributedString.append(attributedStringOthers)
-        
             // Cell inicialization
             cell.amountLabel.attributedText = firstAttributedString
             cell.nameOfAccountHolderLabel.text = accounts[indexPath.item].holder
@@ -342,7 +323,6 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
             cell.accountIBANLabel.attributedText = attributedString
             cell.nameOfAccountLabel.text = accounts[indexPath.item].banknName
         }
-        // Return cell
         return cell
     }
     

@@ -61,7 +61,10 @@ class ExchangeRatesTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        stateNameLabel.font = Font.BasicWidgetTitle
+        currencyLabel.font = Font.BasicWidgetTitle
+        rateLabel.font = Font.BasicWidgetDescription
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

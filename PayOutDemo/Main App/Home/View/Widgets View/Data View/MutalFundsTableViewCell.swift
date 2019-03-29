@@ -13,12 +13,16 @@ class MutalFundsTableViewCell: UITableViewCell {
 
     @IBOutlet weak var actualBalanceLabel: UILabel!
     @IBOutlet weak var accountNamberLabel: UILabel!
+    @IBOutlet weak var accountLabel: UILabel!
     
     var funds = List<Fund>()
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        accountLabel.font = Font.BasicWidgetTitle
+        accountNamberLabel.font = Font.BasicWidgetDescription
+        actualBalanceLabel.font = Font.BasicWidgetTitle
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

@@ -11,12 +11,15 @@ import UIKit
 class PensionsTableViewCell: UITableViewCell {
 
     @IBOutlet weak var savedAmountLabel: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
     
     var pension: Pension?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        savedAmountLabel.font = Font.BasicWidgetTitle
+        titleLabel.font = Font.BasicWidgetTitle
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

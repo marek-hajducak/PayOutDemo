@@ -30,6 +30,22 @@ class BasicReportView: UIView {
         return animation
     }()
     
+    // Basic Back Button
+    let backButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Back", for: .normal)
+        button.setTitleColor(Color.Grey, for: .normal)
+        button.titleLabel?.font = Font.BasicUnderTypeOfOutgoingTransactionButon
+        button.setImage(Image.ArrowLeft, for: .normal)
+        button.titleLabel?.textAlignment = .center
+        button.imageView?.contentMode = .scaleAspectFit
+        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        button.titleEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        button.addTarget(self, action: #selector(hitBack), for: .touchUpInside)
+        button.isHidden = true
+        return button
+    }()
+    
     // Basic Legend
     let legendStackView: UIStackView = {
         let stackView = UIStackView()
@@ -45,17 +61,19 @@ class BasicReportView: UIView {
     let percentageLabelOfBasedGraph: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
-        label.font = UIFont.boldSystemFont(ofSize: 12)
+        label.font = Font.BasicPercentageLabelTitle
         label.frame = CGRect(x: 0, y: 0, width: 150, height: 150)
         return label
     }()
     
     // Basic functions to create basic Graph with legent and percentage label
-    func createBasicGraph()  {
+    func createBasicGraph(back: Bool)  {
         percentageLabelOfBasedGraph.isHidden = false
         trackLayer.isHidden = false
-        
-        let centerPoint = CGPoint(x: center.x - grafXOffset, y: center.y + grafYOffset)
+        var backOffset: CGFloat = 0
+        back ? (backOffset = 85) : (backOffset = 0)
+        let centerY = center.y - backOffset
+        let centerPoint = CGPoint(x: center.x - grafXOffset, y: centerY + grafYOffset)
         let circularFoTrackPath = UIBezierPath(arcCenter: centerPoint, radius: 75, startAngle: -CGFloat.pi / 2, endAngle: 2 * CGFloat.pi, clockwise: true)
         trackLayer.path = circularFoTrackPath.cgPath
         trackLayer.strokeColor = Color.MainBackground.cgColor
@@ -64,7 +82,7 @@ class BasicReportView: UIView {
         layer.addSublayer(trackLayer)
     }
     
-    func showBasicPercentageLabel() {
+    func showBasicPercentageLabel(back: Bool) {
         percentageLabelOfBasedGraph.isHidden = false
         addSubview(percentageLabelOfBasedGraph)
     }
@@ -73,11 +91,21 @@ class BasicReportView: UIView {
         legendStackView.isHidden = false
         legendStackView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(legendStackView)
-        legendStackView.rightAnchor.constraint(equalTo: rightAnchor, constant: -10).isActive = true
+        if UIScreen.main.bounds.width == 320 {
+            legendStackView.rightAnchor.constraint(equalTo: rightAnchor, constant: -10).isActive = true
+        } else if UIScreen.main.bounds.width == 375  {
+            legendStackView.rightAnchor.constraint(equalTo: rightAnchor, constant: -25).isActive = true
+        } else if UIScreen.main.bounds.width == 414  {
+            legendStackView.rightAnchor.constraint(equalTo: rightAnchor, constant: -40).isActive = true
+        }
         legendStackView.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -10).isActive = true
     }
     
     func addAnimationForBasicGraph() {
+        
+    }
+    
+    @objc func hitBack() {
         
     }
 }

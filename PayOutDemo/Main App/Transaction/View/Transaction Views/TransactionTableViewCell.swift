@@ -28,13 +28,23 @@ class TransactionTableViewCell: ExpandableTableViewCell {
     @IBOutlet weak var transactionTypeLabel: UILabel!
     @IBOutlet weak var merchantLabel: UILabel!
     
+    @IBOutlet var expandedLabels: [UILabel]!
+    
+    
     @IBOutlet weak var dashedLine: UIView!
 
     
     override func awakeFromNib() {
         super.awakeFromNib()
         drawDottedLine(start: CGPoint(x: dashedLine.bounds.minX, y: dashedLine.bounds.minY), end: CGPoint(x: dashedLine.bounds.maxX, y: dashedLine.bounds.minY), view: dashedLine)
-        // amountLabel color base on type of transaction (coming/incoming)
+        
+        descriptionOfTransactionLabel.font = Font.BasicTransactionDescription
+        nameOfTransactionLabel.font = Font.BasicTransactionTitle
+        amountLabel.font = Font.BasicTransactionAmount
+        
+        for label in expandedLabels {
+            label.font = Font.BasicTransactionDescription
+        }
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

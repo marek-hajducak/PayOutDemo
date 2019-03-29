@@ -25,30 +25,20 @@ class AccountsTransactionCell: UICollectionViewCell {
         layer.cornerRadius = 10
         backgroundOfCelllView.layer.cornerRadius = 10
         amountLabel.textColor = Color.White
-        amountLabel.font = UIFont.systemFont(ofSize: 25, weight: .semibold)
-        aktualizationDateLabel.font = UIFont.systemFont(ofSize: 12, weight: .light)
+        
+        nameOfAccountLabel.font = Font.BasicTransactionAccountTitle
+        amountLabel.font = Font.BasicTransactionAmountTitle
+        aktualizationDateLabel.font = Font.BasicTransactionActualizationText
+        incomeAmountLabel.font = Font.BasicTransactionInOutcomeTitle
+        outgoingAmounLabel.font = Font.BasicTransactionInOutcomeTitle
         
         incomeAmountLabel.textColor = Color.IncomingLightGreen
-        incomeAmountLabel.layer.shadowColor = Color.Grey.cgColor
-        incomeAmountLabel.layer.shadowRadius = 2.5
-        incomeAmountLabel.layer.shadowOpacity = 0.6
-        incomeAmountLabel.layer.shadowOffset = CGSize(width: 2, height: 2)
-        incomeAmountLabel.layer.masksToBounds = false
-        
-        outgoingAmounLabel.textColor = Color.OutcomingLightRed
-        outgoingAmounLabel.layer.shadowColor = Color.Grey.cgColor
-        outgoingAmounLabel.layer.shadowRadius = 2.5
-        outgoingAmounLabel.layer.shadowOpacity = 0.6
-        outgoingAmounLabel.layer.shadowOffset = CGSize(width: 2, height: 2)
-        outgoingAmounLabel.layer.masksToBounds = false
+        incomeAmountLabel.dropLabelShadow(color: Color.Grey.cgColor, radius: 2.5, opacity: 0.6, offsetWidth: 2, offsetHeigt: 2, maskToBounds: false)
+        outgoingAmounLabel.dropLabelShadow(color: Color.Grey.cgColor, radius: 2.5, opacity: 0.6, offsetWidth: 2, offsetHeigt: 2, maskToBounds: false)
     }
     
     func dropShadow() {
-        self.layer.masksToBounds = false
-        self.layer.shadowColor = Color.DarkGrey.cgColor
-        self.layer.shadowOpacity = 0.6
-        self.layer.shadowOffset = CGSize(width: 10.0, height: 10.0)
-        self.layer.shadowRadius = 6.0
+        dropViewShadow(color: Color.DarkGrey.cgColor, radius: 6.0, opacity: 0.6, offsetWidth: 10, offsetHeigt: 10, maskToBounds: false)
         self.layer.cornerRadius = 10
     }
 

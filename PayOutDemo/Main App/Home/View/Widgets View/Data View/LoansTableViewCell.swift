@@ -12,20 +12,19 @@ class LoansTableViewCell: UITableViewCell {
 
     @IBOutlet weak var nameOfLoanLabel: UILabel!
     @IBOutlet weak var currentAmountLeanLabel: UILabel!
-    @IBOutlet weak var leanAmountLabel: UILabel!
+    @IBOutlet weak var loanAmountLabel: UILabel!
     @IBOutlet weak var typeOfLoanLabel: UILabel!
     @IBOutlet weak var loanProgresView: UIProgressView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
         loanProgresView.progressTintColor = Color.MainRed
         loanProgresView.trackTintColor = Color.LighGrey
+        
+        nameOfLoanLabel.font = Font.BasicWidgetTitle
+        currentAmountLeanLabel.font = Font.BasicWidgetTitle
+        loanAmountLabel.font = Font.BasicWidgetDescription
+        typeOfLoanLabel.font = Font.BasicWidgetDescription
     }
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-    
 }

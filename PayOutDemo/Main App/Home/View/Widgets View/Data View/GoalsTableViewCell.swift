@@ -12,6 +12,7 @@ class GoalsTableViewCell: UITableViewCell {
     
     @IBOutlet weak var currentSavingAmounLabel: UILabel!
     @IBOutlet weak var typeOfGoalLabel: UILabel!
+    @IBOutlet weak var nameOfGoalLabel: UILabel!
     
     @IBOutlet weak var amountProgresView: UIProgressView!
     override func awakeFromNib() {
@@ -19,6 +20,9 @@ class GoalsTableViewCell: UITableViewCell {
         // Initialization code
         amountProgresView.progressTintColor = Color.MainRed
         amountProgresView.trackTintColor = Color.LighGrey
+        currentSavingAmounLabel.font = Font.BasicWidgetTitle
+        nameOfGoalLabel.font = Font.BasicWidgetTitle
+        typeOfGoalLabel.font = Font.BasicWidgetDescription
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

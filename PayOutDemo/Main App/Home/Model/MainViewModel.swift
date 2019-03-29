@@ -12,7 +12,7 @@ import RxCocoa
 
 class MainViewModel: ViewModelType {
     
-    typealias Dependencies = HasAccountService
+    typealias Dependencies = HasAccountService & HasTransactionService
     
     fileprivate let dependencies: Dependencies
     
@@ -23,8 +23,9 @@ class MainViewModel: ViewModelType {
     func transform(input: MainViewModel.Input) -> MainViewModel.Output {
         
         let accountEvent = self.dependencies.accountService.getAccounts().startWith(Lce(loading: true)).asDriverOnErrorJustComplete()
+        let transactionsEvent = self.dependencies.transactionService.getTransactions().startWith(Lce(loading: true)).asDriverOnErrorJustComplete()
         
-        return Output(accountsEvent: accountEvent)
+        return Output(accountsEvent: accountEvent, transactionsEvent: transactionsEvent)
     }
 }
 
@@ -35,5 +36,6 @@ extension MainViewModel {
     
     struct Output {
         let accountsEvent: Driver<Lce<[Account]>>
+        let transactionsEvent: Driver<Lce<[Transaction]>>
     }
 }

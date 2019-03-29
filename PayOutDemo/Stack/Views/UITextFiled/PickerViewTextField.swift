@@ -29,7 +29,7 @@ class PickerViewTextField: DesignableTextField, UIPickerViewDelegate  {
         let doneButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: self, action: #selector(donePressed))
         doneButton.tintColor = UIColor.black
         let flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: self, action: nil)
-        label.font = UIFont.systemFont(ofSize: 17, weight: .regular)
+        label.font = Font.BasicPickerViewButtonTitle
         label.textColor = UIColor.black
         label.textAlignment = NSTextAlignment.center
         let textBtn = UIBarButtonItem(customView: label)

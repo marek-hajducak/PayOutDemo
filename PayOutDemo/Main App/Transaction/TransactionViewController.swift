@@ -63,6 +63,7 @@ class TransactionViewController: BaseViewController {
     var transactions: [Transaction] = [] {
         didSet {
             createNewTransactionViewController()
+            accountsCollectionView.reloadData()
         }
     }
     
@@ -178,7 +179,6 @@ class TransactionViewController: BaseViewController {
         flowDelegate?.showFilter(with: self.filter)
     }
     
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "Transaction" {
             if let vc = segue.destination as? TransactionsTableViewController, !accounts.isEmpty, !transactions.isEmpty {
@@ -190,7 +190,6 @@ class TransactionViewController: BaseViewController {
         }
     }
  
-    
 }
 
 extension TransactionViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
@@ -204,6 +203,17 @@ extension TransactionViewController: UICollectionViewDataSource, UICollectionVie
         if let currency = Currency(rawValue: accounts[indexPath.item].currency) {
             cell.amountLabel.text = "\(accounts[indexPath.item].currentBalance) \(currency.getCurrencySymbol())"
             cell.nameOfAccountLabel.text = accounts[indexPath.item].banknName
+            var incomingAmount: Double = 0
+            var outgoingAmount: Double = 0
+            for transaction in transactions {
+                if transaction.incomingType != nil, transaction.accountId == accounts[indexPath.item].id {
+                    incomingAmount += transaction.amount
+                } else if transaction.outgoingType != nil, transaction.accountId == accounts[indexPath.item].id {
+                    outgoingAmount += transaction.amount
+                }
+            cell.incomeAmountLabel.text = "+ \(incomingAmount.rounded(toPlaces: 2)) \(currency.getCurrencySymbol())"
+            cell.outgoingAmounLabel.text = "- \(outgoingAmount.rounded(toPlaces: 2)) \(currency.getCurrencySymbol())"
+            }
         }
         return cell
     }

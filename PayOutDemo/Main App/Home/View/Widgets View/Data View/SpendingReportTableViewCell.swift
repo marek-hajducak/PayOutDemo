@@ -9,7 +9,9 @@
 import UIKit
 
 class SpendingReportTableViewCell: UITableViewCell {
-
+    
+    @IBOutlet weak var spendingReportView: SpendingReportView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

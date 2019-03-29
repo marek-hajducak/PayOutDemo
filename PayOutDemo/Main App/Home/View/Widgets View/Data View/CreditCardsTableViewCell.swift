@@ -18,6 +18,10 @@ class CreditCardsTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        cardNameLabel.font = Font.BasicWidgetTitle
+        cardNumberLabel.font = Font.BasicWidgetTitle
+        creditTypeLabel.font = Font.BasicWidgetDescription
+        validDateLabel.font = Font.BasicWidgetDescription
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

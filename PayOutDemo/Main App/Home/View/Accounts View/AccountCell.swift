@@ -47,12 +47,7 @@ class AccountCell: UICollectionViewCell {
     }
     
     func dropShadow() {
-        self.layer.masksToBounds = false
-        self.layer.shadowColor = Color.DarkGrey.cgColor
-        self.layer.shadowOpacity = 0.6
-        self.layer.shadowOffset = CGSize(width: 10.0, height: 10.0)
-        self.layer.shadowRadius = 6.0
-        self.layer.cornerRadius = 10.0
+        dropViewShadow(color: Color.DarkGrey.cgColor, radius: 6.0, opacity: 0.6, offsetWidth: 10, offsetHeigt: 10, maskToBounds: false)
     }
     
     

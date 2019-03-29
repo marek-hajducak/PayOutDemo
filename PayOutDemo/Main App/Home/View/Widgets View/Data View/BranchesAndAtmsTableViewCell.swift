@@ -19,6 +19,9 @@ class BranchesAndAtmsTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         branchImageView.image = Image.Atm.imageWithColor(color1: Color.MainRed)
+        addressLabel.font = Font.BasicWidgetDescription
+        branchOrATMSTitleLabel.font = Font.BasicWidgetTitle
+        distanceLabel.font = Font.BasicWidgetTitle
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
