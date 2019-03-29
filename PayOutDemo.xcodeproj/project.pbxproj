@@ -113,6 +113,7 @@
 		85D72038224BAB65005F0795 /* SpendingReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D72037224BAB65005F0795 /* SpendingReportView.swift */; };
 		85D7203B224BBDE5005F0795 /* Double+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D7203A224BBDE5005F0795 /* Double+Extensions.swift */; };
 		85D7203D224CBAC2005F0795 /* TransactionAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D7203C224CBAC2005F0795 /* TransactionAPI.swift */; };
+		85F2C162224DF6020057C88E /* BasicReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F2C161224DF6020057C88E /* BasicReportView.swift */; };
 		E9190566C5330B70CBDEA43C /* libPods-PayOutDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BA4698F36BAC0907A078821 /* libPods-PayOutDemo.a */; };
 /* End PBXBuildFile section */
 
@@ -225,6 +226,7 @@
 		85D72037224BAB65005F0795 /* SpendingReportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpendingReportView.swift; sourceTree = "<group>"; };
 		85D7203A224BBDE5005F0795 /* Double+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extensions.swift"; sourceTree = "<group>"; };
 		85D7203C224CBAC2005F0795 /* TransactionAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionAPI.swift; sourceTree = "<group>"; };
+		85F2C161224DF6020057C88E /* BasicReportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicReportView.swift; sourceTree = "<group>"; };
 		8BA4698F36BAC0907A078821 /* libPods-PayOutDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PayOutDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3D013F26FA66DBF8BAAB0F3 /* Pods-PayOutDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PayOutDemo.release.xcconfig"; path = "Target Support Files/Pods-PayOutDemo/Pods-PayOutDemo.release.xcconfig"; sourceTree = "<group>"; };
 		DC65D934CB79DB5477ADCCE1 /* Pods-PayOutDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PayOutDemo.debug.xcconfig"; path = "Target Support Files/Pods-PayOutDemo/Pods-PayOutDemo.debug.xcconfig"; sourceTree = "<group>"; };
@@ -537,6 +539,7 @@
 				85379D96223FC0360049FEC4 /* Home */,
 				85B2DD372244E3D300B91B92 /* Transaction */,
 				85D72037224BAB65005F0795 /* SpendingReportView.swift */,
+				85F2C161224DF6020057C88E /* BasicReportView.swift */,
 			);
 			path = "Main App";
 			sourceTree = "<group>";
@@ -779,6 +782,7 @@
 				85B2DD2C2243E4EB00B91B92 /* ATM.swift in Sources */,
 				85D3D7852248E3700006C711 /* ExpandableTableViewCell.swift in Sources */,
 				85B2DCEF22428BAB00B91B92 /* ExchangeRate.swift in Sources */,
+				85F2C162224DF6020057C88E /* BasicReportView.swift in Sources */,
 				85B2DCE72242667B00B91B92 /* MainViewModel.swift in Sources */,
 				85379DE4223FE64A0049FEC4 /* Color.swift in Sources */,
 				85B2DCFD2243773500B91B92 /* CreditCardsTableViewCell.swift in Sources */,

@@ -8,232 +8,205 @@
 
 import UIKit
 
-class SpendingReportView: UIView {
+class SpendingReportView: BasicReportView {
     
     // Properties //
-    let grafXOffset: CGFloat = 60
     
-    let basicAnimation: CABasicAnimation = {
-        let animation = CABasicAnimation(keyPath: "strokeEnd")
-        animation.toValue = 1
-        animation.duration = 1.5
-        animation.fillMode = CAMediaTimingFillMode.forwards // Path will stay draw
-        animation.isRemovedOnCompletion = false
-        return animation
+    var outgoingTransactionsShapeLayer = CAShapeLayer()
+    var outgoingTransportShapeLayer = CAShapeLayer()
+    var outgoingBuyingShapeLayer = CAShapeLayer()
+    var outgoingFunnShapeLayer = CAShapeLayer()
+    var outgoingTravelingShapeLayer = CAShapeLayer()
+    var outgoingEatAndDrinkShapeLayer = CAShapeLayer()
+    var outgoingRentalsAndServicesShapeLayer = CAShapeLayer()
+    var outgoingFriendsAndLoveShapeLayer = CAShapeLayer()
+    var outgoingHealthShapeLayer = CAShapeLayer()
+    var outgoingGiftsShapeLayer = CAShapeLayer()
+    var outgoingFamilyShapeLayer = CAShapeLayer()
+    var outgoingEducationShapeLayer = CAShapeLayer()
+    var outgoingInvestmentsShapeLayer = CAShapeLayer()
+    var outgoingBussinesShapeLayer = CAShapeLayer()
+    var outgoingInsuranceShapeLayer = CAShapeLayer()
+    var outgoingFeesShapeLayer = CAShapeLayer()
+    var outgoingOthersShapeLayer = CAShapeLayer()
+    var incomingTransactionsShapeLayer = CAShapeLayer()
+    var incomingPaysShapeLayer = CAShapeLayer()
+    var incomingSellLayer = CAShapeLayer()
+    var incomingRewardsShapeLayer = CAShapeLayer()
+    var incomingInterestMoneyShapeLayer = CAShapeLayer()
+    var incomingGiftsShapeLayer = CAShapeLayer()
+    var incomingOthersShapeLayer = CAShapeLayer()
+    
+    let incomingButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Income", for: .normal)
+        button.setTitleColor(Color.IncomingLightGreen, for: .normal)
+        button.setImage(Image.IncomingImage, for: .normal)
+        button.addTarget(self, action: #selector(hitIncoming), for: .touchUpInside)
+        return button
     }()
-    
-    let trackLayer = CAShapeLayer()
-        var outgoingTransactionsShapeLayer = CAShapeLayer()
-            var outgoingTransportShapeLayer = CAShapeLayer()
-            var outgoingBuyingShapeLayer = CAShapeLayer()
-            var outgoingFunnShapeLayer = CAShapeLayer()
-            var outgoingTravelingShapeLayer = CAShapeLayer()
-            var outgoingEatAndDrinkShapeLayer = CAShapeLayer()
-            var outgoingRentalsAndServicesShapeLayer = CAShapeLayer()
-            var outgoingFriendsAndLoveShapeLayer = CAShapeLayer()
-            var outgoingHealthShapeLayer = CAShapeLayer()
-            var outgoingGiftsShapeLayer = CAShapeLayer()
-            var outgoingFamilyShapeLayer = CAShapeLayer()
-            var outgoingEducationShapeLayer = CAShapeLayer()
-            var outgoingInvestmentsShapeLayer = CAShapeLayer()
-            var outgoingBussinesShapeLayer = CAShapeLayer()
-            var outgoingInsuranceShapeLayer = CAShapeLayer()
-            var outgoingFeesShapeLayer = CAShapeLayer()
-            var outgoingOthersShapeLayer = CAShapeLayer()
-        var incomingTransactionsShapeLayer = CAShapeLayer()
-            var incomingPaysShapeLayer = CAShapeLayer()
-            var incomingSellLayer = CAShapeLayer()
-            var incomingRewardsShapeLayer = CAShapeLayer()
-            var incomingInterestMoneyShapeLayer = CAShapeLayer()
-            var incomingGiftsShapeLayer = CAShapeLayer()
-            var incomingOthersShapeLayer = CAShapeLayer()
-   
-    
-    let legendStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.isHidden = true
-        stackView.axis = NSLayoutConstraint.Axis.vertical
-        stackView.distribution  = UIStackView.Distribution.equalSpacing
-        stackView.alignment = UIStackView.Alignment.center
-        stackView.spacing = 0.0
-        return stackView
+    let payButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Pay", for: .normal)
+        button.setTitleColor(Color.Pay, for: .normal)
+        button.setImage(Image.Pay, for: .normal)
+        return button
     }()
-        let incomingButton: UIButton = {
+    let sellButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Sell", for: .normal)
+        button.setTitleColor(Color.Sell, for: .normal)
+        button.setImage(Image.Sell, for: .normal)
+        return button
+    }()
+    let rewardsButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Rewards", for: .normal)
+        button.setTitleColor(Color.Rewards, for: .normal)
+        button.setImage(Image.Rewards, for: .normal)
+        return button
+    }()
+    let interestMoneyButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Int. Money", for: .normal)
+        button.setTitleColor(Color.InterestMoney, for: .normal)
+        button.setImage(Image.InterestMoney, for: .normal)
+        return button
+    }()
+    let giftsButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Gifts", for: .normal)
+        button.setTitleColor(Color.GiftMoney, for: .normal)
+        button.setImage(Image.GiftMoney, for: .normal)
+        return button
+    }()
+    let otherButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Others", for: .normal)
+        button.setTitleColor(Color.Others, for: .normal)
+        button.setImage(Image.Others, for: .normal)
+        return button
+    }()
+    let outgoingButton: UIButton = {
             let button = UIButton()
-            button.setTitle("Income", for: .normal)
-            button.setTitleColor(Color.IncomingLightGreen, for: .normal)
-            button.setImage(Image.IncomingImage, for: .normal)
-            button.addTarget(self, action: #selector(hitIncoming), for: .touchUpInside)
+            button.setTitle("Outcome", for: .normal)
+            button.setTitleColor(Color.MainRed, for: .normal)
+            button.setImage(Image.OutgoingImage, for: .normal)
+            button.addTarget(self, action: #selector(hitOutgoing), for: .touchUpInside)
             return button
-        }()
-            let payButton: UIButton = {
-                let button = UIButton()
-                button.setTitle("Pay", for: .normal)
-                button.setTitleColor(Color.Pay, for: .normal)
-                button.setImage(Image.Pay, for: .normal)
-                //button.addTarget(self, action: #selector(hitPay), for: .touchUpInside)
-                return button
-            }()
-            let sellButton: UIButton = {
-                let button = UIButton()
-                button.setTitle("Sell", for: .normal)
-                button.setTitleColor(Color.Sell, for: .normal)
-                button.setImage(Image.Sell, for: .normal)
-                //button.addTarget(self, action: #selector(hitSell), for: .touchUpInside)
-                return button
-            }()
-            let rewardsButton: UIButton = {
-                let button = UIButton()
-                button.setTitle("Rewards", for: .normal)
-                button.setTitleColor(Color.Rewards, for: .normal)
-                button.setImage(Image.Rewards, for: .normal)
-                //button.addTarget(self, action: #selector(hitRewards), for: .touchUpInside)
-                return button
-            }()
-            let interestMoneyButton: UIButton = {
-                let button = UIButton()
-                button.setTitle("Int. Money", for: .normal)
-                button.setTitleColor(Color.InterestMoney, for: .normal)
-                button.setImage(Image.InterestMoney, for: .normal)
-                //button.addTarget(self, action: #selector(hitInterestMoney), for: .touchUpInside)
-                return button
-            }()
-            let giftsButton: UIButton = {
-                let button = UIButton()
-                button.setTitle("Gifts", for: .normal)
-                button.setTitleColor(Color.GiftMoney, for: .normal)
-                button.setImage(Image.GiftMoney, for: .normal)
-                //button.addTarget(self, action: #selector(hitGiftMoney), for: .touchUpInside)
-                return button
-            }()
-            let otherButton: UIButton = {
-                let button = UIButton()
-                button.setTitle("Others", for: .normal)
-                button.setTitleColor(Color.Others, for: .normal)
-                button.setImage(Image.Others, for: .normal)
-                //button.addTarget(self, action: #selector(hitOthers), for: .touchUpInside)
-                return button
-            }()
-        let outgoingButton: UIButton = {
-                let button = UIButton()
-                button.setTitle("Outcome", for: .normal)
-                button.setTitleColor(Color.MainRed, for: .normal)
-                button.setImage(Image.OutgoingImage, for: .normal)
-                button.addTarget(self, action: #selector(hitOutgoing), for: .touchUpInside)
-                return button
-        }()
-            let transportButton: UIButton = {
-                let button = UIButton()
-                button.setTitle("Transport", for: .normal)
-                button.setTitleColor(Color.Transport, for: .normal)
-                button.setImage(Image.Transport, for: .normal)
-                return button
-            }()
-            let buyingButton: UIButton = {
-                let button = UIButton()
-                button.setTitle("Buying", for: .normal)
-                button.setTitleColor(Color.Buying, for: .normal)
-                button.setImage(Image.Buying, for: .normal)
-                return button
-            }()
-            let funnButton: UIButton = {
-                let button = UIButton()
-                button.setTitle("Funn", for: .normal)
-                button.setTitleColor(Color.Funn, for: .normal)
-                button.setImage(Image.Funn, for: .normal)
-                return button
-            }()
-            let travelingButton: UIButton = {
-                let button = UIButton()
-                button.setTitle("Traveling", for: .normal)
-                button.setTitleColor(Color.Traveling, for: .normal)
-                button.setImage(Image.Traveling, for: .normal)
-                return button
-            }()
-            let eatAndDrinkButton: UIButton = {
-                let button = UIButton()
-                button.setTitle("Eat & Drink", for: .normal)
-                button.setTitleColor(Color.EatAndDrink, for: .normal)
-                button.setImage(Image.EatAndDrink, for: .normal)
-                return button
-            }()
-            let rentalsAndServicesButton: UIButton = {
-                let button = UIButton()
-                button.setTitle("Rents", for: .normal)
-                button.setTitleColor(Color.RentalsAndServices, for: .normal)
-                button.setImage(Image.RentalsAndServices, for: .normal)
-                return button
-            }()
-            let friendsAndLoveButton: UIButton = {
-                let button = UIButton()
-                button.setTitle("Love", for: .normal)
-                button.setTitleColor(Color.FriendsAndLove, for: .normal)
-                button.setImage(Image.FriendsAndLove, for: .normal)
-                return button
-            }()
-            let healthButton: UIButton = {
-                let button = UIButton()
-                button.setTitle("Health", for: .normal)
-                button.setTitleColor(Color.Health, for: .normal)
-                button.setImage(Image.Health, for: .normal)
-                return button
-            }()
-            let giftsOutgoingButton: UIButton = {
-                let button = UIButton()
-                button.setTitle("Gifts", for: .normal)
-                button.setTitleColor(Color.BuyGift, for: .normal)
-                button.setImage(Image.BuyGift, for: .normal)
-                return button
-            }()
-            let familyButton: UIButton = {
-                let button = UIButton()
-                button.setTitle("Family", for: .normal)
-                button.setTitleColor(Color.Family, for: .normal)
-                button.setImage(Image.Family, for: .normal)
-                return button
-            }()
-            let educationButton: UIButton = {
-                let button = UIButton()
-                button.setTitle("Education", for: .normal)
-                button.setTitleColor(Color.Education, for: .normal)
-                button.setImage(Image.Education, for: .normal)
-                return button
-            }()
-            let investmentsButton: UIButton = {
-                let button = UIButton()
-                button.setTitle("Invest", for: .normal)
-                button.setTitleColor(Color.Investments, for: .normal)
-                button.setImage(Image.Investments, for: .normal)
-                return button
-            }()
-            let bussinesButton: UIButton = {
-                let button = UIButton()
-                button.setTitle("Bussines", for: .normal)
-                button.setTitleColor(Color.Bussines, for: .normal)
-                button.setImage(Image.Bussines, for: .normal)
-                return button
-            }()
-            let insuranceButton: UIButton = {
-                let button = UIButton()
-                button.setTitle("Insurance", for: .normal)
-                button.setTitleColor(Color.Insurance, for: .normal)
-                button.setImage(Image.Insurance, for: .normal)
-                return button
-            }()
-            let feesButton: UIButton = {
-                let button = UIButton()
-                button.setTitle("Fees", for: .normal)
-                button.setTitleColor(Color.Fees, for: .normal)
-                button.setImage(Image.Fees, for: .normal)
-                return button
-            }()
-            let othersButton: UIButton = {
-                let button = UIButton()
-                button.setTitle("Others", for: .normal)
-                button.setTitleColor(Color.Others, for: .normal)
-                button.setImage(Image.Others, for: .normal)
-                return button
-            }()
+    }()
+    let transportButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Transport", for: .normal)
+        button.setTitleColor(Color.Transport, for: .normal)
+        button.setImage(Image.Transport, for: .normal)
+        return button
+    }()
+    let buyingButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Buying", for: .normal)
+        button.setTitleColor(Color.Buying, for: .normal)
+        button.setImage(Image.Buying, for: .normal)
+        return button
+    }()
+    let funnButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Funn", for: .normal)
+        button.setTitleColor(Color.Funn, for: .normal)
+        button.setImage(Image.Funn, for: .normal)
+        return button
+    }()
+    let travelingButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Traveling", for: .normal)
+        button.setTitleColor(Color.Traveling, for: .normal)
+        button.setImage(Image.Traveling, for: .normal)
+        return button
+    }()
+    let eatAndDrinkButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Eat & Drink", for: .normal)
+        button.setTitleColor(Color.EatAndDrink, for: .normal)
+        button.setImage(Image.EatAndDrink, for: .normal)
+        return button
+    }()
+    let rentalsAndServicesButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Rents", for: .normal)
+        button.setTitleColor(Color.RentalsAndServices, for: .normal)
+        button.setImage(Image.RentalsAndServices, for: .normal)
+        return button
+    }()
+    let friendsAndLoveButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Love", for: .normal)
+        button.setTitleColor(Color.FriendsAndLove, for: .normal)
+        button.setImage(Image.FriendsAndLove, for: .normal)
+        return button
+    }()
+    let healthButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Health", for: .normal)
+        button.setTitleColor(Color.Health, for: .normal)
+        button.setImage(Image.Health, for: .normal)
+        return button
+    }()
+    let giftsOutgoingButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Gifts", for: .normal)
+        button.setTitleColor(Color.BuyGift, for: .normal)
+        button.setImage(Image.BuyGift, for: .normal)
+        return button
+    }()
+    let familyButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Family", for: .normal)
+        button.setTitleColor(Color.Family, for: .normal)
+        button.setImage(Image.Family, for: .normal)
+        return button
+    }()
+    let educationButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Education", for: .normal)
+        button.setTitleColor(Color.Education, for: .normal)
+        button.setImage(Image.Education, for: .normal)
+        return button
+    }()
+    let investmentsButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Invest", for: .normal)
+        button.setTitleColor(Color.Investments, for: .normal)
+        button.setImage(Image.Investments, for: .normal)
+        return button
+    }()
+    let bussinesButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Bussines", for: .normal)
+        button.setTitleColor(Color.Bussines, for: .normal)
+        button.setImage(Image.Bussines, for: .normal)
+        return button
+    }()
+    let insuranceButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Insurance", for: .normal)
+        button.setTitleColor(Color.Insurance, for: .normal)
+        button.setImage(Image.Insurance, for: .normal)
+        return button
+    }()
+    let feesButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Fees", for: .normal)
+        button.setTitleColor(Color.Fees, for: .normal)
+        button.setImage(Image.Fees, for: .normal)
+        return button
+    }()
+    let othersButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Others", for: .normal)
+        button.setTitleColor(Color.Others, for: .normal)
+        button.setImage(Image.Others, for: .normal)
+        return button
+    }()
     
     var currency: Currency?
     var incomingTransactions: [Transaction] = []
@@ -243,20 +216,12 @@ class SpendingReportView: UIView {
         didSet {
             self.outgoingTransactions = transactions.filter({$0.type == 2})
             self.incomingTransactions = transactions.filter({$0.type == 1})
-            createCircleGraph()
+            createBasicGraph()
             addAnimationForBasicGraph()
-            showPercentageLabel()
-            showBasicGraphLegend()
+            showBasicPercentageLabel()
+            showBasicLegend()
         }
     }
-    
-    let percentageLabelOfBasedGraph: UILabel = {
-        let label = UILabel()
-        label.textAlignment = .center
-        label.font = UIFont.boldSystemFont(ofSize: 12)
-        label.frame = CGRect(x: 0, y: 0, width: 150, height: 150)
-        return label
-    }()
     
     let percentageLabelForIncomingTypesGraph: UILabel = {
         let label = UILabel()
@@ -274,29 +239,27 @@ class SpendingReportView: UIView {
         return label
     }()
     
-    var buttonsOfBasicBrapg: [UIButton] = []
+    var percentageLabels: [UILabel] = []
+    var buttonsOfBasicGraph: [UIButton] = []
     var incomingTypeButons: [UIButton] = []
     var outgoingTypeButons: [UIButton] = []
     var allShapeLayers: [CAShapeLayer] = []
     var incomingShapeLayers: [CAShapeLayer] = []
     var outgoingShapeLayers: [CAShapeLayer] = []
+    var basicTypesLayers: [CAShapeLayer] = []
     
     // Funkcions //
     override func awakeFromNib() {
         super.awakeFromNib()
-        allShapeLayers = [outgoingTransactionsShapeLayer, outgoingTransportShapeLayer, outgoingBuyingShapeLayer, outgoingFunnShapeLayer, outgoingTravelingShapeLayer, outgoingEatAndDrinkShapeLayer, outgoingRentalsAndServicesShapeLayer, outgoingFriendsAndLoveShapeLayer, outgoingHealthShapeLayer, outgoingGiftsShapeLayer, outgoingFamilyShapeLayer, outgoingEducationShapeLayer, outgoingInvestmentsShapeLayer, outgoingBussinesShapeLayer, outgoingInsuranceShapeLayer, outgoingFeesShapeLayer, outgoingOthersShapeLayer, incomingTransactionsShapeLayer, incomingPaysShapeLayer, incomingSellLayer, incomingRewardsShapeLayer, incomingInterestMoneyShapeLayer, incomingGiftsShapeLayer, incomingOthersShapeLayer]
+        self.basicTypesLayers = [outgoingTransactionsShapeLayer, incomingTransactionsShapeLayer]
+        self.percentageLabels = [percentageLabelOfBasedGraph, percentageLabelForOutgoingTypesGraph, percentageLabelForIncomingTypesGraph]
+        self.allShapeLayers = [outgoingTransactionsShapeLayer, outgoingTransportShapeLayer, outgoingBuyingShapeLayer, outgoingFunnShapeLayer, outgoingTravelingShapeLayer, outgoingEatAndDrinkShapeLayer, outgoingRentalsAndServicesShapeLayer, outgoingFriendsAndLoveShapeLayer, outgoingHealthShapeLayer, outgoingGiftsShapeLayer, outgoingFamilyShapeLayer, outgoingEducationShapeLayer, outgoingInvestmentsShapeLayer, outgoingBussinesShapeLayer, outgoingInsuranceShapeLayer, outgoingFeesShapeLayer, outgoingOthersShapeLayer, incomingTransactionsShapeLayer, incomingPaysShapeLayer, incomingSellLayer, incomingRewardsShapeLayer, incomingInterestMoneyShapeLayer, incomingGiftsShapeLayer, incomingOthersShapeLayer]
+        self.incomingShapeLayers = [incomingPaysShapeLayer, incomingSellLayer, incomingRewardsShapeLayer, incomingInterestMoneyShapeLayer, incomingGiftsShapeLayer, incomingOthersShapeLayer]
+        outgoingShapeLayers = [outgoingTransportShapeLayer, outgoingBuyingShapeLayer, outgoingFunnShapeLayer, outgoingTravelingShapeLayer, outgoingEatAndDrinkShapeLayer, outgoingRentalsAndServicesShapeLayer, outgoingFriendsAndLoveShapeLayer, outgoingHealthShapeLayer, outgoingGiftsShapeLayer, outgoingFamilyShapeLayer, outgoingEducationShapeLayer, outgoingInvestmentsShapeLayer, outgoingBussinesShapeLayer, outgoingInsuranceShapeLayer, outgoingFeesShapeLayer, outgoingOthersShapeLayer]
         for layer in allShapeLayers {
             layer.isHidden = true
         }
-        incomingShapeLayers = [incomingPaysShapeLayer, incomingSellLayer, incomingRewardsShapeLayer, incomingInterestMoneyShapeLayer, incomingGiftsShapeLayer, incomingOthersShapeLayer]
-        outgoingShapeLayers = [outgoingTransportShapeLayer, outgoingBuyingShapeLayer, outgoingFunnShapeLayer, outgoingTravelingShapeLayer, outgoingEatAndDrinkShapeLayer, outgoingRentalsAndServicesShapeLayer, outgoingFriendsAndLoveShapeLayer, outgoingHealthShapeLayer, outgoingGiftsShapeLayer, outgoingFamilyShapeLayer, outgoingEducationShapeLayer, outgoingInvestmentsShapeLayer, outgoingBussinesShapeLayer, outgoingInsuranceShapeLayer, outgoingFeesShapeLayer, outgoingOthersShapeLayer]
-        
-        trackLayer.isHidden = true
-        
-        percentageLabelOfBasedGraph.isHidden = true
-        percentageLabelForIncomingTypesGraph.isHidden = true
-        
-        outgoingTypeButons = [transportButton, buyingButton, funnButton, travelingButton, eatAndDrinkButton, rentalsAndServicesButton, friendsAndLoveButton, healthButton, giftsOutgoingButton, familyButton, educationButton, investmentsButton, bussinesButton, insuranceButton, feesButton, othersButton]
+        self.outgoingTypeButons = [transportButton, buyingButton, funnButton, travelingButton, eatAndDrinkButton, rentalsAndServicesButton, friendsAndLoveButton, healthButton, giftsOutgoingButton, familyButton, educationButton, investmentsButton, bussinesButton, insuranceButton, feesButton, othersButton]
         for button in outgoingTypeButons {
             button.backgroundColor = UIColor.clear
             button.widthAnchor.constraint(equalToConstant: frame.width/3).isActive = true
@@ -307,8 +270,7 @@ class SpendingReportView: UIView {
             button.imageEdgeInsets = UIEdgeInsets(top: 5, left: 0, bottom: 5, right: 0)
             button.titleEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         }
-        
-        incomingTypeButons = [payButton, sellButton, rewardsButton, interestMoneyButton, giftsButton, otherButton]
+        self.incomingTypeButons = [payButton, sellButton, rewardsButton, interestMoneyButton, giftsButton, otherButton]
         for button in incomingTypeButons {
             button.backgroundColor = UIColor.clear
             button.widthAnchor.constraint(equalToConstant: frame.width/3).isActive = true
@@ -319,8 +281,8 @@ class SpendingReportView: UIView {
             button.imageEdgeInsets = UIEdgeInsets(top: 5, left: 0, bottom: 5, right: 0)
             button.titleEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         }
-        buttonsOfBasicBrapg = [incomingButton, outgoingButton]
-        for button in buttonsOfBasicBrapg {
+        self.buttonsOfBasicGraph = [incomingButton, outgoingButton]
+        for button in buttonsOfBasicGraph {
             button.backgroundColor = UIColor.clear
             button.widthAnchor.constraint(equalToConstant: frame.width/3).isActive = true
             button.heightAnchor.constraint(equalToConstant: 30.0).isActive = true
@@ -329,7 +291,9 @@ class SpendingReportView: UIView {
             button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 5)
             button.titleEdgeInsets = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 0)
         }
-        
+        trackLayer.isHidden = true
+        percentageLabelOfBasedGraph.isHidden = true
+        percentageLabelForIncomingTypesGraph.isHidden = true
     }
     
     func swipeUp() {
@@ -337,43 +301,13 @@ class SpendingReportView: UIView {
             layer.isHidden = true
         }
         trackLayer.isHidden = true
-        percentageLabelOfBasedGraph.isHidden = true
-        percentageLabelForOutgoingTypesGraph.isHidden = true
-        percentageLabelForIncomingTypesGraph.isHidden = true
-
+        for label in percentageLabels {
+            label.isHidden = true
+        }
         legendStackView.isHidden = true
         for item in legendStackView.subviews {
             legendStackView.removeArrangedSubview(item)
         }
-    }
-    
-    /// Type of Transaction Graph:
-    
-    private func showPercentageLabel() {
-        percentageLabelForIncomingTypesGraph.isHidden = true
-        percentageLabelOfBasedGraph.isHidden = false
-        addSubview(percentageLabelOfBasedGraph)
-        percentageLabelOfBasedGraph.center = CGPoint(x: center.x - grafXOffset , y: center.y + 75)
-    }
-    
-    private func showBasicGraphLegend() {
-        percentageLabelForOutgoingTypesGraph.isHidden = true
-        for button in incomingTypeButons {
-            button.isHidden = true
-        }
-        for button in outgoingTypeButons {
-            button.isHidden = true
-        }
-         legendStackView.isHidden = false
-        for button in buttonsOfBasicBrapg {
-            button.isHidden = false
-            legendStackView.addArrangedSubview(button)
-        }
-        legendStackView.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(legendStackView)
-        
-        legendStackView.rightAnchor.constraint(equalTo: rightAnchor, constant: -10).isActive = true
-        legendStackView.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -10).isActive = true
     }
     
     @objc func hitIncoming () {
@@ -385,12 +319,12 @@ class SpendingReportView: UIView {
         outgoingGraph()
         addAnimationForOutgoingTypes()
     }
-
-    private func createCircleGraph() {
-        percentageLabelOfBasedGraph.isHidden = false
+    
+    /// Basic Graph:
+    override func createBasicGraph() {
+        super.createBasicGraph()
         incomingTransactionsShapeLayer.isHidden = false
         outgoingTransactionsShapeLayer.isHidden = false
-        trackLayer.isHidden = false
         
         var fullamount: Double = 0
         var outgoingAmount: Double = 0
@@ -403,6 +337,60 @@ class SpendingReportView: UIView {
             outgoingAmount += transaction.amount
             fullamount += transaction.amount
         }
+        setPercentageLabel(outgoingAmount: outgoingAmount, incomingAmount: incomingAmount)
+        let percentageOfOugoing = (outgoingAmount/fullamount).rounded(toPlaces: 2)
+        let percentageOfIncoming = (incomingAmount/fullamount).rounded(toPlaces: 2)
+        let degreesOutgoing = percentageOfOugoing * 360
+        let degreesIncoming = percentageOfIncoming * 360
+        
+        let centerPoint = CGPoint(x: center.x - grafXOffset, y: center.y + grafYOffset)
+        let startOfOutgoing = -CGFloat.pi / 2
+        let endOfOutgoing = CGFloat(degreesOutgoing) * CGFloat.pi/180 + startOfOutgoing
+        let circularPathForOutgoing = UIBezierPath(arcCenter: centerPoint, radius: 75, startAngle: startOfOutgoing, endAngle: endOfOutgoing, clockwise: true)
+        outgoingTransactionsShapeLayer.path = circularPathForOutgoing.cgPath
+        outgoingTransactionsShapeLayer.strokeColor = Color.MainRed.cgColor
+        
+        let endOfIncoming = CGFloat(degreesIncoming) * CGFloat.pi/180 + endOfOutgoing
+        let circularPathForIncoming = UIBezierPath(arcCenter: centerPoint, radius: 75, startAngle: endOfOutgoing, endAngle: endOfIncoming, clockwise: true)
+        incomingTransactionsShapeLayer.path = circularPathForIncoming.cgPath
+        incomingTransactionsShapeLayer.strokeColor = Color.IncomingLightGreen.cgColor
+        
+        for basicLayer in basicTypesLayers {
+            basicLayer.lineWidth = widthOfGraphPath
+            basicLayer.fillColor = UIColor.clear.cgColor
+            basicLayer.strokeEnd = 0
+            layer.addSublayer(basicLayer)
+        }
+    }
+    
+    override func showBasicPercentageLabel() {
+        super.showBasicPercentageLabel()
+        percentageLabelForIncomingTypesGraph.isHidden = true
+        percentageLabelForOutgoingTypesGraph.isHidden = true
+        percentageLabelOfBasedGraph.center = CGPoint(x: center.x - grafXOffset , y: center.y + 75)
+    }
+    
+    override func showBasicLegend() {
+        super.showBasicLegend()
+        for button in incomingTypeButons {
+            button.isHidden = true
+        }
+        for button in outgoingTypeButons {
+            button.isHidden = true
+        }
+        for button in buttonsOfBasicGraph {
+            button.isHidden = false
+            legendStackView.addArrangedSubview(button)
+        }
+    }
+    
+    override func addAnimationForBasicGraph() {
+        super.addAnimationForBasicGraph()
+        outgoingTransactionsShapeLayer.add(basicAnimation, forKey: "outgoingBasic")
+        incomingTransactionsShapeLayer.add(basicAnimation, forKey: "incomingBasic")
+    }
+    
+    private func setPercentageLabel(outgoingAmount: Double, incomingAmount: Double) {
         if let currency = currency {
             let attributetIncomingString = NSMutableAttributedString(string: "- \(outgoingAmount.rounded(toPlaces: 2)) \(currency.getCurrencySymbol())", attributes: [NSAttributedString.Key.foregroundColor: Color.MainRed,
                                                                                                                                                                       NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17, weight: .bold)])
@@ -412,58 +400,15 @@ class SpendingReportView: UIView {
             percentageLabelOfBasedGraph.attributedText = attributetIncomingString
             percentageLabelOfBasedGraph.numberOfLines = 2
         }
-    
-        let percentageOfOugoing = (outgoingAmount/fullamount).rounded(toPlaces: 2)
-        let percentageOfIncoming = (incomingAmount/fullamount).rounded(toPlaces: 2)
-        let degreesOutgoing = percentageOfOugoing * 360
-        let degreesIncoming = percentageOfIncoming * 360
-        
-        let widthOfGraphPath: CGFloat = 20
-        
-        let centerPoint = CGPoint(x: center.x - grafXOffset, y: center.y + 75)
-        
-        let circularFoTrackPath = UIBezierPath(arcCenter: centerPoint, radius: 75, startAngle: -CGFloat.pi / 2, endAngle: 2 * CGFloat.pi, clockwise: true)
-        trackLayer.path = circularFoTrackPath.cgPath
-        trackLayer.strokeColor = Color.MainBackground.cgColor
-        trackLayer.lineWidth = widthOfGraphPath
-        trackLayer.fillColor = UIColor.clear.cgColor
-        trackLayer.lineCap = CAShapeLayerLineCap.round
-        layer.addSublayer(trackLayer)
-        
-        let startOfOutgoing = -CGFloat.pi / 2
-        let endOfOutgoing = CGFloat(degreesOutgoing) * CGFloat.pi/180 + startOfOutgoing
-        let circularPathForOutgoing = UIBezierPath(arcCenter: centerPoint, radius: 75, startAngle: startOfOutgoing, endAngle: endOfOutgoing, clockwise: true)
-        outgoingTransactionsShapeLayer.path = circularPathForOutgoing.cgPath
-        outgoingTransactionsShapeLayer.strokeColor = Color.MainRed.cgColor
-        outgoingTransactionsShapeLayer.lineWidth = widthOfGraphPath
-        outgoingTransactionsShapeLayer.fillColor = UIColor.clear.cgColor
-        outgoingTransactionsShapeLayer.strokeEnd = 0
-        
-        let endOfIncoming = CGFloat(degreesIncoming) * CGFloat.pi/180 + endOfOutgoing
-        let circularPathForIncoming = UIBezierPath(arcCenter: centerPoint, radius: 75, startAngle: endOfOutgoing, endAngle: endOfIncoming, clockwise: true)
-        incomingTransactionsShapeLayer.path = circularPathForIncoming.cgPath
-        incomingTransactionsShapeLayer.strokeColor = Color.IncomingLightGreen.cgColor
-        incomingTransactionsShapeLayer.lineWidth = widthOfGraphPath
-        incomingTransactionsShapeLayer.fillColor = UIColor.clear.cgColor
-        incomingTransactionsShapeLayer.strokeEnd = 0
-        
-        layer.addSublayer(outgoingTransactionsShapeLayer)
-        layer.addSublayer(incomingTransactionsShapeLayer)
     }
-    
-    func addAnimationForBasicGraph() {
-        outgoingTransactionsShapeLayer.add(basicAnimation, forKey: "outgoingBasic")
-        incomingTransactionsShapeLayer.add(basicAnimation, forKey: "incomingBasic")
-    }
-    
+
     /// Outgoing graph:
-    
     func showPercentageLabelForOutgoingTypes(transportPercentage: Double, buyingPercentage: Double, funnPercentage: Double, travelingPercentage: Double, eatanddrinkPercentage: Double, rentalAndServicePercentage: Double, friendandlovePercentage: Double, healthPercentage: Double, giftsPercentage: Double, familyPercentage: Double, educationPercentage: Double, investmentsPercentage: Double, bussinesPercentage: Double, insurancePercentage: Double, feesPercentage: Double, othersPercentage: Double) {
         percentageLabelOfBasedGraph.isHidden = true
         percentageLabelForIncomingTypesGraph.isHidden = true
         percentageLabelForOutgoingTypesGraph.isHidden = false
         percentageLabelForOutgoingTypesGraph.numberOfLines = 16
-        percentageLabelForOutgoingTypesGraph.center = CGPoint(x: center.x - grafXOffset , y: center.y - 10) //-85 ??
+        percentageLabelForOutgoingTypesGraph.center = CGPoint(x: center.x - grafXOffset , y: center.y - 10)
         let attributetAllString = NSMutableAttributedString(string: "")
         // All strings percentages :
         // .transport
@@ -631,7 +576,6 @@ class SpendingReportView: UIView {
         outgoingTransactionsShapeLayer.isHidden = true
         trackLayer.isHidden = false
         // Outgoing Types :
-        let widthOfGraphPath: CGFloat = 20
         let centerPoint = CGPoint(x: center.x - grafXOffset, y: center.y - 10)
         var fullamountOutgoingType: Double = 0.0
         var ougoingTrasportTypeAmount: Double = 0.0
@@ -891,8 +835,6 @@ class SpendingReportView: UIView {
         incomingTransactionsShapeLayer.isHidden = true
         outgoingTransactionsShapeLayer.isHidden = true
         // Incoming Types :
-        
-        let widthOfGraphPath: CGFloat = 20
         let centerPoint = CGPoint(x: center.x - grafXOffset, y: center.y - 10)
         
         var fullamountIncomingType: Double = 0.0
@@ -949,7 +891,6 @@ class SpendingReportView: UIView {
         let circularPathSellILayer = UIBezierPath(arcCenter: centerPoint, radius: 75, startAngle: endOfPayTypes, endAngle: endOfIncomingSellType, clockwise: true)
         incomingSellLayer.path = circularPathSellILayer.cgPath
         incomingSellLayer.strokeColor = Color.Sell.cgColor
-        
         // .reward
         let endOfIncomingRewardsType = CGFloat(degreesIncomingRewardTypes) * CGFloat.pi/180 + endOfIncomingSellType
         let circularPathRewardsLayer = UIBezierPath(arcCenter: centerPoint, radius: 75, startAngle: endOfIncomingSellType, endAngle: endOfIncomingRewardsType, clockwise: true)
