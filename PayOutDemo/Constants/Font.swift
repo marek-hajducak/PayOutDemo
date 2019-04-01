@@ -10,10 +10,10 @@ import UIKit
 
 class Font {
     
+    // Basic Fonts
     public class var BasicPickerViewButtonTitle: UIFont {
         return UIFont.systemFont(ofSize: 17, weight: .regular)
     }
-    
     public class var BasicFont: UIFont {
         return UIFont.systemFont(ofSize: 15, weight: .regular)
     }
@@ -80,7 +80,7 @@ class Font {
         return UIFont.systemFont(ofSize: BasicSize - 3, weight: .regular)
     }
     
-    // Widgets
+    // Widgets:
     public class var BasicWidgetTitle: UIFont {
         if UIScreen.main.bounds.width == 320 {
             return UIFont.systemFont(ofSize: 14, weight: .semibold)
@@ -105,7 +105,7 @@ class Font {
         }
     }
     
-    /// Transactions Screen
+    /// Transactions Screen:
     public class var BasicTransactionTitle: UIFont {
         if UIScreen.main.bounds.width == 320 {
             return UIFont.systemFont(ofSize: 17, weight: .bold)
@@ -191,7 +191,8 @@ class Font {
             return BasicFont
         }
     }
-    // Filter screen
+    
+    // Filter screen:
     public class var BasicFilterTitle: UIFont {
         if UIScreen.main.bounds.width == 320 {
             return UIFont.systemFont(ofSize: 15, weight: .bold)
@@ -203,8 +204,8 @@ class Font {
             return BasicFont
         }
     }
-    // Spending Report
     
+    // Spending Report:
     public class var BasicTypeOfTransactionButon: UIFont {
         return UIFont.systemFont(ofSize: 17, weight: .bold)
     }
@@ -221,20 +222,4 @@ class Font {
         return UIFont.boldSystemFont(ofSize: 12)
     }
     
-    
 }
-
-
-/*
- public class var BasicSize: CGFloat {
- if UIScreen.main.bounds.width == 320 {
- return
- } else if UIScreen.main.bounds.width == 375  {
- return
- } else if UIScreen.main.bounds.width == 414  {
- return
- } else {
- return
- }
- */
- 

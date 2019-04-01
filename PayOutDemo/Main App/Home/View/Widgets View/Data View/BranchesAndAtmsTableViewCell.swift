@@ -18,7 +18,7 @@ class BranchesAndAtmsTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        branchImageView.image = Image.Atm.imageWithColor(color1: Color.MainRed)
+        branchImageView.image = Image.Atm.imageWithColor(color1: Color.MainColor)
         addressLabel.font = Font.BasicWidgetDescription
         branchOrATMSTitleLabel.font = Font.BasicWidgetTitle
         distanceLabel.font = Font.BasicWidgetTitle

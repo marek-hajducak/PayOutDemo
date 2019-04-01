@@ -11,7 +11,6 @@ import UIKit
 class SpendingReportView: BasicReportView {
     
     // Properties //
-    
     var outgoingTransactionsShapeLayer = CAShapeLayer()
     var outgoingTransportShapeLayer = CAShapeLayer()
     var outgoingBuyingShapeLayer = CAShapeLayer()
@@ -90,7 +89,7 @@ class SpendingReportView: BasicReportView {
     let outgoingButton: UIButton = {
             let button = UIButton()
             button.setTitle("Outcome", for: .normal)
-            button.setTitleColor(Color.MainRed, for: .normal)
+            button.setTitleColor(Color.OutcomingLightRed, for: .normal)
             button.setImage(Image.OutgoingImage, for: .normal)
             button.addTarget(self, action: #selector(hitOutgoing), for: .touchUpInside)
             return button
@@ -363,7 +362,7 @@ class SpendingReportView: BasicReportView {
         let endOfOutgoing = CGFloat(degreesOutgoing) * CGFloat.pi/180 + startOfOutgoing
         let circularPathForOutgoing = UIBezierPath(arcCenter: centerPoint, radius: 75, startAngle: startOfOutgoing, endAngle: endOfOutgoing, clockwise: true)
         outgoingTransactionsShapeLayer.path = circularPathForOutgoing.cgPath
-        outgoingTransactionsShapeLayer.strokeColor = Color.MainRed.cgColor
+        outgoingTransactionsShapeLayer.strokeColor = Color.OutcomingLightRed.cgColor
         
         let endOfIncoming = CGFloat(degreesIncoming) * CGFloat.pi/180 + endOfOutgoing
         let circularPathForIncoming = UIBezierPath(arcCenter: centerPoint, radius: 75, startAngle: endOfOutgoing, endAngle: endOfIncoming, clockwise: true)
@@ -409,7 +408,7 @@ class SpendingReportView: BasicReportView {
     
     private func setPercentageLabel(outgoingAmount: Double, incomingAmount: Double) {
         if let currency = currency {
-            let attributetIncomingString = NSMutableAttributedString(string: "- \(outgoingAmount.rounded(toPlaces: 2)) \(currency.getCurrencySymbol())", attributes: [NSAttributedString.Key.foregroundColor: Color.MainRed,
+            let attributetIncomingString = NSMutableAttributedString(string: "- \(outgoingAmount.rounded(toPlaces: 2)) \(currency.getCurrencySymbol())", attributes: [NSAttributedString.Key.foregroundColor: Color.OutcomingLightRed,
                                                                                                                                                                       NSAttributedString.Key.font: Font.BasicTypeOfTransactionButon])
             let attributeOutgoingString = NSAttributedString(string: "\n+ \(incomingAmount.rounded(toPlaces: 2) )\(currency.getCurrencySymbol())", attributes: [NSAttributedString.Key.foregroundColor : Color.IncomingLightGreen,
                                                                                                                                                                 NSAttributedString.Key.font: Font.BasicTypeOfTransactionButon])

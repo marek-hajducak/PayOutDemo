@@ -141,7 +141,7 @@
                                                                             <segment title="Second"/>
                                                                             <segment title=""/>
                                                                         </segments>
-                                                                        <color key="tintColor" red="0.77647058823529413" green="0.27843137254901962" blue="0.20784313725490194" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <color key="tintColor" name="MainRed"/>
                                                                     </segmentedControl>
                                                                 </subviews>
                                                             </stackView>
@@ -310,7 +310,7 @@
     </scenes>
     <resources>
         <namedColor name="MainRed">
-            <color red="0.77600002288818359" green="0.27799999713897705" blue="0.20800000429153442" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.3880000114440918" green="0.24699999392032623" blue="0.68199998140335083" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

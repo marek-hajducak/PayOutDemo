@@ -76,7 +76,7 @@ class BaseWidgetTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        nameOfWidgetLabel.textColor = Color.MainRed
+        nameOfWidgetLabel.textColor = Color.MainColor
         // All atributes to one atributes and set on layers
         nameOfWidgetLabel.dropLabelShadow(color: Color.DarkGrey.cgColor, radius: 2.5, opacity: 0.6, offsetWidth: 2, offsetHeigt: 2, maskToBounds: false)
         separatorView.layer.cornerRadius = 10

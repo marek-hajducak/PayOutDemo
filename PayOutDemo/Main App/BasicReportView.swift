@@ -82,11 +82,13 @@ class BasicReportView: UIView {
         layer.addSublayer(trackLayer)
     }
     
+    // Bacis percentage label, middle of graph
     func showBasicPercentageLabel(back: Bool) {
         percentageLabelOfBasedGraph.isHidden = false
         addSubview(percentageLabelOfBasedGraph)
     }
     
+    // Basic Legend
     func  showBasicLegend() {
         legendStackView.isHidden = false
         legendStackView.translatesAutoresizingMaskIntoConstraints = false
@@ -101,6 +103,7 @@ class BasicReportView: UIView {
         legendStackView.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -10).isActive = true
     }
     
+    // Add basic animations
     func addAnimationForBasicGraph() {
         
     }

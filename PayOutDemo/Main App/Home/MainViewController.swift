@@ -28,7 +28,7 @@ class MainViewController: BaseViewController {
     @IBOutlet weak var accountsSwipeUpButton: UIButton! {
         didSet {
             self.accountsSwipeUpButton.addTarget(self, action: #selector(MainViewController.swipeDown), for: .touchUpInside)
-            self.accountsSwipeUpButton.backgroundColor = Color.MainRed
+            self.accountsSwipeUpButton.backgroundColor = Color.MainColor
             self.accountsSwipeUpButton.layer.cornerRadius = 15
             let imageForButton = Image.ArrowDown
             self.accountsSwipeUpButton.setImage(imageForButton, for: .highlighted)
@@ -138,7 +138,7 @@ class MainViewController: BaseViewController {
         pageControl?.numberOfPages = accounts.count
         pageControl?.radius = 3
         pageControl?.tintColor = Color.MainGrey
-        pageControl?.currentPageTintColor = Color.MainRed
+        pageControl?.currentPageTintColor = Color.MainColor
         pageControl?.padding = 6
         if let pageController = pageControl {
             backgroundAccountsView.addSubview(pageController)

@@ -63,7 +63,7 @@ class TransactionViewController: BaseViewController {
     var transactions: [Transaction] = [] {
         didSet {
             createNewTransactionViewController()
-            accountsCollectionView.reloadData()
+            //accountsCollectionView.reloadData()
         }
     }
     
@@ -119,7 +119,7 @@ class TransactionViewController: BaseViewController {
         pageControl?.numberOfPages = accounts.count
         pageControl?.radius = 3
         pageControl?.tintColor = Color.MainGrey
-        pageControl?.currentPageTintColor = Color.MainRed
+        pageControl?.currentPageTintColor = Color.MainColor
         pageControl?.padding = 6
         if let pageController = pageControl {
             accountsBackgroundView.addSubview(pageController)
@@ -155,7 +155,7 @@ class TransactionViewController: BaseViewController {
         let heightConstraintFilterButton = NSLayoutConstraint(item: filterButton, attribute: NSLayoutConstraint.Attribute.height, relatedBy:  NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 30)
         let widthConstraintFilterButton = NSLayoutConstraint(item: filterButton, attribute: NSLayoutConstraint.Attribute.width, relatedBy:  NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 30)
         filterButton.addConstraints([heightConstraintFilterButton, widthConstraintFilterButton])
-        filterButton.setImage(Image.Filter.imageWithColor(color1: Color.MainRed), for: UIControl.State.normal)
+        filterButton.setImage(Image.Filter.imageWithColor(color1: Color.MainColor), for: UIControl.State.normal)
         filterButton.frame = CGRect(x: 0, y: 0, width: 34, height: 34)
         filterButton.addTarget(self, action: #selector(hitFilter), for: .touchUpInside)
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: filterButton)

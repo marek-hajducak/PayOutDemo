@@ -13,19 +13,19 @@ class Image {
     // System Images
     public class var Empty: UIImage { return UIImage() }
     public class var ArrowDown: UIImage { return #imageLiteral(resourceName: "arrow_down") }
-    public class var ArrowLeft: UIImage { return #imageLiteral(resourceName: "left_arrow")  }
+    public class var ArrowLeft: UIImage { return #imageLiteral(resourceName: "left_arrow") }
     public class var Cancel: UIImage { return #imageLiteral(resourceName: "cancel") }
     
     // Logos
-    public class var PayoutLogo: UIImage { return #imageLiteral(resourceName: "payout_logo") .imageWithColor(color1: Color.MainRed)}
+    public class var PayoutLogo: UIImage { return #imageLiteral(resourceName: "payout_logo") .imageWithColor(color1: Color.MainColor)}
     
     // Navigation Bar
-    public class var Settings: UIImage { return #imageLiteral(resourceName: "settings").imageWithColor(color1: Color.MainRed) }
-    public class var Chat: UIImage { return #imageLiteral(resourceName: "live_chat").imageWithColor(color1: Color.MainRed) }
-    public class var QrCode: UIImage { return #imageLiteral(resourceName: "qr_code").imageWithColor(color1: Color.MainRed) }
-    public class var Message: UIImage { return #imageLiteral(resourceName: "mail_box").imageWithColor(color1: Color.MainRed) }
-    public class var Filter: UIImage { return #imageLiteral(resourceName: "filter").imageWithColor(color1: Color.MainRed) }
-    public class var ResetFilter: UIImage { return #imageLiteral(resourceName: "reset_filter").imageWithColor(color1: Color.MainRed) }
+    public class var Settings: UIImage { return #imageLiteral(resourceName: "settings").imageWithColor(color1: Color.MainColor) }
+    public class var Chat: UIImage { return #imageLiteral(resourceName: "live_chat").imageWithColor(color1: Color.MainColor) }
+    public class var QrCode: UIImage { return #imageLiteral(resourceName: "qr_code").imageWithColor(color1: Color.MainColor) }
+    public class var Message: UIImage { return #imageLiteral(resourceName: "mail_box").imageWithColor(color1: Color.MainColor) }
+    public class var Filter: UIImage { return #imageLiteral(resourceName: "filter").imageWithColor(color1: Color.MainColor) }
+    public class var ResetFilter: UIImage { return #imageLiteral(resourceName: "reset_filter").imageWithColor(color1: Color.MainColor) }
     
     // Tab Bar
     public class var HomeTabBar: UIImage { return #imageLiteral(resourceName: "home") }

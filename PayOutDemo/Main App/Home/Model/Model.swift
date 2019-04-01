@@ -27,15 +27,15 @@ struct Model {
     ]
     
     private(set) var widgetsImages: [String : UIImage] = [
-        "Credit & Debit Cards" : Image.CreditCard.imageWithColor(color1: Color.MainRed),
-        "Loans": Image.Loan.imageWithColor(color1: Color.MainRed) ,
-        "Branches & ATMs" : Image.Atm.imageWithColor(color1: Color.MainRed),
-        "Exchange Rates" : Image.ExchangeRate.imageWithColor(color1: Color.MainRed),
-        "Spending Report" : Image.SpendingReport.imageWithColor(color1: Color.MainRed),
-        "Assets & Liabilities": Image.Asset.imageWithColor(color1: Color.MainRed),
-        "Mutual funds" : Image.Fund.imageWithColor(color1: Color.MainRed),
-        "DDS pension" : Image.Pension.imageWithColor(color1: Color.MainRed),
-        "Goals": Image.Goal.imageWithColor(color1: Color.MainRed)
+        "Credit & Debit Cards" : Image.CreditCard.imageWithColor(color1: Color.MainColor),
+        "Loans": Image.Loan.imageWithColor(color1: Color.MainColor) ,
+        "Branches & ATMs" : Image.Atm.imageWithColor(color1: Color.MainColor),
+        "Exchange Rates" : Image.ExchangeRate.imageWithColor(color1: Color.MainColor),
+        "Spending Report" : Image.SpendingReport.imageWithColor(color1: Color.MainColor),
+        "Assets & Liabilities": Image.Asset.imageWithColor(color1: Color.MainColor),
+        "Mutual funds" : Image.Fund.imageWithColor(color1: Color.MainColor),
+        "DDS pension" : Image.Pension.imageWithColor(color1: Color.MainColor),
+        "Goals": Image.Goal.imageWithColor(color1: Color.MainColor)
     ]
     
     /// The traditional method for rearranging rows in a table view.

@@ -38,7 +38,6 @@ class MainAppFlowController {
             yPossitionOfView = yPossitionOfView - self.navigationController.navigationBar.bounds.height + 10
         } // Testiong on SE, 7, X, X MAX - correct
         
-
         let homeNavigationController = UINavigationController()
         homeNavigationController.tabBarItem = UITabBarItem(title: "Home", image: Image.HomeTabBar, tag: 1)
         let mainFlowController = MainFlowController(navigationController: homeNavigationController, dependencies: dependencies)
@@ -46,7 +45,7 @@ class MainAppFlowController {
 
         if (UIScreen.main.bounds.width < 768) { // Yellow indicators of selected tabs turn oof for iPads (means if width of screen is higher then 768)
             let homeSelectedView = UIView(frame: CGRect(x: viewOffset, y: yPossitionOfView , width: baseWidthOfView, height: baseHeightOfView))
-            homeSelectedView.layer.backgroundColor = Color.MainRed.cgColor
+            homeSelectedView.layer.backgroundColor = Color.MainColor.cgColor
             homeSelectedView.tag = 1
             homeSelectedView.isHidden = false
             appTabBar?.view.addSubview(homeSelectedView)
@@ -59,7 +58,7 @@ class MainAppFlowController {
         
         if (UIScreen.main.bounds.width < 768) { // Yellow indicators of selected tabs turn oof for iPads (means if width of screen is higher then 768)
             let carSelectedView = UIView(frame: CGRect(x: baseWidthOfView + viewOffset*3, y: yPossitionOfView , width: baseWidthOfView, height: baseHeightOfView))
-            carSelectedView.layer.backgroundColor = Color.MainRed.cgColor
+            carSelectedView.layer.backgroundColor = Color.MainColor.cgColor
             carSelectedView.tag = 2
             carSelectedView.isHidden = true
             appTabBar?.view.addSubview(carSelectedView)
@@ -70,7 +69,7 @@ class MainAppFlowController {
         
         if (UIScreen.main.bounds.width < 768) { // Yellow indicators of selected tabs turn oof for iPads (means if width of screen is higher then 768)
             let contactSelectedView = UIView(frame: CGRect(x: baseWidthOfView*2 + viewOffset*5, y: yPossitionOfView , width: baseWidthOfView, height: baseHeightOfView))
-            contactSelectedView.layer.backgroundColor = Color.MainRed.cgColor
+            contactSelectedView.layer.backgroundColor = Color.MainColor.cgColor
             contactSelectedView.tag = 3
             contactSelectedView.isHidden = true
             appTabBar?.view.addSubview(contactSelectedView)
@@ -82,7 +81,7 @@ class MainAppFlowController {
         
         if (UIScreen.main.bounds.width < 768) { // Yellow indicators of selected tabs turn oof for iPads (means if width of screen is higher then 768)
             let controlSelectedView = UIView(frame: CGRect(x: baseWidthOfView*3 + viewOffset*7, y: yPossitionOfView , width: baseWidthOfView, height: baseHeightOfView))
-            controlSelectedView.layer.backgroundColor = Color.MainRed.cgColor
+            controlSelectedView.layer.backgroundColor = Color.MainColor.cgColor
             controlSelectedView.tag = 4
             controlSelectedView.isHidden = true
             appTabBar?.view.addSubview(controlSelectedView)

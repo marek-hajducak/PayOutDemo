@@ -129,7 +129,7 @@ class FilterViewController: InputViewController {
         amoutSignSegmentControl.setTitle("=", forSegmentAt: 2)
         
         filterButton.layer.cornerRadius = 15
-        filterButton.layer.backgroundColor = Color.MainRed.cgColor
+        filterButton.layer.backgroundColor = Color.MainColor.cgColor
         filterButton.dropButtonShadow(color: Color.DarkGrey.cgColor, radius: 6.0, opacity: 0.6, offsetWidth: 4, offsetHeigt: 4, maskToBounds: false)
         setFilterScreen()
         
@@ -271,7 +271,7 @@ class FilterViewController: InputViewController {
         
         if let navigationBar = self.navigationController?.navigationBar {
             navigationBar.barTintColor = Color.White
-            navigationBar.titleTextAttributes = [.foregroundColor: Color.MainRed, .font : Font.BasicNavigationTitle]
+            navigationBar.titleTextAttributes = [.foregroundColor: Color.MainColor, .font : Font.BasicNavigationTitle]
         }
     }
     

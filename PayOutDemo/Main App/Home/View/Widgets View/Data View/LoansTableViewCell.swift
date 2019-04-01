@@ -19,7 +19,7 @@ class LoansTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        loanProgresView.progressTintColor = Color.MainRed
+        loanProgresView.progressTintColor = Color.MainColor
         loanProgresView.trackTintColor = Color.LighGrey
         
         nameOfLoanLabel.font = Font.BasicWidgetTitle

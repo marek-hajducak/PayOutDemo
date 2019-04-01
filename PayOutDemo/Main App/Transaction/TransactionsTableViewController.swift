@@ -23,7 +23,7 @@ class TransactionsTableViewController: UIViewController {
             statisticButton.addTarget(self, action: #selector(swipeDown), for: .touchUpInside)
             statisticButton.isHidden = true
             statisticButton.isEnabled = false
-            self.statisticButton.backgroundColor = Color.MainRed
+            self.statisticButton.backgroundColor = Color.MainColor
             self.statisticButton.layer.cornerRadius = 15
             let imageForButton = Image.ArrowDown
             self.statisticButton.setImage(imageForButton, for: .highlighted)
@@ -236,14 +236,14 @@ extension TransactionsTableViewController: UITableViewDataSource, UITableViewDel
             success(true)
         })
         replyAction.image = Image.Replay
-        replyAction.backgroundColor = Color.MainRed
+        replyAction.backgroundColor = Color.MainColor
         
         let savePersonAction = UIContextualAction(style: .normal, title:  "Add Contact", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
             print("TODO: add contact flow")
             success(true)
         })
         savePersonAction.image = Image.SaveContact
-        savePersonAction.backgroundColor = Color.MainRed
+        savePersonAction.backgroundColor = Color.MainColor
         
         
         return UISwipeActionsConfiguration(actions: [replyAction, savePersonAction])
@@ -258,7 +258,7 @@ extension TransactionsTableViewController: UITableViewDataSource, UITableViewDel
             success(true)
         })
         addPhotoAction.image = Image.AddPhoto
-        addPhotoAction.backgroundColor = Color.MainRed
+        addPhotoAction.backgroundColor = Color.MainColor
         
         return UISwipeActionsConfiguration(actions: [addPhotoAction])
     }

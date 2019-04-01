@@ -56,7 +56,7 @@ class TransactionTableViewCell: ExpandableTableViewCell {
     
     func drawDottedLine(start p0: CGPoint, end p1: CGPoint, view: UIView) {
         let shapeLayer = CAShapeLayer()
-        shapeLayer.strokeColor = Color.MainRed.cgColor
+        shapeLayer.strokeColor = Color.MainColor.cgColor
         shapeLayer.lineWidth = 1
         shapeLayer.lineDashPattern = [7, 3] // 7 is the length of dash, 3 is length of the gap.
         

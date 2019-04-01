@@ -18,7 +18,7 @@ class GoalsTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        amountProgresView.progressTintColor = Color.MainRed
+        amountProgresView.progressTintColor = Color.MainColor
         amountProgresView.trackTintColor = Color.LighGrey
         currentSavingAmounLabel.font = Font.BasicWidgetTitle
         nameOfGoalLabel.font = Font.BasicWidgetTitle

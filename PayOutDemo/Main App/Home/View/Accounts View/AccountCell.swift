@@ -27,7 +27,7 @@ class AccountCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        backgroundCellView.layer.backgroundColor = Color.MainRed.cgColor
+        backgroundCellView.layer.backgroundColor = Color.MainColor.cgColor
         backgroundCellView.layer.cornerRadius = 10
         nameOfAccountLabel.textColor = Color.White
         amountLabel.textColor = Color.White

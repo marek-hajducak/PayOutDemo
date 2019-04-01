@@ -3,6 +3,10 @@ platform :ios, '10.0'
 use_modular_headers!
 
 target 'PayOutDemo' do
+  
+  # Pods for fabric
+  pod 'Fabric'
+  pod 'Crashlytics'
 
  # Pods for FRP
   pod 'RxSwift'
